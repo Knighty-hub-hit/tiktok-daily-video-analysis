@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, useMemo, useState } from "react";
+import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 
 type Frame = {
@@ -45,6 +45,8 @@ type VideoRecord = {
   breakdown: Breakdown;
   reasons: string[];
 };
+
+const STORAGE_KEY = "tiktok-daily-video-lab.records";
 
 const sampleFrames: Frame[] = [
   {
@@ -489,6 +491,52 @@ export default function Home() {
   const [customVideos, setCustomVideos] = useState<VideoRecord[]>([]);
   const [importDate, setImportDate] = useState("2026-07-07");
   const [pasteText, setPasteText] = useState("");
+  const [importStatus, setImportStatus] = useState("等待导入每日视频链接");
+  const [hasLoadedRecords, setHasLoadedRecords] = useState(false);
+
+  useEffect(() => {
+    const savedRecords = window.localStorage.getItem(STORAGE_KEY);
+    const markLoaded = () => {
+      window.requestAnimationFrame(() => {
+        setHasLoadedRecords(true);
+      });
+    };
+
+    if (!savedRecords) {
+      markLoaded();
+      return;
+    }
+
+    try {
+      const parsedRecords = JSON.parse(savedRecords) as VideoRecord[];
+
+      if (Array.isArray(parsedRecords) && parsedRecords.length > 0) {
+        window.requestAnimationFrame(() => {
+          setCustomVideos(parsedRecords);
+          setSelectedDate(parsedRecords[0].date);
+          setActiveVideoId(parsedRecords[0].id);
+          setImportStatus(`已恢复 ${parsedRecords.length} 条本地导入记录`);
+          setHasLoadedRecords(true);
+        });
+        return;
+      }
+
+      markLoaded();
+    } catch {
+      window.requestAnimationFrame(() => {
+        setImportStatus("本地导入记录读取失败，可重新导入");
+        setHasLoadedRecords(true);
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!hasLoadedRecords) {
+      return;
+    }
+
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(customVideos));
+  }, [customVideos, hasLoadedRecords]);
 
   const allVideos = useMemo(
     () => [...customVideos, ...seedVideos],
@@ -540,6 +588,7 @@ export default function Home() {
     const imported = parseExportRecords(pasteText, importDate);
 
     if (imported.length === 0) {
+      setImportStatus("没有识别到 TikTok 视频链接");
       return;
     }
 
@@ -551,6 +600,7 @@ export default function Home() {
     setCustomVideos((current) => [...imported, ...current]);
     setSelectedDate(latestImportedDate);
     setActiveVideoId(imported[0].id);
+    setImportStatus(`已导入 ${imported.length} 条视频，已切换到 ${latestImportedDate}`);
     setPasteText("");
   }
 
@@ -566,6 +616,20 @@ export default function Home() {
       setPasteText(String(reader.result ?? ""));
     };
     reader.readAsText(file);
+  }
+
+  function clearImportedRecords() {
+    setCustomVideos([]);
+    setSelectedDate(seedVideos[0].date);
+    setActiveVideoId(seedVideos[0].id);
+    setImportStatus("已清空本地导入记录");
+  }
+
+  function exportImportedRecords() {
+    const payload = JSON.stringify(customVideos, null, 2);
+
+    navigator.clipboard?.writeText(payload);
+    setImportStatus(`已复制 ${customVideos.length} 条导入记录`);
   }
 
   return (
@@ -668,6 +732,25 @@ export default function Home() {
             <button className="primary-button mt-3" onClick={importLinks} type="button">
               导入视频链接
             </button>
+            <div className="import-actions">
+              <button
+                className="secondary-button compact"
+                disabled={customVideos.length === 0}
+                onClick={exportImportedRecords}
+                type="button"
+              >
+                复制导入数据
+              </button>
+              <button
+                className="secondary-button compact danger"
+                disabled={customVideos.length === 0}
+                onClick={clearImportedRecords}
+                type="button"
+              >
+                清空导入
+              </button>
+            </div>
+            <p className="import-status">{importStatus}</p>
           </div>
 
           <div className="panel">

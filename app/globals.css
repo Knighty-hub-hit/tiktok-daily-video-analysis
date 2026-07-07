@@ -28,6 +28,11 @@ button {
   cursor: pointer;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
 .panel {
   background: #ffffff;
   border: 1px solid #e3e8ef;
@@ -170,6 +175,32 @@ button {
   background: #ffffff;
   color: #2457c5;
   padding: 8px 12px;
+}
+
+.secondary-button.compact {
+  font-size: 13px;
+  min-height: 36px;
+  padding: 7px 10px;
+  width: 100%;
+}
+
+.secondary-button.danger {
+  color: #b42318;
+}
+
+.import-actions {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 10px;
+}
+
+.import-status {
+  color: #667085;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-top: 10px;
 }
 
 .video-list {
