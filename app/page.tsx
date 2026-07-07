@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangeEvent, useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import siteVideoData from "@/data/site-videos.json";
 
@@ -61,20 +61,7 @@ type VideoRecord = {
   };
 };
 
-const STORAGE_KEY = "tiktok-daily-video-lab.records";
 const excelVideos = siteVideoData.records as VideoRecord[];
-
-type AnalysisDraft = {
-  cover: string;
-  frames: string;
-  hookType: string;
-  hook: string;
-  sellingPoint: string;
-  cta: string;
-  reusable: string;
-  reasons: string;
-  script: string;
-};
 
 const sampleFrames: Frame[] = [
   {
@@ -344,403 +331,12 @@ function getWeekLabel(dateValue: string) {
   return `${date.getFullYear()} 第 ${week} 周`;
 }
 
-function makeStatRows(
-  videos: VideoRecord[],
-  accessor: (video: VideoRecord) => string,
-) {
-  const total = videos.length || 1;
-  const counts = videos.reduce<Record<string, number>>((result, video) => {
-    const key = accessor(video) || "未识别";
-    result[key] = (result[key] ?? 0) + 1;
-    return result;
-  }, {});
-
-  return Object.entries(counts)
-    .sort((a, b) => b[1] - a[1])
-    .map(([label, count]) => ({
-      label,
-      count,
-      percent: Math.round((count / total) * 100),
-    }));
-}
-
-function parseNumber(value: string | undefined) {
-  const normalized = String(value ?? "")
-    .replace(/[$,，\s]/g, "")
-    .match(/-?\d+(\.\d+)?/);
-
-  return normalized ? Number(normalized[0]) : 0;
-}
-
-function normalizeDate(value: string | undefined, fallback: string) {
-  const raw = String(value ?? "").trim();
-  const isoMatch = raw.match(/(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})/);
-
-  if (isoMatch) {
-    const [, year, month, day] = isoMatch;
-    return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
-  }
-
-  const usMatch = raw.match(/(\d{1,2})\/(\d{1,2})\/(20\d{2})/);
-
-  if (usMatch) {
-    const [, month, day, year] = usMatch;
-    return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
-  }
-
-  return fallback;
-}
-
-function extractUrls(text: string) {
-  return Array.from(
-    new Set(
-      (text.match(/https?:\/\/[^\s,，;；]+/g) ?? [])
-        .map((url) => url.replace(/[)\].。]+$/, ""))
-        .filter((url) => url.includes("tiktok.com")),
-    ),
-  );
-}
-
-function parseDelimitedLine(line: string, delimiter: string) {
-  const cells: string[] = [];
-  let current = "";
-  let inQuotes = false;
-
-  for (let index = 0; index < line.length; index += 1) {
-    const char = line[index];
-    const nextChar = line[index + 1];
-
-    if (char === '"' && nextChar === '"') {
-      current += '"';
-      index += 1;
-      continue;
-    }
-
-    if (char === '"') {
-      inQuotes = !inQuotes;
-      continue;
-    }
-
-    if (char === delimiter && !inQuotes) {
-      cells.push(current.trim());
-      current = "";
-      continue;
-    }
-
-    current += char;
-  }
-
-  cells.push(current.trim());
-  return cells;
-}
-
-function parseDelimitedRows(text: string) {
-  const lines = text
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter(Boolean);
-
-  if (lines.length < 2) {
-    return [];
-  }
-
-  const delimiter = lines[0].includes("\t") ? "\t" : ",";
-  return lines.map((line) => parseDelimitedLine(line, delimiter));
-}
-
-function getCell(row: string[], headers: string[], candidates: string[]) {
-  const normalizedHeaders = headers.map((header) =>
-    header.replace(/\s+/g, "").toLowerCase(),
-  );
-  const normalizedCandidates = candidates.map((candidate) =>
-    candidate.replace(/\s+/g, "").toLowerCase(),
-  );
-  const index = normalizedHeaders.findIndex((header) =>
-    normalizedCandidates.some((candidate) => header.includes(candidate)),
-  );
-
-  return index >= 0 ? row[index] : undefined;
-}
-
-function buildImportedRecord(
-  url: string,
-  date: string,
-  index: number,
-  overrides: Partial<VideoRecord> = {},
-): VideoRecord {
-  const creatorMatch = url.match(/tiktok\.com\/@([^/]+)/);
-  const creator = creatorMatch ? `@${creatorMatch[1]}` : "@待识别达人";
-
-  const record: VideoRecord = {
-    id: `imported-${date}-${index}-${Date.now()}`,
-    date,
-    creator,
-    title: "导入视频，等待补充商品和脚本分析",
-    product: "待分析商品",
-    category: "待归类",
-    audience: "待识别",
-    language: "待识别",
-    link: url,
-    views: 0,
-    likes: 0,
-    orders: 0,
-    revenue: 0,
-    price: 0,
-    cover: "/video-cover.png",
-    frames: sampleFrames.slice(0, 3),
-    script: [
-      {
-        time: "00:00",
-        english: "Imported from daily TikTok export",
-        chinese: "已从每日导出链接导入，等待生成脚本",
-      },
-    ],
-    breakdown: {
-      hookType: "待识别",
-      hook: "导入后可继续补充首帧、字幕和达人信息，生成 Hook 拆解。",
-      sellingPoint: "等待从视频画面、标题、商品词和评论中抽取卖点。",
-      cta: "等待识别链接中的购物意图、标签和行动号召。",
-      reusable: "导入链接 -> 抓取视频信息 -> 生成关键帧 -> 输出复用脚本。",
-    },
-    reasons: ["该视频还没有订单和流量数据，当前排在同日榜单后方。"],
-  };
-
-  return {
-    ...record,
-    ...overrides,
-    creator: overrides.creator ?? record.creator,
-  };
-}
-
-function parseExportRecords(text: string, fallbackDate: string) {
-  const tableRows = parseDelimitedRows(text);
-
-  if (tableRows.length > 1) {
-    const headers = tableRows[0];
-    const parsedRecords = tableRows
-      .slice(1)
-      .map((row, index) => {
-        const linkCell =
-          getCell(row, headers, ["视频链接", "链接", "video link", "url"]) ?? "";
-        const link = extractUrls(linkCell)[0];
-
-        if (!link) {
-          return null;
-        }
-
-        const date = normalizeDate(
-          getCell(row, headers, ["视频发布日期", "发布日期", "日期", "入库日期"]),
-          fallbackDate,
-        );
-        const creator =
-          getCell(row, headers, ["达人用户名", "达人", "creator", "username"]) ??
-          undefined;
-        const title =
-          getCell(row, headers, ["视频标题", "标题", "title"]) ??
-          "导入视频，等待生成脚本分析";
-        const product =
-          getCell(row, headers, ["商品名称", "产品名称", "商品", "product"]) ??
-          "待分析商品";
-
-        return buildImportedRecord(link, date, index, {
-          creator: creator || undefined,
-          title,
-          product,
-          category:
-            getCell(row, headers, ["类目", "分类", "category"]) ?? "待归类",
-          audience:
-            getCell(row, headers, ["人群", "用户画像", "audience"]) ?? "待识别",
-          language: getCell(row, headers, ["语言", "language"]) ?? "待识别",
-          views: parseNumber(
-            getCell(row, headers, ["播放量", "播放", "views", "vv"]),
-          ),
-          likes: parseNumber(getCell(row, headers, ["点赞量", "点赞", "likes"])),
-          orders: parseNumber(
-            getCell(row, headers, ["出单量", "销量", "订单", "orders"]),
-          ),
-          revenue: parseNumber(
-            getCell(row, headers, ["销售额", "gmv", "revenue"]),
-          ),
-          price: parseNumber(getCell(row, headers, ["标价", "价格", "price"])),
-        });
-      })
-      .filter((record): record is VideoRecord => Boolean(record));
-
-    if (parsedRecords.length > 0) {
-      return parsedRecords;
-    }
-  }
-
-  return extractUrls(text).map((url, index) =>
-    buildImportedRecord(url, fallbackDate, index),
-  );
-}
-
-function createAnalysisDraft(video: VideoRecord): AnalysisDraft {
-  return {
-    cover: video.cover,
-    frames: video.frames
-      .map((frame) => `${frame.time}\t${frame.title}\t${frame.image}\t${frame.note}`)
-      .join("\n"),
-    hookType: video.breakdown.hookType,
-    hook: video.breakdown.hook,
-    sellingPoint: video.breakdown.sellingPoint,
-    cta: video.breakdown.cta,
-    reusable: video.breakdown.reusable,
-    reasons: video.reasons.join("\n"),
-    script: video.script
-      .map((line) => `${line.time}\t${line.english}\t${line.chinese}`)
-      .join("\n"),
-  };
-}
-
-function parseFramesDraft(text: string): Frame[] {
-  const lines = text
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter(Boolean);
-
-  if (lines.length === 0) {
-    return sampleFrames.slice(0, 3);
-  }
-
-  return lines.map((line, index) => {
-    const cells = line.includes("\t")
-      ? line.split("\t")
-      : line.split("|").map((cell) => cell.trim());
-    const fallback = sampleFrames[index % sampleFrames.length];
-
-    return {
-      time: cells[0] || fallback.time,
-      title: cells[1] || fallback.title,
-      image: cells[2] || fallback.image,
-      note: cells.slice(3).join(" ") || fallback.note,
-    };
-  });
-}
-
-function parseScriptDraft(text: string): ScriptLine[] {
-  const lines = text
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter(Boolean);
-
-  if (lines.length === 0) {
-    return [
-      {
-        time: "00:00",
-        english: "Waiting for script",
-        chinese: "等待补充脚本",
-      },
-    ];
-  }
-
-  return lines.map((line, index) => {
-    const cells = line.includes("\t")
-      ? line.split("\t")
-      : line.split("|").map((cell) => cell.trim());
-    const fallbackTime = `00:${String(index).padStart(2, "0")}`;
-
-    if (cells.length >= 3) {
-      return {
-        time: cells[0] || fallbackTime,
-        english: cells[1] || "Waiting for English script",
-        chinese: cells.slice(2).join(" ") || "等待中文翻译",
-      };
-    }
-
-    return {
-      time: fallbackTime,
-      english: cells[0] || "Waiting for English script",
-      chinese: cells[1] || "等待中文翻译",
-    };
-  });
-}
-
-function buildAnalysisPatch(
-  draft: AnalysisDraft,
-): Pick<VideoRecord, "cover" | "frames" | "script" | "breakdown" | "reasons"> {
-  return {
-    cover: draft.cover.trim() || "/video-cover.png",
-    frames: parseFramesDraft(draft.frames),
-    script: parseScriptDraft(draft.script),
-    breakdown: {
-      hookType: draft.hookType.trim() || "待识别",
-      hook: draft.hook.trim() || "等待补充 Hook 拆解。",
-      sellingPoint: draft.sellingPoint.trim() || "等待补充卖点呈现。",
-      cta: draft.cta.trim() || "等待补充 CTA。",
-      reusable: draft.reusable.trim() || "等待总结可复用套路。",
-    },
-    reasons: draft.reasons
-      .split(/\r?\n/)
-      .map((reason) => reason.trim())
-      .filter(Boolean),
-  };
-}
-
 export default function Home() {
   const baseVideos = excelVideos.length > 0 ? excelVideos : seedVideos;
   const [selectedDate, setSelectedDate] = useState(baseVideos[0].date);
   const [activeVideoId, setActiveVideoId] = useState(baseVideos[0].id);
-  const [customVideos, setCustomVideos] = useState<VideoRecord[]>([]);
-  const [importDate, setImportDate] = useState("2026-07-07");
-  const [pasteText, setPasteText] = useState("");
-  const [importStatus, setImportStatus] = useState("等待导入每日视频链接");
-  const [hasLoadedRecords, setHasLoadedRecords] = useState(false);
-  const [analysisMode, setAnalysisMode] = useState<"auto" | "manual">("auto");
-  const [pageRange, setPageRange] = useState("Top 1-10");
-  const [analysisDraft, setAnalysisDraft] = useState<AnalysisDraft>(() =>
-    createAnalysisDraft(baseVideos[0]),
-  );
-
-  useEffect(() => {
-    const savedRecords = window.localStorage.getItem(STORAGE_KEY);
-    const markLoaded = () => {
-      window.requestAnimationFrame(() => {
-        setHasLoadedRecords(true);
-      });
-    };
-
-    if (!savedRecords) {
-      markLoaded();
-      return;
-    }
-
-    try {
-      const parsedRecords = JSON.parse(savedRecords) as VideoRecord[];
-
-      if (Array.isArray(parsedRecords) && parsedRecords.length > 0) {
-        window.requestAnimationFrame(() => {
-          setCustomVideos(parsedRecords);
-          setSelectedDate(parsedRecords[0].date);
-          setActiveVideoId(parsedRecords[0].id);
-          setImportStatus(`已恢复 ${parsedRecords.length} 条本地导入记录`);
-          setHasLoadedRecords(true);
-        });
-        return;
-      }
-
-      markLoaded();
-    } catch {
-      window.requestAnimationFrame(() => {
-        setImportStatus("本地导入记录读取失败，可重新导入");
-        setHasLoadedRecords(true);
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!hasLoadedRecords) {
-      return;
-    }
-
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(customVideos));
-  }, [customVideos, hasLoadedRecords]);
-
-  const allVideos = useMemo(
-    () => [...customVideos, ...baseVideos],
-    [baseVideos, customVideos],
-  );
+  const pageRange = "Top 1-10";
+  const allVideos = baseVideos;
 
   const dates = useMemo(
     () =>
@@ -770,308 +366,79 @@ export default function Home() {
     pageVideos[0] ??
     visibleVideos[0] ??
     allVideos[0];
-  const canEditActiveVideo = customVideos.some(
-    (video) => video.id === activeVideo.id,
-  );
   const activeRank =
     visibleVideos.findIndex((video) => video.id === activeVideo.id) + 1 || 1;
 
   const sortLabel = visibleVideos.some((video) => video.orders > 0)
     ? "出单量从大到小"
     : "无出单，按流量从好到坏";
-
-  const dailyTotals = pageVideos.reduce(
-    (totals, video) => ({
-      views: totals.views + video.views,
-      orders: totals.orders + video.orders,
-      revenue: totals.revenue + video.revenue,
-    }),
-    { views: 0, orders: 0, revenue: 0 },
-  );
-  const productCount = new Set(pageVideos.map((video) => video.product)).size;
   const weekLabel = getWeekLabel(selectedDate);
-  const audienceRows = makeStatRows(pageVideos, (video) => video.audience);
-  const categoryRows = makeStatRows(pageVideos, (video) => video.category);
-  const pageRanges = [
-    "Top 1-10",
-    "Top 11-20",
-    "Top 21-30",
-    "Top 31-40",
-    "Top 41-50",
-    "Top 51-60",
-    "Top 61-70",
-    "Top 71-80",
-    "Top 81-90",
-    "Top 91-100",
-  ];
+  const minDate = dates[dates.length - 1] ?? selectedDate;
+  const maxDate = dates[0] ?? selectedDate;
 
-  function importLinks() {
-    const imported = parseExportRecords(pasteText, importDate);
-
-    if (imported.length === 0) {
-      setImportStatus("没有识别到 TikTok 视频链接");
+  function selectDate(date: string) {
+    if (!date) {
       return;
     }
 
-    const latestImportedDate = imported.reduce(
-      (latestDate, video) => (video.date > latestDate ? video.date : latestDate),
-      imported[0].date,
-    );
+    setSelectedDate(date);
+    const firstForDate = allVideos.find((video) => video.date === date);
 
-    setCustomVideos((current) => [...imported, ...current]);
-    setSelectedDate(latestImportedDate);
-    setActiveVideoId(imported[0].id);
-    setImportStatus(`已导入 ${imported.length} 条视频，已切换到 ${latestImportedDate}`);
-    setPasteText("");
-  }
-
-  function handleFileLoad(event: ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files?.[0];
-
-    if (!file) {
-      return;
+    if (firstForDate) {
+      setActiveVideoId(firstForDate.id);
     }
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      setPasteText(String(reader.result ?? ""));
-    };
-    reader.readAsText(file);
-  }
-
-  function clearImportedRecords() {
-    setCustomVideos([]);
-    setSelectedDate(baseVideos[0].date);
-    setActiveVideoId(baseVideos[0].id);
-    setImportStatus("已清空本地导入记录");
-  }
-
-  function exportImportedRecords() {
-    const payload = JSON.stringify(customVideos, null, 2);
-
-    navigator.clipboard?.writeText(payload);
-    setImportStatus(`已复制 ${customVideos.length} 条导入记录`);
-  }
-
-  function loadActiveAnalysis() {
-    setAnalysisDraft(createAnalysisDraft(activeVideo));
-    setImportStatus(`已载入 ${activeVideo.creator} 的分析内容`);
-  }
-
-  function applyDemoAnalysis() {
-    setAnalysisDraft(createAnalysisDraft(seedVideos[0]));
-    setImportStatus("已套用示例爆款分析模板");
-  }
-
-  function saveActiveAnalysis() {
-    if (!canEditActiveVideo) {
-      setImportStatus("示例视频不可覆盖，请先导入自己的视频");
-      return;
-    }
-
-    const patch = buildAnalysisPatch(analysisDraft);
-
-    setCustomVideos((current) =>
-      current.map((video) =>
-        video.id === activeVideo.id
-          ? {
-              ...video,
-              ...patch,
-            }
-          : video,
-      ),
-    );
-    setImportStatus(`已保存 ${activeVideo.creator} 的截图、脚本和拆解`);
   }
 
   return (
     <main className="min-h-screen bg-[#f3f3f4] text-[#1f2933]">
-      <section className="fastmoss-shell">
-        <div className="fastmoss-main">
-          <div className="brand-strip">
-            <span className="brand-badge">HALOVIDA MX</span>
-            <span className="mexico-flag" aria-label="Mexico market" />
-            <span className="source-badge">每天自动回收视频</span>
+      <section className="toolbar-shell">
+        <div className="filter-bar clean-filter">
+          <div className="week-pill">
+            <span className="calendar-mark">▣</span>
+            {weekLabel}
           </div>
-
-          <h1 className="fastmoss-title">TikTok 爆款带货视频拆解</h1>
-          <p className="fastmoss-subtitle">
-            当前页视频：{pageVideos.length} 条 | 产品：{productCount} 个 | 总数：
-            {visibleVideos.length} 条 | Mexico 市场 | 播放：{formatNumber(dailyTotals.views)} |
-            出单：{formatNumber(dailyTotals.orders)} | 来源：{siteVideoData.sourceFile} |
-            按产品分组，组内按销量降序
-          </p>
-
-          <div className="analysis-tabs" role="tablist" aria-label="分析模式">
-            <button
-              className={analysisMode === "auto" ? "analysis-tab active" : "analysis-tab"}
-              onClick={() => setAnalysisMode("auto")}
-              type="button"
+          <label className="calendar-select" htmlFor="date-picker">
+            <span>选择日期</span>
+            <input
+              id="date-picker"
+              max={maxDate}
+              min={minDate}
+              onChange={(event) => selectDate(event.target.value)}
+              type="date"
+              value={selectedDate}
+            />
+          </label>
+          <label className="calendar-select" htmlFor="date-list">
+            <span>日期拉表</span>
+            <select
+              id="date-list"
+              onChange={(event) => selectDate(event.target.value)}
+              value={selectedDate}
             >
-              自动采集分析
-            </button>
-            <button
-              className={analysisMode === "manual" ? "analysis-tab active" : "analysis-tab"}
-              onClick={() => setAnalysisMode("manual")}
-              type="button"
-            >
-              手动视频分析
-            </button>
-          </div>
-
-          <div className="market-tabs" aria-label="市场">
-            <button className="market-tab active" type="button">
-              MX
-            </button>
-          </div>
-
-          <div className="filter-bar">
-            <div className="week-pill">
-              <span className="calendar-mark">▣</span>
-              {weekLabel}
-            </div>
-            <div className="date-picks">
               {dates.map((date) => (
-                <button
-                  className={`date-button ${
-                    selectedDate === date ? "date-button-active" : ""
-                  }`}
-                  key={date}
-                  onClick={() => setSelectedDate(date)}
-                  type="button"
-                >
+                <option key={date} value={date}>
                   {date}
-                </button>
+                </option>
               ))}
-            </div>
-            <div className="filter-select">单人/多人</div>
-            <div className="filter-select">类目</div>
-          </div>
-
-          <div className="portrait-card">
-            <div className="portrait-head">
-              <h2>出镜者画像统计(已分类 {pageVideos.length} 条)</h2>
-              <span>{sortLabel}</span>
-            </div>
-            <div className="portrait-block">
-              <h3>族裔(肤色 + 口播语言)</h3>
-              {audienceRows.map((row, index) => (
-                <div className="stat-line" key={row.label}>
-                  <span>{row.label}</span>
-                  <div className="stat-track">
-                    <i
-                      className={`stat-fill tone-${index % 4}`}
-                      style={{ width: `${Math.max(row.percent, 8)}%` }}
-                    />
-                  </div>
-                  <strong>
-                    {row.count} ({row.percent}%)
-                  </strong>
-                </div>
-              ))}
-            </div>
-            <div className="portrait-block compact-block">
-              <h3>类目</h3>
-              {categoryRows.map((row, index) => (
-                <div className="stat-line" key={row.label}>
-                  <span>{row.label}</span>
-                  <div className="stat-track">
-                    <i
-                      className={`stat-fill category-${index % 3}`}
-                      style={{ width: `${Math.max(row.percent, 8)}%` }}
-                    />
-                  </div>
-                  <strong>
-                    {row.count} ({row.percent}%)
-                  </strong>
-                </div>
-              ))}
-            </div>
-          </div>
+            </select>
+          </label>
+          <div className="filter-select">单人/多人</div>
+          <div className="filter-select">类目</div>
         </div>
-
-        <aside className="page-rail" aria-label="Top 分页">
-          <p>分页</p>
-          {pageRanges.map((range) => (
-            <button
-              className={pageRange === range ? "page-chip active" : "page-chip"}
-              key={range}
-              onClick={() => setPageRange(range)}
-              type="button"
-            >
-              {range}
-            </button>
-          ))}
-        </aside>
       </section>
 
       <section className="mx-auto grid max-w-[1560px] gap-5 px-5 py-5 lg:grid-cols-[360px_minmax(0,1fr)] lg:px-8">
         <aside className="flex flex-col gap-4">
           <div className="panel">
-            <div className="section-title">
-              <span />
-              <h2>每日导出入口</h2>
+            <div className="section-title with-action">
+              <div>
+                <span />
+                <h2>每日榜单</h2>
+              </div>
+              <small>{sortLabel}</small>
             </div>
-            <label className="field-label" htmlFor="import-date">
-              入库日期
-            </label>
-            <input
-              className="text-field"
-              id="import-date"
-              onChange={(event) => setImportDate(event.target.value)}
-              type="date"
-              value={importDate}
-            />
-
-            <label className="field-label mt-3" htmlFor="export-file">
-              CSV / TXT 导出文件
-            </label>
-            <input
-              accept=".csv,.txt,.tsv"
-              className="file-field"
-              id="export-file"
-              onChange={handleFileLoad}
-              type="file"
-            />
-
-            <label className="field-label mt-3" htmlFor="paste-links">
-              粘贴导出链接
-            </label>
-            <textarea
-              className="textarea-field"
-              id="paste-links"
-              onChange={(event) => setPasteText(event.target.value)}
-              placeholder="粘贴包含 TikTok 视频链接的每日导出内容"
-              value={pasteText}
-            />
-            <button className="primary-button mt-3" onClick={importLinks} type="button">
-              导入视频链接
-            </button>
-            <div className="import-actions">
-              <button
-                className="secondary-button compact"
-                disabled={customVideos.length === 0}
-                onClick={exportImportedRecords}
-                type="button"
-              >
-                复制导入数据
-              </button>
-              <button
-                className="secondary-button compact danger"
-                disabled={customVideos.length === 0}
-                onClick={clearImportedRecords}
-                type="button"
-              >
-                清空导入
-              </button>
-            </div>
-            <p className="import-status">{importStatus}</p>
-          </div>
-
-          <div className="panel">
-            <div className="section-title">
-              <span />
-              <h2>当日榜单</h2>
+            <div className="ranking-summary">
+              {selectedDate} · Top {pageBounds.start + 1}-{pageBounds.end}
             </div>
             <div className="video-list">
               {pageVideos.map((video, index) => (
@@ -1093,175 +460,19 @@ export default function Home() {
                       ? `${formatNumber(video.orders)} 单`
                       : `${formatNumber(video.views)} 播放`}
                   </span>
+                  <span className="row-preview" aria-hidden="true">
+                    <Image
+                      alt=""
+                      className="row-preview-image"
+                      fill
+                      sizes="180px"
+                      src={video.videoReady && video.videoFile ? video.videoFile : video.cover}
+                      unoptimized={video.mediaType === "gif"}
+                    />
+                  </span>
                 </button>
               ))}
             </div>
-          </div>
-
-          <div className="panel analysis-editor">
-            <div className="section-title">
-              <span />
-              <h2>分析编辑</h2>
-            </div>
-            <p className="editor-target">
-              当前：{activeVideo.creator} · {activeVideo.product}
-            </p>
-            <div className="import-actions">
-              <button className="secondary-button compact" onClick={loadActiveAnalysis} type="button">
-                载入当前分析
-              </button>
-              <button className="secondary-button compact" onClick={applyDemoAnalysis} type="button">
-                套用示例模板
-              </button>
-            </div>
-
-            <label className="field-label mt-3" htmlFor="cover-draft">
-              视频封面图片
-            </label>
-            <input
-              className="text-field"
-              id="cover-draft"
-              onChange={(event) =>
-                setAnalysisDraft((draft) => ({
-                  ...draft,
-                  cover: event.target.value,
-                }))
-              }
-              placeholder="粘贴封面截图 URL，留空则使用示例图"
-              value={analysisDraft.cover}
-            />
-
-            <label className="field-label mt-3" htmlFor="frames-draft">
-              关键画面截图
-            </label>
-            <textarea
-              className="textarea-field tall"
-              id="frames-draft"
-              onChange={(event) =>
-                setAnalysisDraft((draft) => ({
-                  ...draft,
-                  frames: event.target.value,
-                }))
-              }
-              placeholder="每行：时间	标题	图片URL	画面分析"
-              value={analysisDraft.frames}
-            />
-
-            <label className="field-label mt-3" htmlFor="hook-type">
-              Hook 类型
-            </label>
-            <input
-              className="text-field"
-              id="hook-type"
-              onChange={(event) =>
-                setAnalysisDraft((draft) => ({
-                  ...draft,
-                  hookType: event.target.value,
-                }))
-              }
-              value={analysisDraft.hookType}
-            />
-
-            <label className="field-label mt-3" htmlFor="script-draft">
-              完整脚本
-            </label>
-            <textarea
-              className="textarea-field tall"
-              id="script-draft"
-              onChange={(event) =>
-                setAnalysisDraft((draft) => ({
-                  ...draft,
-                  script: event.target.value,
-                }))
-              }
-              placeholder="每行：时间	English	中文"
-              value={analysisDraft.script}
-            />
-
-            <label className="field-label mt-3" htmlFor="hook-draft">
-              Hook 拆解
-            </label>
-            <textarea
-              className="textarea-field"
-              id="hook-draft"
-              onChange={(event) =>
-                setAnalysisDraft((draft) => ({
-                  ...draft,
-                  hook: event.target.value,
-                }))
-              }
-              value={analysisDraft.hook}
-            />
-
-            <label className="field-label mt-3" htmlFor="selling-draft">
-              卖点呈现
-            </label>
-            <textarea
-              className="textarea-field"
-              id="selling-draft"
-              onChange={(event) =>
-                setAnalysisDraft((draft) => ({
-                  ...draft,
-                  sellingPoint: event.target.value,
-                }))
-              }
-              value={analysisDraft.sellingPoint}
-            />
-
-            <label className="field-label mt-3" htmlFor="cta-draft">
-              CTA
-            </label>
-            <textarea
-              className="textarea-field"
-              id="cta-draft"
-              onChange={(event) =>
-                setAnalysisDraft((draft) => ({
-                  ...draft,
-                  cta: event.target.value,
-                }))
-              }
-              value={analysisDraft.cta}
-            />
-
-            <label className="field-label mt-3" htmlFor="reusable-draft">
-              可复用套路
-            </label>
-            <textarea
-              className="textarea-field"
-              id="reusable-draft"
-              onChange={(event) =>
-                setAnalysisDraft((draft) => ({
-                  ...draft,
-                  reusable: event.target.value,
-                }))
-              }
-              value={analysisDraft.reusable}
-            />
-
-            <label className="field-label mt-3" htmlFor="reasons-draft">
-              爆款原因
-            </label>
-            <textarea
-              className="textarea-field tall"
-              id="reasons-draft"
-              onChange={(event) =>
-                setAnalysisDraft((draft) => ({
-                  ...draft,
-                  reasons: event.target.value,
-                }))
-              }
-              placeholder="每行一条原因"
-              value={analysisDraft.reasons}
-            />
-
-            <button className="primary-button mt-3" onClick={saveActiveAnalysis} type="button">
-              保存到当前导入视频
-            </button>
-            {!canEditActiveVideo ? (
-              <p className="import-status">
-                当前是示例视频；导入自己的视频后可保存分析。
-              </p>
-            ) : null}
           </div>
         </aside>
 

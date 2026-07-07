@@ -77,6 +77,13 @@ button:disabled {
   min-width: 0;
 }
 
+.toolbar-shell {
+  border-bottom: 1px solid #dfe3ea;
+  margin: 0 auto;
+  max-width: 1720px;
+  padding: 28px 30px 14px;
+}
+
 .brand-strip {
   align-items: center;
   display: flex;
@@ -179,6 +186,10 @@ button:disabled {
   margin-top: 16px;
 }
 
+.clean-filter {
+  margin-top: 0;
+}
+
 .week-pill,
 .filter-select {
   align-items: center;
@@ -219,6 +230,42 @@ button:disabled {
   content: "⌄";
   color: #98a2b3;
   margin-left: 22px;
+}
+
+.calendar-select {
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #d8dee8;
+  border-radius: 8px;
+  color: #202939;
+  display: grid;
+  gap: 3px;
+  min-height: 68px;
+  min-width: 260px;
+  padding: 8px 18px;
+}
+
+.calendar-select span {
+  color: #98a2b3;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.calendar-select input,
+.calendar-select select {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: #202939;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.1;
+  outline: none;
+  width: 100%;
+}
+
+.calendar-select input {
+  color: #ce1126;
 }
 
 .date-button {
@@ -512,6 +559,13 @@ button:disabled {
   gap: 8px;
 }
 
+.ranking-summary {
+  color: #667085;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
 .video-row {
   align-items: center;
   border: 1px solid #e2e8f0;
@@ -522,6 +576,7 @@ button:disabled {
   grid-template-columns: 64px minmax(0, 1fr) auto;
   min-height: 74px;
   padding: 10px;
+  position: relative;
   text-align: left;
   width: 100%;
 }
@@ -564,6 +619,36 @@ button:disabled {
   color: #2258c7;
   font-size: 13px;
   font-weight: 800;
+}
+
+.row-preview {
+  background: #0f172a;
+  border: 1px solid #d8dee8;
+  border-radius: 8px;
+  box-shadow: 0 18px 40px rgb(15 23 42 / 0.22);
+  height: 220px;
+  left: calc(100% + 14px);
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) scale(0.96);
+  transition: opacity 140ms ease, transform 140ms ease;
+  width: 124px;
+  z-index: 8;
+}
+
+.video-row:hover .row-preview,
+.video-row:focus-visible .row-preview {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+.row-preview-image {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 .video-detail {
@@ -907,6 +992,7 @@ button:disabled {
   }
 
   .week-pill,
+  .calendar-select,
   .filter-select,
   .date-button {
     font-size: 16px;
@@ -920,6 +1006,10 @@ button:disabled {
 
   .date-picks {
     width: 100%;
+  }
+
+  .row-preview {
+    display: none;
   }
 
   .portrait-card {
