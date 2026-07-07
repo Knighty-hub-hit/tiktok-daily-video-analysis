@@ -593,6 +593,13 @@ button:disabled {
   width: 100%;
 }
 
+.phone-video {
+  background: #000000;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
 .play-layer {
   align-items: end;
   background: linear-gradient(to top, rgb(0 0 0 / 0.48), transparent 42%);
@@ -661,6 +668,29 @@ button:disabled {
 .metric-strip .soft {
   background: #edf4ff;
   color: #2258c7;
+}
+
+.source-note {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  color: #475467;
+  display: grid;
+  gap: 5px;
+  line-height: 1.6;
+  margin-top: 14px;
+  padding: 12px 14px;
+}
+
+.source-note strong {
+  color: #1f2933;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.source-note span {
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .frames-grid {

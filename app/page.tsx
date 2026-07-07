@@ -2,6 +2,7 @@
 
 import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
+import siteVideoData from "@/data/site-videos.json";
 
 type Frame = {
   time: string;
@@ -36,17 +37,30 @@ type VideoRecord = {
   link: string;
   views: number;
   likes: number;
+  comments?: number;
   orders: number;
+  soldItems?: number;
   revenue: number;
   price: number;
+  ctr?: number;
+  rpm?: number;
+  commission?: number;
   cover: string;
+  videoFile?: string;
+  videoReady?: boolean;
   frames: Frame[];
   script: ScriptLine[];
   breakdown: Breakdown;
   reasons: string[];
+  source?: {
+    file: string;
+    row: number;
+    headers: Record<string, string>;
+  };
 };
 
 const STORAGE_KEY = "tiktok-daily-video-lab.records";
+const excelVideos = siteVideoData.records as VideoRecord[];
 
 type AnalysisDraft = {
   cover: string;
@@ -283,6 +297,33 @@ function formatMoney(value: number) {
   return `$${new Intl.NumberFormat("en-US", {
     maximumFractionDigits: 0,
   }).format(value)}`;
+}
+
+function formatPercent(value: number | undefined) {
+  return `${(value ?? 0).toFixed(2)}%`;
+}
+
+function getMetricSource(video: VideoRecord, metric: string) {
+  const field = video.source?.headers[metric];
+
+  if (!video.source || !field) {
+    return "";
+  }
+
+  return `${field} · 第 ${video.source.row} 行`;
+}
+
+function getPageBounds(range: string) {
+  const match = range.match(/Top\s+(\d+)-(\d+)/);
+
+  if (!match) {
+    return { start: 0, end: 10 };
+  }
+
+  return {
+    start: Number(match[1]) - 1,
+    end: Number(match[2]),
+  };
 }
 
 function getWeekLabel(dateValue: string) {
@@ -636,8 +677,9 @@ function buildAnalysisPatch(
 }
 
 export default function Home() {
-  const [selectedDate, setSelectedDate] = useState("2026-07-06");
-  const [activeVideoId, setActiveVideoId] = useState(seedVideos[0].id);
+  const baseVideos = excelVideos.length > 0 ? excelVideos : seedVideos;
+  const [selectedDate, setSelectedDate] = useState(baseVideos[0].date);
+  const [activeVideoId, setActiveVideoId] = useState(baseVideos[0].id);
   const [customVideos, setCustomVideos] = useState<VideoRecord[]>([]);
   const [importDate, setImportDate] = useState("2026-07-07");
   const [pasteText, setPasteText] = useState("");
@@ -646,7 +688,7 @@ export default function Home() {
   const [analysisMode, setAnalysisMode] = useState<"auto" | "manual">("auto");
   const [pageRange, setPageRange] = useState("Top 1-10");
   const [analysisDraft, setAnalysisDraft] = useState<AnalysisDraft>(() =>
-    createAnalysisDraft(seedVideos[0]),
+    createAnalysisDraft(baseVideos[0]),
   );
 
   useEffect(() => {
@@ -694,8 +736,8 @@ export default function Home() {
   }, [customVideos, hasLoadedRecords]);
 
   const allVideos = useMemo(
-    () => [...customVideos, ...seedVideos],
-    [customVideos],
+    () => [...customVideos, ...baseVideos],
+    [baseVideos, customVideos],
   );
 
   const dates = useMemo(
@@ -719,8 +761,11 @@ export default function Home() {
     });
   }, [allVideos, selectedDate]);
 
+  const pageBounds = getPageBounds(pageRange);
+  const pageVideos = visibleVideos.slice(pageBounds.start, pageBounds.end);
   const activeVideo =
-    visibleVideos.find((video) => video.id === activeVideoId) ??
+    pageVideos.find((video) => video.id === activeVideoId) ??
+    pageVideos[0] ??
     visibleVideos[0] ??
     allVideos[0];
   const canEditActiveVideo = customVideos.some(
@@ -733,7 +778,7 @@ export default function Home() {
     ? "出单量从大到小"
     : "无出单，按流量从好到坏";
 
-  const dailyTotals = visibleVideos.reduce(
+  const dailyTotals = pageVideos.reduce(
     (totals, video) => ({
       views: totals.views + video.views,
       orders: totals.orders + video.orders,
@@ -741,10 +786,10 @@ export default function Home() {
     }),
     { views: 0, orders: 0, revenue: 0 },
   );
-  const productCount = new Set(visibleVideos.map((video) => video.product)).size;
+  const productCount = new Set(pageVideos.map((video) => video.product)).size;
   const weekLabel = getWeekLabel(selectedDate);
-  const audienceRows = makeStatRows(visibleVideos, (video) => video.audience);
-  const categoryRows = makeStatRows(visibleVideos, (video) => video.category);
+  const audienceRows = makeStatRows(pageVideos, (video) => video.audience);
+  const categoryRows = makeStatRows(pageVideos, (video) => video.category);
   const pageRanges = [
     "Top 1-10",
     "Top 11-20",
@@ -794,8 +839,8 @@ export default function Home() {
 
   function clearImportedRecords() {
     setCustomVideos([]);
-    setSelectedDate(seedVideos[0].date);
-    setActiveVideoId(seedVideos[0].id);
+    setSelectedDate(baseVideos[0].date);
+    setActiveVideoId(baseVideos[0].id);
     setImportStatus("已清空本地导入记录");
   }
 
@@ -849,9 +894,10 @@ export default function Home() {
 
           <h1 className="fastmoss-title">TikTok 爆款带货视频拆解</h1>
           <p className="fastmoss-subtitle">
-            当前页视频：{visibleVideos.length} 条 | 产品：{productCount} 个 | 总数：
-            {allVideos.length} 条 | Mexico 市场 | 播放：{formatNumber(dailyTotals.views)} |
-            出单：{formatNumber(dailyTotals.orders)} | 按产品分组，组内按销量降序
+            当前页视频：{pageVideos.length} 条 | 产品：{productCount} 个 | 总数：
+            {visibleVideos.length} 条 | Mexico 市场 | 播放：{formatNumber(dailyTotals.views)} |
+            出单：{formatNumber(dailyTotals.orders)} | 来源：{siteVideoData.sourceFile} |
+            按产品分组，组内按销量降序
           </p>
 
           <div className="analysis-tabs" role="tablist" aria-label="分析模式">
@@ -902,7 +948,7 @@ export default function Home() {
 
           <div className="portrait-card">
             <div className="portrait-head">
-              <h2>出镜者画像统计(已分类 {visibleVideos.length} 条)</h2>
+              <h2>出镜者画像统计(已分类 {pageVideos.length} 条)</h2>
               <span>{sortLabel}</span>
             </div>
             <div className="portrait-block">
@@ -1026,7 +1072,7 @@ export default function Home() {
               <h2>当日榜单</h2>
             </div>
             <div className="video-list">
-              {visibleVideos.map((video, index) => (
+              {pageVideos.map((video, index) => (
                 <button
                   className={`video-row ${
                     activeVideo.id === video.id ? "video-row-active" : ""
@@ -1035,7 +1081,7 @@ export default function Home() {
                   onClick={() => setActiveVideoId(video.id)}
                   type="button"
                 >
-                  <span className="rank">Top {index + 1}</span>
+                  <span className="rank">Top {pageBounds.start + index + 1}</span>
                   <span className="row-main">
                     <strong>{video.creator}</strong>
                     <small>{video.product}</small>
@@ -1221,19 +1267,33 @@ export default function Home() {
           <section className="panel video-detail">
             <div className="video-stage">
               <div className="phone-frame">
-                <Image
-                  alt={`${activeVideo.product} 视频封面`}
-                  className="phone-image"
-                  fill
-                  priority
-                  sizes="330px"
-                  src={activeVideo.cover}
-                />
+                {activeVideo.videoReady && activeVideo.videoFile ? (
+                  <video
+                    className="phone-video"
+                    controls
+                    playsInline
+                    poster={activeVideo.cover}
+                    src={activeVideo.videoFile}
+                  />
+                ) : (
+                  <Image
+                    alt={`${activeVideo.product} 视频封面`}
+                    className="phone-image"
+                    fill
+                    priority
+                    sizes="330px"
+                    src={activeVideo.cover}
+                  />
+                )}
                 <div className="play-layer">
-                  <span>播放预览</span>
+                  <span>{activeVideo.videoReady ? "本地视频" : "待下载视频"}</span>
                 </div>
               </div>
-              <p className="video-hint">点击链接可查看原 TikTok 视频</p>
+              <p className="video-hint">
+                {activeVideo.videoReady
+                  ? "视频已下载到站点，可直接播放"
+                  : "暂未下载到本地，点击链接可查看原 TikTok 视频"}
+              </p>
             </div>
 
             <div className="detail-content">
@@ -1248,15 +1308,39 @@ export default function Home() {
               </div>
 
               <div className="metric-strip">
-                <span className="hot">播放 {formatNumber(activeVideo.views)}</span>
-                <span className="hot">点赞 {formatNumber(activeVideo.likes)}</span>
-                <span className="hot">销量 {formatNumber(activeVideo.orders)}</span>
-                <span className="hot">销售额 {formatMoney(activeVideo.revenue)}</span>
-                <span className="soft">标价 ${activeVideo.price.toFixed(2)}</span>
+                <span className="hot" title={getMetricSource(activeVideo, "views")}>
+                  曝光 {formatNumber(activeVideo.views)}
+                </span>
+                <span className="hot" title={getMetricSource(activeVideo, "likes")}>
+                  点赞 {formatNumber(activeVideo.likes)}
+                </span>
+                <span className="hot" title={getMetricSource(activeVideo, "comments")}>
+                  评论 {formatNumber(activeVideo.comments ?? 0)}
+                </span>
+                <span className="hot" title={getMetricSource(activeVideo, "orders")}>
+                  联盟订单 {formatNumber(activeVideo.orders)}
+                </span>
+                <span className="hot" title={getMetricSource(activeVideo, "revenue")}>
+                  GMV {formatMoney(activeVideo.revenue)}
+                </span>
+                <span className="soft" title={getMetricSource(activeVideo, "ctr")}>
+                  点击率 {formatPercent(activeVideo.ctr)}
+                </span>
+                <span className="soft">客单 ${activeVideo.price.toFixed(2)}</span>
                 <span className="soft">{activeVideo.audience}</span>
                 <span className="soft">{activeVideo.language}</span>
                 <span className="soft">{activeVideo.category}</span>
               </div>
+
+              {activeVideo.source ? (
+                <div className="source-note">
+                  <strong>数据依据</strong>
+                  <span>
+                    {activeVideo.source.file} 第 {activeVideo.source.row} 行：
+                    {Object.values(activeVideo.source.headers).join(" / ")}
+                  </span>
+                </div>
+              ) : null}
 
               <div className="section-title mt-5">
                 <span />

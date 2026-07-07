@@ -28,6 +28,7 @@ yarn-error.log*
 .pnpm-debug.log*
 .npm-cache/
 .dev-home/
+.dev-tools/
 scratch/node_modules
 
 # env files (can opt-in for committing if needed)
