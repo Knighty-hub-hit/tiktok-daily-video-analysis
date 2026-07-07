@@ -30,6 +30,9 @@ yarn-error.log*
 .dev-home/
 .dev-tools/
 scratch/node_modules
+data/*-media-url.txt
+data/discovered-video-url.txt
+public/keyframes/*-seq/
 
 # env files (can opt-in for committing if needed)
 .env*

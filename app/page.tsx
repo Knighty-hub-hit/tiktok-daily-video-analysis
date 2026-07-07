@@ -48,6 +48,8 @@ type VideoRecord = {
   cover: string;
   videoFile?: string;
   videoReady?: boolean;
+  mediaType?: "video" | "gif";
+  transcriptFile?: string;
   frames: Frame[];
   script: ScriptLine[];
   breakdown: Breakdown;
@@ -1267,7 +1269,19 @@ export default function Home() {
           <section className="panel video-detail">
             <div className="video-stage">
               <div className="phone-frame">
-                {activeVideo.videoReady && activeVideo.videoFile ? (
+                {activeVideo.videoReady &&
+                activeVideo.videoFile &&
+                activeVideo.mediaType === "gif" ? (
+                  <Image
+                    alt={`${activeVideo.product} 视频动图预览`}
+                    className="phone-image"
+                    fill
+                    priority
+                    sizes="330px"
+                    src={activeVideo.videoFile}
+                    unoptimized
+                  />
+                ) : activeVideo.videoReady && activeVideo.videoFile ? (
                   <video
                     className="phone-video"
                     controls
@@ -1389,7 +1403,7 @@ export default function Home() {
               <div className="script-table">
                 <div className="script-row script-head">
                   <span>时间</span>
-                  <span>English</span>
+                  <span>原文/口播</span>
                   <span>中文</span>
                 </div>
                 {activeVideo.script.map((line) => (

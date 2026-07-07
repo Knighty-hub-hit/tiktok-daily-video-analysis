@@ -44,46 +44,97 @@
       "ctr": 2.24,
       "rpm": 352.9,
       "commission": 23.4,
-      "cover": "/covers/7658725296270544149.png",
-      "videoFile": "/videos/7658725296270544149.mp4",
+      "cover": "/keyframes/7658725296270544149-00.png",
+      "videoFile": "/videos/7658725296270544149.gif",
       "frames": [
         {
           "time": "00:00",
-          "title": "真实页面首帧截图",
-          "note": "来自已打开 TikTok 视频页的真实截图；视频 mp4 仍待下载成功后替换。",
-          "image": "/keyframes/7658725296270544149-00.png"
+          "title": "折扣钩子",
+          "image": "/keyframes/7658725296270544149-00.png",
+          "note": "首句直接切“刷子折扣”，没有铺垫，适合 TikTok Shop 低客单美发工具；用户第一秒就知道现在看视频的理由。"
         },
         {
           "time": "00:03",
-          "title": "卖点待抽取",
-          "note": "结合字幕、口播和商品出现位置，拆出最强卖点证明。",
-          "image": "/frames/frame-02.png"
+          "title": "品牌与材质卖点",
+          "image": "/keyframes/7658725296270544149-03.png",
+          "note": "卖点按“Halovida 品牌 -> 野猪毛材质 -> 灵活梳理 -> 头皮按摩 -> 光泽效果”推进，信息密度高，卖点都能落到真实使用体感。"
         },
         {
           "time": "00:06",
-          "title": "CTA 待抽取",
-          "note": "检查是否出现购买引导、折扣信息、购物车或评论区触发。",
-          "image": "/frames/frame-06.png"
+          "title": "购物车 CTA",
+          "image": "/keyframes/7658725296270544149-06.png",
+          "note": "14 秒后出现橙色购物车，16 秒强调不要错过促销，18 秒补“上次降价卖完”，形成限时优惠 + 缺货记忆。"
         }
       ],
       "script": [
         {
           "time": "00:00",
-          "english": "Awaiting downloaded video transcript",
-          "chinese": "等待下载视频后补充真实脚本逐句拆解"
+          "english": "TikTok 自动字幕译文",
+          "chinese": "利用刚刚给刷子的折扣"
+        },
+        {
+          "time": "00:03",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "阿洛维达"
+        },
+        {
+          "time": "00:04",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "这个是由野猪毛制成的"
+        },
+        {
+          "time": "00:06",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "它也非常灵活"
+        },
+        {
+          "time": "00:07",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "当你梳理头发时"
+        },
+        {
+          "time": "00:09",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "给你头上一点按摩"
+        },
+        {
+          "time": "00:11",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "它也给你留下了很好的光泽"
+        },
+        {
+          "time": "00:14",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "它在橙色购物车里"
+        },
+        {
+          "time": "00:16",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "不要错过这次促销活动"
+        },
+        {
+          "time": "00:18",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "因为上次降价时"
+        },
+        {
+          "time": "00:20",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "它已经卖完了"
         }
       ],
       "breakdown": {
-        "hookType": "成交验证型",
-        "hook": "标题围绕“⚠️ Promoción vigente al momento de publicar este video. Sujeta a cambios y disponibilidad. #halovida  #VentaDeVerano  #VentaQuincenal”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
-        "sellingPoint": "该视频已有 2 个联盟订单，GMV 为 377.6，卖点需要围绕实际成交场景复盘。",
-        "cta": "联盟点击率为 2.24%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "hookType": "促销稀缺型",
+        "hook": "首句直接切“刷子折扣”，没有铺垫，适合 TikTok Shop 低客单美发工具；用户第一秒就知道现在看视频的理由。",
+        "sellingPoint": "卖点按“Halovida 品牌 -> 野猪毛材质 -> 灵活梳理 -> 头皮按摩 -> 光泽效果”推进，信息密度高，卖点都能落到真实使用体感。",
+        "cta": "14 秒后出现橙色购物车，16 秒强调不要错过促销，18 秒补“上次降价卖完”，形成限时优惠 + 缺货记忆。",
+        "reusable": "折扣开场 + 品牌露出 + 材质/体感连续卖点 + 购物车 CTA + 上次卖完的稀缺证明。"
       },
       "reasons": [
-        "出单量 2，按目标规则优先进入成交榜。",
-        "点赞 1、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 68 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "Excel 第 68 行显示联盟订单量 2、GMV 377.6，按成交优先排序。",
+        "脚本来自 TikTok 页面字幕资源 /videos/7658725296270544149.vtt，关键帧来自该视频页面连续截图。",
+        "首句直接切“刷子折扣”，没有铺垫，适合 TikTok Shop 低客单美发工具；用户第一秒就知道现在看视频的理由。",
+        "14 秒后出现橙色购物车，16 秒强调不要错过促销，18 秒补“上次降价卖完”，形成限时优惠 + 缺货记忆。"
       ],
       "source": {
         "file": "tiktok-video-list-20260629-20260705.xlsx",
@@ -100,7 +151,10 @@
           "likes": "带货视频点赞数",
           "comments": "带货视频评论数"
         }
-      }
+      },
+      "videoReady": true,
+      "mediaType": "gif",
+      "transcriptFile": "/videos/7658725296270544149.vtt"
     },
     {
       "id": "7658727730661362965",
@@ -122,46 +176,92 @@
       "ctr": 2.65,
       "rpm": 135.1,
       "commission": 0,
-      "cover": "/video-cover.png",
-      "videoFile": "/videos/7658727730661362965.mp4",
+      "cover": "/keyframes/7658727730661362965-00.png",
+      "videoFile": "/videos/7658727730661362965.gif",
       "frames": [
         {
           "time": "00:00",
-          "title": "首帧待抽取",
-          "note": "视频下载后自动替换为真实关键画面，用于判断首秒是否露出人、商品或痛点。",
-          "image": "/frames/frame-00.png"
+          "title": "等到折扣",
+          "image": "/keyframes/7658727730661362965-00.png",
+          "note": "开头说“幸好你等着买”，把用户等待/犹豫包装成好消息，随后立刻给出折扣理由，比普通促销开场更有情绪。"
         },
         {
           "time": "00:03",
-          "title": "卖点待抽取",
-          "note": "结合字幕、口播和商品出现位置，拆出最强卖点证明。",
-          "image": "/frames/frame-02.png"
+          "title": "卖点承接",
+          "image": "/keyframes/7658727730661362965-03.png",
+          "note": "用“野猪毛 + 灵活”两个核心卖点支撑价格促销，避免只讲打折，仍保留产品价值感。"
         },
         {
           "time": "00:06",
-          "title": "CTA 待抽取",
-          "note": "检查是否出现购买引导、折扣信息、购物车或评论区触发。",
-          "image": "/frames/frame-06.png"
+          "title": "快点下单",
+          "image": "/keyframes/7658727730661362965-06.png",
+          "note": "8 秒后直接指向购物车，10 秒点名橙色购物车，14 秒“快点”，16 秒“上次折扣卖完”，CTA 频率高且明确。"
         }
       ],
       "script": [
         {
           "time": "00:00",
-          "english": "Awaiting downloaded video transcript",
-          "chinese": "等待下载视频后补充真实脚本逐句拆解"
+          "english": "TikTok 自动字幕译文",
+          "chinese": "幸好你等着买你的阿洛维达刷子"
+        },
+        {
+          "time": "00:03",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "那个由野猪毛制成"
+        },
+        {
+          "time": "00:05",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "也很灵活"
+        },
+        {
+          "time": "00:06",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "因为今天你有一个活跃的折扣"
+        },
+        {
+          "time": "00:08",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "只需点击购物车这里"
+        },
+        {
+          "time": "00:11",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "橙色"
+        },
+        {
+          "time": "00:11",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "你就可以利用促销活动"
+        },
+        {
+          "time": "00:14",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "快点"
+        },
+        {
+          "time": "00:14",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "因为上次他得到折扣时"
+        },
+        {
+          "time": "00:16",
+          "english": "TikTok 自动字幕译文",
+          "chinese": "他卖完了"
         }
       ],
       "breakdown": {
-        "hookType": "成交验证型",
-        "hook": "标题围绕“🛍️ Corre al carrito. ⚠️ Promoción vigente al momento de publicar este video. Sujeta a cambios y disponibilidad. #VentaQuincenal  #VentaDeVerano  #halovida”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
-        "sellingPoint": "该视频已有 1 个联盟订单，GMV 为 199，卖点需要围绕实际成交场景复盘。",
-        "cta": "联盟点击率为 2.65%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "hookType": "等待反转型",
+        "hook": "开头说“幸好你等着买”，把用户等待/犹豫包装成好消息，随后立刻给出折扣理由，比普通促销开场更有情绪。",
+        "sellingPoint": "用“野猪毛 + 灵活”两个核心卖点支撑价格促销，避免只讲打折，仍保留产品价值感。",
+        "cta": "8 秒后直接指向购物车，10 秒点名橙色购物车，14 秒“快点”，16 秒“上次折扣卖完”，CTA 频率高且明确。",
+        "reusable": "幸好你等到了 + 今日折扣 + 点击橙色购物车 + 快点 + 上次卖完。"
       },
       "reasons": [
-        "出单量 1，按目标规则优先进入成交榜。",
-        "点赞 1、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 111 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "Excel 第 111 行显示联盟订单量 1、GMV 199，按成交优先排序。",
+        "脚本来自 TikTok 页面字幕资源 /videos/7658727730661362965.vtt，关键帧来自该视频页面连续截图。",
+        "开头说“幸好你等着买”，把用户等待/犹豫包装成好消息，随后立刻给出折扣理由，比普通促销开场更有情绪。",
+        "8 秒后直接指向购物车，10 秒点名橙色购物车，14 秒“快点”，16 秒“上次折扣卖完”，CTA 频率高且明确。"
       ],
       "source": {
         "file": "tiktok-video-list-20260629-20260705.xlsx",
@@ -178,7 +278,10 @@
           "likes": "带货视频点赞数",
           "comments": "带货视频评论数"
         }
-      }
+      },
+      "videoReady": true,
+      "mediaType": "gif",
+      "transcriptFile": "/videos/7658727730661362965.vtt"
     },
     {
       "id": "7659155995754646802",
@@ -200,46 +303,122 @@
       "ctr": 0.96,
       "rpm": 0,
       "commission": 0,
-      "cover": "/video-cover.png",
-      "videoFile": "/videos/7659155995754646802.mp4",
+      "cover": "/keyframes/7659155995754646802-00.png",
+      "videoFile": "/videos/7659155995754646802.gif",
       "frames": [
         {
           "time": "00:00",
-          "title": "首帧待抽取",
-          "note": "视频下载后自动替换为真实关键画面，用于判断首秒是否露出人、商品或痛点。",
-          "image": "/frames/frame-00.png"
+          "title": "痛点开场",
+          "image": "/keyframes/7659155995754646802-00.png",
+          "note": "首句“如果你在找不会扯头发、还能留下光泽的刷子”，直接抓住长发/易打结用户痛点，匹配搜索和推荐场景。"
         },
         {
           "time": "00:03",
-          "title": "卖点待抽取",
-          "note": "结合字幕、口播和商品出现位置，拆出最强卖点证明。",
-          "image": "/frames/frame-02.png"
+          "title": "双刷毛卖点",
+          "image": "/keyframes/7659155995754646802-03.png",
+          "note": "卖点从“不拉扯”到“亮泽”再到“双材质刷毛、柔软、按摩头皮”，是完整的使用体验证明。"
         },
         {
           "time": "00:06",
-          "title": "CTA 待抽取",
-          "note": "检查是否出现购买引导、折扣信息、购物车或评论区触发。",
-          "image": "/frames/frame-06.png"
+          "title": "真实购买 CTA",
+          "image": "/keyframes/7659155995754646802-06.png",
+          "note": "结尾说明自己在 TikTok Shop 购买，并把商品留在下方购物入口，CTA 更像真实推荐而不是硬广。"
         }
       ],
       "script": [
         {
           "time": "00:00",
-          "english": "Awaiting downloaded video transcript",
-          "chinese": "等待下载视频后补充真实脚本逐句拆解"
+          "english": "si estás buscando un cepillo",
+          "chinese": "待人工精修翻译"
+        },
+        {
+          "time": "00:01",
+          "english": "que no te jala cepillarte el cabello y te deje este brillo",
+          "chinese": "待人工精修翻译"
+        },
+        {
+          "time": "00:04",
+          "english": "este es tu cepillo",
+          "chinese": "待人工精修翻译"
+        },
+        {
+          "time": "00:05",
+          "english": "es el cepillo de la marca de alovida que tiene",
+          "chinese": "待人工精修翻译"
+        },
+        {
+          "time": "00:08",
+          "english": "combinación de dos tipos de cerdas",
+          "chinese": "待人工精修翻译"
+        },
+        {
+          "time": "00:10",
+          "english": "además de que no jala nada el cabello es muy suave",
+          "chinese": "待人工精修翻译"
+        },
+        {
+          "time": "00:12",
+          "english": "te lo deja con un brillo superbonito",
+          "chinese": "待人工精修翻译"
+        },
+        {
+          "time": "00:14",
+          "english": "en mi experiencia yo lo he utilizado",
+          "chinese": "待人工精修翻译"
+        },
+        {
+          "time": "00:15",
+          "english": "después de bañarme o con el cabello ya seco y nunca me jala",
+          "chinese": "待人工精修翻译"
+        },
+        {
+          "time": "00:19",
+          "english": "más tiene esta partecita que es flexible entonces me doy un masajito",
+          "chinese": "待人工精修翻译"
+        },
+        {
+          "time": "00:22",
+          "english": "en el cuero",
+          "chinese": "待人工精修翻译"
+        },
+        {
+          "time": "00:23",
+          "english": "cabelludo que me relaja bastante y me gusta mucho",
+          "chinese": "待人工精修翻译"
+        },
+        {
+          "time": "00:26",
+          "english": "sabes si ya no quieres",
+          "chinese": "待人工精修翻译"
+        },
+        {
+          "time": "00:27",
+          "english": "sufrir cepillándote el cabello este es tu cepillo",
+          "chinese": "待人工精修翻译"
+        },
+        {
+          "time": "00:29",
+          "english": "este lo compré aquí en TikTok Shop y te lo voy a dejar en la carita aquí abajo por si tú también quieres uno",
+          "chinese": "待人工精修翻译"
+        },
+        {
+          "time": "00:33",
+          "english": "bye",
+          "chinese": "待人工精修翻译"
         }
       ],
       "breakdown": {
-        "hookType": "流量观察型",
-        "hook": "标题围绕“Cepillo que no jala el cabello 💕 #cepillohalovida #halovida #cepillocabello #cabellolargo #cabellosano”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
-        "sellingPoint": "该视频当前订单为 0，但曝光 1414，适合从高流量素材中拆解选题、节奏和人群匹配。",
-        "cta": "联盟点击率为 0.96%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "hookType": "痛点解决型",
+        "hook": "首句“如果你在找不会扯头发、还能留下光泽的刷子”，直接抓住长发/易打结用户痛点，匹配搜索和推荐场景。",
+        "sellingPoint": "卖点从“不拉扯”到“亮泽”再到“双材质刷毛、柔软、按摩头皮”，是完整的使用体验证明。",
+        "cta": "结尾说明自己在 TikTok Shop 购买，并把商品留在下方购物入口，CTA 更像真实推荐而不是硬广。",
+        "reusable": "痛点点名 + 效果承诺 + 品牌/结构解释 + 个人使用场景 + TikTok Shop 入口。"
       },
       "reasons": [
-        "出单量为 0，按曝光 1414 参与流量排序。",
-        "点赞 17、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2757 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "Excel 第 2757 行显示曝光 1414、点赞 17，无出单时按流量进入榜单。",
+        "脚本来自 TikTok 页面字幕资源 /videos/7659155995754646802.vtt，关键帧来自该视频页面连续截图。",
+        "首句“如果你在找不会扯头发、还能留下光泽的刷子”，直接抓住长发/易打结用户痛点，匹配搜索和推荐场景。",
+        "结尾说明自己在 TikTok Shop 购买，并把商品留在下方购物入口，CTA 更像真实推荐而不是硬广。"
       ],
       "source": {
         "file": "tiktok-video-list-20260629-20260705.xlsx",
@@ -256,7 +435,10 @@
           "likes": "带货视频点赞数",
           "comments": "带货视频评论数"
         }
-      }
+      },
+      "videoReady": true,
+      "mediaType": "gif",
+      "transcriptFile": "/videos/7659155995754646802.vtt"
     },
     {
       "id": "7658815684905864469",
