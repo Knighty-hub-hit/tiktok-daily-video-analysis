@@ -392,6 +392,10 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#f3f3f4] text-[#1f2933]">
       <section className="toolbar-shell">
+        <div className="site-heading">
+          <span>HALOVIDA Mexico</span>
+          <h1>TikTok 每日爆款视频拆解</h1>
+        </div>
         <div className="filter-bar clean-filter">
           <div className="week-pill">
             <span className="calendar-mark">▣</span>
@@ -422,8 +426,6 @@ export default function Home() {
               ))}
             </select>
           </label>
-          <div className="filter-select">单人/多人</div>
-          <div className="filter-select">类目</div>
         </div>
       </section>
 

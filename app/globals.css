@@ -81,7 +81,33 @@ button:disabled {
   border-bottom: 1px solid #dfe3ea;
   margin: 0 auto;
   max-width: 1720px;
-  padding: 28px 30px 14px;
+  padding: 26px 30px 18px;
+}
+
+.site-heading {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  margin-bottom: 18px;
+}
+
+.site-heading span {
+  background: linear-gradient(90deg, #006847 0 33%, #ffffff 33% 66%, #ce1126 66%);
+  border: 1px solid #d7dde6;
+  border-radius: 999px;
+  color: #202939;
+  font-size: 13px;
+  font-weight: 900;
+  padding: 7px 13px;
+}
+
+.site-heading h1 {
+  color: #202939;
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1.16;
 }
 
 .brand-strip {
