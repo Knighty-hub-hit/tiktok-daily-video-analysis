@@ -144,6 +144,10 @@ button:disabled {
   resize: vertical;
 }
 
+.textarea-field.tall {
+  min-height: 132px;
+}
+
 .text-field:focus,
 .file-field:focus,
 .textarea-field:focus {
@@ -201,6 +205,19 @@ button:disabled {
   font-weight: 700;
   line-height: 1.5;
   margin-top: 10px;
+}
+
+.analysis-editor {
+  max-height: 78vh;
+  overflow: auto;
+}
+
+.editor-target {
+  color: #344054;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.5;
+  margin-bottom: 10px;
 }
 
 .video-list {

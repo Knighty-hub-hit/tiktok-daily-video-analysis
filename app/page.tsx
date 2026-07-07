@@ -48,6 +48,16 @@ type VideoRecord = {
 
 const STORAGE_KEY = "tiktok-daily-video-lab.records";
 
+type AnalysisDraft = {
+  hookType: string;
+  hook: string;
+  sellingPoint: string;
+  cta: string;
+  reusable: string;
+  reasons: string;
+  script: string;
+};
+
 const sampleFrames: Frame[] = [
   {
     time: "00:00",
@@ -485,6 +495,75 @@ function parseExportRecords(text: string, fallbackDate: string) {
   );
 }
 
+function createAnalysisDraft(video: VideoRecord): AnalysisDraft {
+  return {
+    hookType: video.breakdown.hookType,
+    hook: video.breakdown.hook,
+    sellingPoint: video.breakdown.sellingPoint,
+    cta: video.breakdown.cta,
+    reusable: video.breakdown.reusable,
+    reasons: video.reasons.join("\n"),
+    script: video.script
+      .map((line) => `${line.time}\t${line.english}\t${line.chinese}`)
+      .join("\n"),
+  };
+}
+
+function parseScriptDraft(text: string): ScriptLine[] {
+  const lines = text
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  if (lines.length === 0) {
+    return [
+      {
+        time: "00:00",
+        english: "Waiting for script",
+        chinese: "等待补充脚本",
+      },
+    ];
+  }
+
+  return lines.map((line, index) => {
+    const cells = line.includes("\t")
+      ? line.split("\t")
+      : line.split("|").map((cell) => cell.trim());
+    const fallbackTime = `00:${String(index).padStart(2, "0")}`;
+
+    if (cells.length >= 3) {
+      return {
+        time: cells[0] || fallbackTime,
+        english: cells[1] || "Waiting for English script",
+        chinese: cells.slice(2).join(" ") || "等待中文翻译",
+      };
+    }
+
+    return {
+      time: fallbackTime,
+      english: cells[0] || "Waiting for English script",
+      chinese: cells[1] || "等待中文翻译",
+    };
+  });
+}
+
+function buildAnalysisPatch(draft: AnalysisDraft): Pick<VideoRecord, "script" | "breakdown" | "reasons"> {
+  return {
+    script: parseScriptDraft(draft.script),
+    breakdown: {
+      hookType: draft.hookType.trim() || "待识别",
+      hook: draft.hook.trim() || "等待补充 Hook 拆解。",
+      sellingPoint: draft.sellingPoint.trim() || "等待补充卖点呈现。",
+      cta: draft.cta.trim() || "等待补充 CTA。",
+      reusable: draft.reusable.trim() || "等待总结可复用套路。",
+    },
+    reasons: draft.reasons
+      .split(/\r?\n/)
+      .map((reason) => reason.trim())
+      .filter(Boolean),
+  };
+}
+
 export default function Home() {
   const [selectedDate, setSelectedDate] = useState("2026-07-06");
   const [activeVideoId, setActiveVideoId] = useState(seedVideos[0].id);
@@ -493,6 +572,9 @@ export default function Home() {
   const [pasteText, setPasteText] = useState("");
   const [importStatus, setImportStatus] = useState("等待导入每日视频链接");
   const [hasLoadedRecords, setHasLoadedRecords] = useState(false);
+  const [analysisDraft, setAnalysisDraft] = useState<AnalysisDraft>(() =>
+    createAnalysisDraft(seedVideos[0]),
+  );
 
   useEffect(() => {
     const savedRecords = window.localStorage.getItem(STORAGE_KEY);
@@ -568,6 +650,9 @@ export default function Home() {
     visibleVideos.find((video) => video.id === activeVideoId) ??
     visibleVideos[0] ??
     allVideos[0];
+  const canEditActiveVideo = customVideos.some(
+    (video) => video.id === activeVideo.id,
+  );
   const activeRank =
     visibleVideos.findIndex((video) => video.id === activeVideo.id) + 1 || 1;
 
@@ -630,6 +715,37 @@ export default function Home() {
 
     navigator.clipboard?.writeText(payload);
     setImportStatus(`已复制 ${customVideos.length} 条导入记录`);
+  }
+
+  function loadActiveAnalysis() {
+    setAnalysisDraft(createAnalysisDraft(activeVideo));
+    setImportStatus(`已载入 ${activeVideo.creator} 的分析内容`);
+  }
+
+  function applyDemoAnalysis() {
+    setAnalysisDraft(createAnalysisDraft(seedVideos[0]));
+    setImportStatus("已套用示例爆款分析模板");
+  }
+
+  function saveActiveAnalysis() {
+    if (!canEditActiveVideo) {
+      setImportStatus("示例视频不可覆盖，请先导入自己的视频");
+      return;
+    }
+
+    const patch = buildAnalysisPatch(analysisDraft);
+
+    setCustomVideos((current) =>
+      current.map((video) =>
+        video.id === activeVideo.id
+          ? {
+              ...video,
+              ...patch,
+            }
+          : video,
+      ),
+    );
+    setImportStatus(`已保存 ${activeVideo.creator} 的脚本和拆解`);
   }
 
   return (
@@ -781,6 +897,140 @@ export default function Home() {
                 </button>
               ))}
             </div>
+          </div>
+
+          <div className="panel analysis-editor">
+            <div className="section-title">
+              <span />
+              <h2>分析编辑</h2>
+            </div>
+            <p className="editor-target">
+              当前：{activeVideo.creator} · {activeVideo.product}
+            </p>
+            <div className="import-actions">
+              <button className="secondary-button compact" onClick={loadActiveAnalysis} type="button">
+                载入当前分析
+              </button>
+              <button className="secondary-button compact" onClick={applyDemoAnalysis} type="button">
+                套用示例模板
+              </button>
+            </div>
+
+            <label className="field-label mt-3" htmlFor="hook-type">
+              Hook 类型
+            </label>
+            <input
+              className="text-field"
+              id="hook-type"
+              onChange={(event) =>
+                setAnalysisDraft((draft) => ({
+                  ...draft,
+                  hookType: event.target.value,
+                }))
+              }
+              value={analysisDraft.hookType}
+            />
+
+            <label className="field-label mt-3" htmlFor="script-draft">
+              完整脚本
+            </label>
+            <textarea
+              className="textarea-field tall"
+              id="script-draft"
+              onChange={(event) =>
+                setAnalysisDraft((draft) => ({
+                  ...draft,
+                  script: event.target.value,
+                }))
+              }
+              placeholder="每行：时间	English	中文"
+              value={analysisDraft.script}
+            />
+
+            <label className="field-label mt-3" htmlFor="hook-draft">
+              Hook 拆解
+            </label>
+            <textarea
+              className="textarea-field"
+              id="hook-draft"
+              onChange={(event) =>
+                setAnalysisDraft((draft) => ({
+                  ...draft,
+                  hook: event.target.value,
+                }))
+              }
+              value={analysisDraft.hook}
+            />
+
+            <label className="field-label mt-3" htmlFor="selling-draft">
+              卖点呈现
+            </label>
+            <textarea
+              className="textarea-field"
+              id="selling-draft"
+              onChange={(event) =>
+                setAnalysisDraft((draft) => ({
+                  ...draft,
+                  sellingPoint: event.target.value,
+                }))
+              }
+              value={analysisDraft.sellingPoint}
+            />
+
+            <label className="field-label mt-3" htmlFor="cta-draft">
+              CTA
+            </label>
+            <textarea
+              className="textarea-field"
+              id="cta-draft"
+              onChange={(event) =>
+                setAnalysisDraft((draft) => ({
+                  ...draft,
+                  cta: event.target.value,
+                }))
+              }
+              value={analysisDraft.cta}
+            />
+
+            <label className="field-label mt-3" htmlFor="reusable-draft">
+              可复用套路
+            </label>
+            <textarea
+              className="textarea-field"
+              id="reusable-draft"
+              onChange={(event) =>
+                setAnalysisDraft((draft) => ({
+                  ...draft,
+                  reusable: event.target.value,
+                }))
+              }
+              value={analysisDraft.reusable}
+            />
+
+            <label className="field-label mt-3" htmlFor="reasons-draft">
+              爆款原因
+            </label>
+            <textarea
+              className="textarea-field tall"
+              id="reasons-draft"
+              onChange={(event) =>
+                setAnalysisDraft((draft) => ({
+                  ...draft,
+                  reasons: event.target.value,
+                }))
+              }
+              placeholder="每行一条原因"
+              value={analysisDraft.reasons}
+            />
+
+            <button className="primary-button mt-3" onClick={saveActiveAnalysis} type="button">
+              保存到当前导入视频
+            </button>
+            {!canEditActiveVideo ? (
+              <p className="import-status">
+                当前是示例视频；导入自己的视频后可保存分析。
+              </p>
+            ) : null}
           </div>
         </aside>
 
