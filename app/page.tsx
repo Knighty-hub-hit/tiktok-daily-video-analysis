@@ -49,6 +49,8 @@ type VideoRecord = {
 const STORAGE_KEY = "tiktok-daily-video-lab.records";
 
 type AnalysisDraft = {
+  cover: string;
+  frames: string;
   hookType: string;
   hook: string;
   sellingPoint: string;
@@ -497,6 +499,10 @@ function parseExportRecords(text: string, fallbackDate: string) {
 
 function createAnalysisDraft(video: VideoRecord): AnalysisDraft {
   return {
+    cover: video.cover,
+    frames: video.frames
+      .map((frame) => `${frame.time}\t${frame.title}\t${frame.image}\t${frame.note}`)
+      .join("\n"),
     hookType: video.breakdown.hookType,
     hook: video.breakdown.hook,
     sellingPoint: video.breakdown.sellingPoint,
@@ -507,6 +513,31 @@ function createAnalysisDraft(video: VideoRecord): AnalysisDraft {
       .map((line) => `${line.time}\t${line.english}\t${line.chinese}`)
       .join("\n"),
   };
+}
+
+function parseFramesDraft(text: string): Frame[] {
+  const lines = text
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  if (lines.length === 0) {
+    return sampleFrames.slice(0, 3);
+  }
+
+  return lines.map((line, index) => {
+    const cells = line.includes("\t")
+      ? line.split("\t")
+      : line.split("|").map((cell) => cell.trim());
+    const fallback = sampleFrames[index % sampleFrames.length];
+
+    return {
+      time: cells[0] || fallback.time,
+      title: cells[1] || fallback.title,
+      image: cells[2] || fallback.image,
+      note: cells.slice(3).join(" ") || fallback.note,
+    };
+  });
 }
 
 function parseScriptDraft(text: string): ScriptLine[] {
@@ -547,8 +578,12 @@ function parseScriptDraft(text: string): ScriptLine[] {
   });
 }
 
-function buildAnalysisPatch(draft: AnalysisDraft): Pick<VideoRecord, "script" | "breakdown" | "reasons"> {
+function buildAnalysisPatch(
+  draft: AnalysisDraft,
+): Pick<VideoRecord, "cover" | "frames" | "script" | "breakdown" | "reasons"> {
   return {
+    cover: draft.cover.trim() || "/video-cover.png",
+    frames: parseFramesDraft(draft.frames),
     script: parseScriptDraft(draft.script),
     breakdown: {
       hookType: draft.hookType.trim() || "待识别",
@@ -745,7 +780,7 @@ export default function Home() {
           : video,
       ),
     );
-    setImportStatus(`已保存 ${activeVideo.creator} 的脚本和拆解`);
+    setImportStatus(`已保存 ${activeVideo.creator} 的截图、脚本和拆解`);
   }
 
   return (
@@ -915,6 +950,38 @@ export default function Home() {
                 套用示例模板
               </button>
             </div>
+
+            <label className="field-label mt-3" htmlFor="cover-draft">
+              视频封面图片
+            </label>
+            <input
+              className="text-field"
+              id="cover-draft"
+              onChange={(event) =>
+                setAnalysisDraft((draft) => ({
+                  ...draft,
+                  cover: event.target.value,
+                }))
+              }
+              placeholder="粘贴封面截图 URL，留空则使用示例图"
+              value={analysisDraft.cover}
+            />
+
+            <label className="field-label mt-3" htmlFor="frames-draft">
+              关键画面截图
+            </label>
+            <textarea
+              className="textarea-field tall"
+              id="frames-draft"
+              onChange={(event) =>
+                setAnalysisDraft((draft) => ({
+                  ...draft,
+                  frames: event.target.value,
+                }))
+              }
+              placeholder="每行：时间	标题	图片URL	画面分析"
+              value={analysisDraft.frames}
+            />
 
             <label className="field-label mt-3" htmlFor="hook-type">
               Hook 类型
