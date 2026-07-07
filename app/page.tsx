@@ -285,6 +285,42 @@ function formatMoney(value: number) {
   }).format(value)}`;
 }
 
+function getWeekLabel(dateValue: string) {
+  const date = new Date(`${dateValue}T00:00:00`);
+
+  if (Number.isNaN(date.getTime())) {
+    return "选择日期";
+  }
+
+  const firstDay = new Date(date.getFullYear(), 0, 1);
+  const pastDays = Math.floor(
+    (date.getTime() - firstDay.getTime()) / 86400000,
+  );
+  const week = Math.ceil((pastDays + firstDay.getDay() + 1) / 7);
+
+  return `${date.getFullYear()} 第 ${week} 周`;
+}
+
+function makeStatRows(
+  videos: VideoRecord[],
+  accessor: (video: VideoRecord) => string,
+) {
+  const total = videos.length || 1;
+  const counts = videos.reduce<Record<string, number>>((result, video) => {
+    const key = accessor(video) || "未识别";
+    result[key] = (result[key] ?? 0) + 1;
+    return result;
+  }, {});
+
+  return Object.entries(counts)
+    .sort((a, b) => b[1] - a[1])
+    .map(([label, count]) => ({
+      label,
+      count,
+      percent: Math.round((count / total) * 100),
+    }));
+}
+
 function parseNumber(value: string | undefined) {
   const normalized = String(value ?? "")
     .replace(/[$,，\s]/g, "")
@@ -607,6 +643,8 @@ export default function Home() {
   const [pasteText, setPasteText] = useState("");
   const [importStatus, setImportStatus] = useState("等待导入每日视频链接");
   const [hasLoadedRecords, setHasLoadedRecords] = useState(false);
+  const [analysisMode, setAnalysisMode] = useState<"auto" | "manual">("auto");
+  const [pageRange, setPageRange] = useState("Top 1-10");
   const [analysisDraft, setAnalysisDraft] = useState<AnalysisDraft>(() =>
     createAnalysisDraft(seedVideos[0]),
   );
@@ -703,6 +741,22 @@ export default function Home() {
     }),
     { views: 0, orders: 0, revenue: 0 },
   );
+  const productCount = new Set(visibleVideos.map((video) => video.product)).size;
+  const weekLabel = getWeekLabel(selectedDate);
+  const audienceRows = makeStatRows(visibleVideos, (video) => video.audience);
+  const categoryRows = makeStatRows(visibleVideos, (video) => video.category);
+  const pageRanges = [
+    "Top 1-10",
+    "Top 11-20",
+    "Top 21-30",
+    "Top 31-40",
+    "Top 41-50",
+    "Top 51-60",
+    "Top 61-70",
+    "Top 71-80",
+    "Top 81-90",
+    "Top 91-100",
+  ];
 
   function importLinks() {
     const imported = parseExportRecords(pasteText, importDate);
@@ -784,37 +838,51 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f7f8fb] text-[#1f2933]">
-      <section className="border-b border-[#e5e9f0] bg-white">
-        <div className="mx-auto flex max-w-[1560px] flex-col gap-5 px-5 py-5 lg:px-8">
-          <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
-            <div>
-              <p className="text-sm font-semibold text-[#cf1d61]">
-                TikTok 每日视频分析台
-              </p>
-              <h1 className="mt-2 text-3xl font-bold tracking-normal text-[#17202a] sm:text-4xl">
-                导出视频入库后的爆款拆解和排序
-              </h1>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-3">
-              <div className="summary-tile">
-                <span>当日视频</span>
-                <strong>{visibleVideos.length}</strong>
-              </div>
-              <div className="summary-tile">
-                <span>当日出单</span>
-                <strong>{formatNumber(dailyTotals.orders)}</strong>
-              </div>
-              <div className="summary-tile">
-                <span>销售额</span>
-                <strong>{formatMoney(dailyTotals.revenue)}</strong>
-              </div>
-            </div>
+    <main className="min-h-screen bg-[#f3f3f4] text-[#1f2933]">
+      <section className="fastmoss-shell">
+        <div className="fastmoss-main">
+          <div className="brand-strip">
+            <span className="brand-badge">HALOVIDA MX</span>
+            <span className="mexico-flag" aria-label="Mexico market" />
+            <span className="source-badge">每天自动回收视频</span>
           </div>
 
-          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-            <div className="flex flex-wrap gap-2">
+          <h1 className="fastmoss-title">TikTok 爆款带货视频拆解</h1>
+          <p className="fastmoss-subtitle">
+            当前页视频：{visibleVideos.length} 条 | 产品：{productCount} 个 | 总数：
+            {allVideos.length} 条 | Mexico 市场 | 播放：{formatNumber(dailyTotals.views)} |
+            出单：{formatNumber(dailyTotals.orders)} | 按产品分组，组内按销量降序
+          </p>
+
+          <div className="analysis-tabs" role="tablist" aria-label="分析模式">
+            <button
+              className={analysisMode === "auto" ? "analysis-tab active" : "analysis-tab"}
+              onClick={() => setAnalysisMode("auto")}
+              type="button"
+            >
+              自动采集分析
+            </button>
+            <button
+              className={analysisMode === "manual" ? "analysis-tab active" : "analysis-tab"}
+              onClick={() => setAnalysisMode("manual")}
+              type="button"
+            >
+              手动视频分析
+            </button>
+          </div>
+
+          <div className="market-tabs" aria-label="市场">
+            <button className="market-tab active" type="button">
+              MX
+            </button>
+          </div>
+
+          <div className="filter-bar">
+            <div className="week-pill">
+              <span className="calendar-mark">▣</span>
+              {weekLabel}
+            </div>
+            <div className="date-picks">
               {dates.map((date) => (
                 <button
                   className={`date-button ${
@@ -828,17 +896,65 @@ export default function Home() {
                 </button>
               ))}
             </div>
+            <div className="filter-select">单人/多人</div>
+            <div className="filter-select">类目</div>
+          </div>
 
-            <div className="flex flex-wrap items-center gap-2 text-sm">
-              <span className="rounded-md bg-[#fff0f4] px-3 py-2 font-semibold text-[#c61b5a]">
-                排序：{sortLabel}
-              </span>
-              <span className="rounded-md bg-[#edf4ff] px-3 py-2 font-semibold text-[#2258c7]">
-                时间观察：按发布日期切换
-              </span>
+          <div className="portrait-card">
+            <div className="portrait-head">
+              <h2>出镜者画像统计(已分类 {visibleVideos.length} 条)</h2>
+              <span>{sortLabel}</span>
+            </div>
+            <div className="portrait-block">
+              <h3>族裔(肤色 + 口播语言)</h3>
+              {audienceRows.map((row, index) => (
+                <div className="stat-line" key={row.label}>
+                  <span>{row.label}</span>
+                  <div className="stat-track">
+                    <i
+                      className={`stat-fill tone-${index % 4}`}
+                      style={{ width: `${Math.max(row.percent, 8)}%` }}
+                    />
+                  </div>
+                  <strong>
+                    {row.count} ({row.percent}%)
+                  </strong>
+                </div>
+              ))}
+            </div>
+            <div className="portrait-block compact-block">
+              <h3>类目</h3>
+              {categoryRows.map((row, index) => (
+                <div className="stat-line" key={row.label}>
+                  <span>{row.label}</span>
+                  <div className="stat-track">
+                    <i
+                      className={`stat-fill category-${index % 3}`}
+                      style={{ width: `${Math.max(row.percent, 8)}%` }}
+                    />
+                  </div>
+                  <strong>
+                    {row.count} ({row.percent}%)
+                  </strong>
+                </div>
+              ))}
             </div>
           </div>
         </div>
+
+        <aside className="page-rail" aria-label="Top 分页">
+          <p>分页</p>
+          {pageRanges.map((range) => (
+            <button
+              className={pageRange === range ? "page-chip active" : "page-chip"}
+              key={range}
+              onClick={() => setPageRange(range)}
+              type="button"
+            >
+              {range}
+            </button>
+          ))}
+        </aside>
       </section>
 
       <section className="mx-auto grid max-w-[1560px] gap-5 px-5 py-5 lg:grid-cols-[360px_minmax(0,1fr)] lg:px-8">
