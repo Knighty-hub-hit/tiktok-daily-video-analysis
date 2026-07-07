@@ -527,7 +527,6 @@ export default function Home() {
               <div className="detail-heading">
                 <div>
                   <p className="eyebrow">Top {activeRank} · {activeVideo.creator}</p>
-                  <h2>{activeVideo.title}</h2>
                 </div>
                 <a className="link-button" href={activeVideo.link} rel="noreferrer" target="_blank">
                   打开链接
