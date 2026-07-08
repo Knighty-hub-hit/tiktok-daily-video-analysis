@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-07-08T02:31:13.594Z",
-  "sourceFile": "tiktok-video-list-20260629-20260705.xlsx",
+  "generatedAt": "2026-07-08T06:16:54.553Z",
+  "sourceFile": "Feishu:TikTok每日视频数据",
   "sourceHeaders": [
     "视频名称",
     "视频链接",
@@ -137,8 +137,8 @@
         "14 秒后出现橙色购物车，16 秒强调不要错过促销，18 秒补“上次降价卖完”，形成限时优惠 + 缺货记忆。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 68,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 11,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -264,8 +264,8 @@
         "8 秒后直接指向购物车，10 秒点名橙色购物车，14 秒“快点”，16 秒“上次折扣卖完”，CTA 频率高且明确。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 111,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 19,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -303,126 +303,50 @@
       "ctr": 0.96,
       "rpm": 0,
       "commission": 0,
-      "cover": "/keyframes/7659155995754646802-00.png",
-      "videoFile": "/videos/7659155995754646802.gif",
+      "cover": "/video-cover.png",
+      "videoFile": "/videos/7659155995754646802.mp4",
       "frames": [
         {
           "time": "00:00",
-          "title": "痛点开场",
-          "image": "/keyframes/7659155995754646802-00.png",
-          "note": "首句“如果你在找不会扯头发、还能留下光泽的刷子”，直接抓住长发/易打结用户痛点，匹配搜索和推荐场景。"
+          "title": "首帧待抽取",
+          "note": "视频下载后自动替换为真实关键画面，用于判断首秒是否露出人、商品或痛点。",
+          "image": "/frames/frame-00.png"
         },
         {
           "time": "00:03",
-          "title": "双刷毛卖点",
-          "image": "/keyframes/7659155995754646802-03.png",
-          "note": "卖点从“不拉扯”到“亮泽”再到“双材质刷毛、柔软、按摩头皮”，是完整的使用体验证明。"
+          "title": "卖点待抽取",
+          "note": "结合字幕、口播和商品出现位置，拆出最强卖点证明。",
+          "image": "/frames/frame-02.png"
         },
         {
           "time": "00:06",
-          "title": "真实购买 CTA",
-          "image": "/keyframes/7659155995754646802-06.png",
-          "note": "结尾说明自己在 TikTok Shop 购买，并把商品留在下方购物入口，CTA 更像真实推荐而不是硬广。"
+          "title": "CTA 待抽取",
+          "note": "检查是否出现购买引导、折扣信息、购物车或评论区触发。",
+          "image": "/frames/frame-06.png"
         }
       ],
       "script": [
         {
           "time": "00:00",
-          "english": "si estás buscando un cepillo",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:01",
-          "english": "que no te jala cepillarte el cabello y te deje este brillo",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:04",
-          "english": "este es tu cepillo",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:05",
-          "english": "es el cepillo de la marca de alovida que tiene",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:08",
-          "english": "combinación de dos tipos de cerdas",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:10",
-          "english": "además de que no jala nada el cabello es muy suave",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:12",
-          "english": "te lo deja con un brillo superbonito",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:14",
-          "english": "en mi experiencia yo lo he utilizado",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:15",
-          "english": "después de bañarme o con el cabello ya seco y nunca me jala",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:19",
-          "english": "más tiene esta partecita que es flexible entonces me doy un masajito",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:22",
-          "english": "en el cuero",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:23",
-          "english": "cabelludo que me relaja bastante y me gusta mucho",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:26",
-          "english": "sabes si ya no quieres",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:27",
-          "english": "sufrir cepillándote el cabello este es tu cepillo",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:29",
-          "english": "este lo compré aquí en TikTok Shop y te lo voy a dejar en la carita aquí abajo por si tú también quieres uno",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:33",
-          "english": "bye",
-          "chinese": "待人工精修翻译"
+          "english": "Awaiting downloaded video transcript",
+          "chinese": "等待下载视频后补充真实脚本逐句拆解"
         }
       ],
       "breakdown": {
-        "hookType": "痛点解决型",
-        "hook": "首句“如果你在找不会扯头发、还能留下光泽的刷子”，直接抓住长发/易打结用户痛点，匹配搜索和推荐场景。",
-        "sellingPoint": "卖点从“不拉扯”到“亮泽”再到“双材质刷毛、柔软、按摩头皮”，是完整的使用体验证明。",
-        "cta": "结尾说明自己在 TikTok Shop 购买，并把商品留在下方购物入口，CTA 更像真实推荐而不是硬广。",
-        "reusable": "痛点点名 + 效果承诺 + 品牌/结构解释 + 个人使用场景 + TikTok Shop 入口。"
+        "hookType": "流量观察型",
+        "hook": "标题围绕“Cepillo que no jala el cabello 💕 #cepillohalovida #halovida #cepillocabello #cabellolargo #cabellosano”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 1414，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 0.96%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
-        "Excel 第 2757 行显示曝光 1414、点赞 17，无出单时按流量进入榜单。",
-        "脚本来自 TikTok 页面字幕资源 /videos/7659155995754646802.vtt，关键帧来自该视频页面连续截图。",
-        "首句“如果你在找不会扯头发、还能留下光泽的刷子”，直接抓住长发/易打结用户痛点，匹配搜索和推荐场景。",
-        "结尾说明自己在 TikTok Shop 购买，并把商品留在下方购物入口，CTA 更像真实推荐而不是硬广。"
+        "出单量为 0，按曝光 1414 参与流量排序。",
+        "点赞 17、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 133 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2757,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 133,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -435,10 +359,7 @@
           "likes": "带货视频点赞数",
           "comments": "带货视频评论数"
         }
-      },
-      "videoReady": true,
-      "mediaType": "gif",
-      "transcriptFile": "/videos/7659155995754646802.vtt"
+      }
     },
     {
       "id": "7658815684905864469",
@@ -460,106 +381,50 @@
       "ctr": 4.18,
       "rpm": 0,
       "commission": 0,
-      "cover": "/keyframes/7658815684905864469-00.png",
-      "videoFile": "/videos/7658815684905864469.gif",
+      "cover": "/video-cover.png",
+      "videoFile": "/videos/7658815684905864469.mp4",
       "frames": [
         {
           "time": "00:00",
-          "title": "评论悬念",
-          "image": "/keyframes/7658815684905864469-00.png",
-          "note": "开头说“买东西前看评论很重要”，先制造退货悬念，再反转成“不是不好用，是现在折扣更大”。"
+          "title": "首帧待抽取",
+          "note": "视频下载后自动替换为真实关键画面，用于判断首秒是否露出人、商品或痛点。",
+          "image": "/frames/frame-00.png"
         },
         {
           "time": "00:03",
-          "title": "好用反转",
-          "image": "/keyframes/7658815684905864469-03.png",
-          "note": "卖点由野猪毛带来的蓬松顺滑承接，随后转入两周一次促销、优惠券、免运费。"
+          "title": "卖点待抽取",
+          "note": "结合字幕、口播和商品出现位置，拆出最强卖点证明。",
+          "image": "/frames/frame-02.png"
         },
         {
           "time": "00:06",
-          "title": "官方链接 CTA",
-          "image": "/keyframes/7658815684905864469-06.png",
-          "note": "明确说官方商店链接，并提醒在折扣结束前下单，信任和紧迫感都比较足。"
+          "title": "CTA 待抽取",
+          "note": "检查是否出现购买引导、折扣信息、购物车或评论区触发。",
+          "image": "/frames/frame-06.png"
         }
       ],
       "script": [
         {
           "time": "00:00",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "这就是为什么在买东西之前阅读评论如此重要"
-        },
-        {
-          "time": "00:04",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "我买了这个alovida梳子"
-        },
-        {
-          "time": "00:06",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "事实是我想回去"
-        },
-        {
-          "time": "00:08",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "我不想回去"
-        },
-        {
-          "time": "00:09",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "因为我不喜欢它"
-        },
-        {
-          "time": "00:11",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "事实上我喜欢他们的野猪刷毛让我的头发如此松散"
-        },
-        {
-          "time": "00:17",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "我想退货的真正原因是因为我以正常价格购买了它"
-        },
-        {
-          "time": "00:23",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "现在alovida给了它两周一次的疯狂折扣"
-        },
-        {
-          "time": "00:27",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "我给你留下了这里的链接是官方商店的链接"
-        },
-        {
-          "time": "00:32",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "所以你可以带着它"
-        },
-        {
-          "time": "00:34",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "提供百分比折扣券和免运费利用"
-        },
-        {
-          "time": "00:37",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "并在折扣结束前得到你的"
+          "english": "Awaiting downloaded video transcript",
+          "chinese": "等待下载视频后补充真实脚本逐句拆解"
         }
       ],
       "breakdown": {
-        "hookType": "评论反转型",
-        "hook": "开头说“买东西前看评论很重要”，先制造退货悬念，再反转成“不是不好用，是现在折扣更大”。",
-        "sellingPoint": "卖点由野猪毛带来的蓬松顺滑承接，随后转入两周一次促销、优惠券、免运费。",
-        "cta": "明确说官方商店链接，并提醒在折扣结束前下单，信任和紧迫感都比较足。",
-        "reusable": "评论提醒 + 想退货悬念 + 产品好用反转 + 现在更低价 + 官方链接 CTA。"
+        "hookType": "流量观察型",
+        "hook": "标题围绕“⚠️ Promoción vigente al momento de publicar este video. Los precios, descuentos y disponibilidad pueden cambiar sin previo aviso. #ventadeverano #ventaquincenal #halovida #hair”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 1411，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 4.18%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
-        "Excel 第 2738 行显示曝光 1411、点击率 4.18%，无出单时按流量进入榜单。",
-        "脚本来自 TikTok 页面字幕资源 /videos/7658815684905864469.vtt，关键帧来自该视频页面连续截图。",
-        "开头说“买东西前看评论很重要”，先制造退货悬念，再反转成“不是不好用，是现在折扣更大”。",
-        "明确说官方商店链接，并提醒在折扣结束前下单，信任和紧迫感都比较足。"
+        "出单量为 0，按曝光 1411 参与流量排序。",
+        "点赞 3、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 114 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2738,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 114,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -572,10 +437,7 @@
           "likes": "带货视频点赞数",
           "comments": "带货视频评论数"
         }
-      },
-      "videoReady": true,
-      "mediaType": "gif",
-      "transcriptFile": "/videos/7658815684905864469.vtt"
+      }
     },
     {
       "id": "7659140720355216658",
@@ -597,241 +459,50 @@
       "ctr": 1.3,
       "rpm": 0,
       "commission": 0,
-      "cover": "/keyframes/7659140720355216658-00.png",
-      "videoFile": "/videos/7659140720355216658.gif",
+      "cover": "/video-cover.png",
+      "videoFile": "/videos/7659140720355216658.mp4",
       "frames": [
         {
           "time": "00:00",
-          "title": "干发测试",
-          "image": "/keyframes/7659140720355216658-00.png",
-          "note": "开头直接说“测试这个爆款刷子在干发上”，场景具体，适合吸引想看真实效果的人。"
+          "title": "首帧待抽取",
+          "note": "视频下载后自动替换为真实关键画面，用于判断首秒是否露出人、商品或痛点。",
+          "image": "/frames/frame-00.png"
         },
         {
           "time": "00:03",
-          "title": "半边对比",
-          "image": "/keyframes/7659140720355216658-03.png",
-          "note": "用只刷一边的方式证明减少毛躁、顺滑和不打结，比单纯口播更可信。"
+          "title": "卖点待抽取",
+          "note": "结合字幕、口播和商品出现位置，拆出最强卖点证明。",
+          "image": "/frames/frame-02.png"
         },
         {
           "time": "00:06",
-          "title": "效果 CTA",
-          "image": "/keyframes/7659140720355216658-06.png",
-          "note": "结尾说“确实是好入手”，并放橙色购物车，测评逻辑自然过渡到购买。"
+          "title": "CTA 待抽取",
+          "note": "检查是否出现购买引导、折扣信息、购物车或评论区触发。",
+          "image": "/frames/frame-06.png"
         }
       ],
       "script": [
         {
           "time": "00:00",
-          "english": "probemos este cepillo tan viral pero ahora en cabello seco",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:03",
-          "english": "este cepillo",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:03",
-          "english": "te promete",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:04",
-          "english": "alisar tu cabello",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:05",
-          "english": "y que no se le note tanto frizz y no esté tan esponjado",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:08",
-          "english": "esta ocasión",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:08",
-          "english": "voy a empezar",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:09",
-          "english": "a cepillarme",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:09",
-          "english": "solamente de",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:10",
-          "english": "un lado para ver si se nota la diferencia con el otro lado",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:13",
-          "english": "lo voy",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:13",
-          "english": "sin cortes",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:14",
-          "english": "para que de verdad se note si sí se marca una diferencia",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:17",
-          "english": "y como puedes ver",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:18",
-          "english": "sí se nota",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:19",
-          "english": "la diferencia",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:20",
-          "english": "porque ve",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:20",
-          "english": "que acá en este lado está como que mi cabello por secciones",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:23",
-          "english": "está más esponjado y acá quedó más liso",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:27",
-          "english": "ya no está enredado",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:28",
-          "english": "sí se ve la diferencia",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:29",
-          "english": "no es como",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:30",
-          "english": "que haya",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:30",
-          "english": "quitado el frizz completamente pero sí le disminuyó un 80%",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:34",
-          "english": "yo pienso así se ve el otro lado se ve bastante diferente",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:37",
-          "english": "así que voy a empezar también a alisar también el otro lado",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:40",
-          "english": "les conté que",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:41",
-          "english": "con el cabello mojado",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:41",
-          "english": "me sorprendí",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:42",
-          "english": "cómo me desenredó",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:43",
-          "english": "tan rápido",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:44",
-          "english": "el cabello",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:44",
-          "english": "y pues",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:45",
-          "english": "también con el cabello seco ya puedes ver que sí funciona",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:48",
-          "english": "hasta puedo",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:48",
-          "english": "pasar mis dedos sobre el cabello y no se enreda para nada",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:51",
-          "english": "sin duda",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:51",
-          "english": "fue una excelente",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:52",
-          "english": "adquisición y por aquí te lo dejo en el carrito naranja",
-          "chinese": "待人工精修翻译"
+          "english": "Awaiting downloaded video transcript",
+          "chinese": "等待下载视频后补充真实脚本逐句拆解"
         }
       ],
       "breakdown": {
-        "hookType": "半边对比测评型",
-        "hook": "开头直接说“测试这个爆款刷子在干发上”，场景具体，适合吸引想看真实效果的人。",
-        "sellingPoint": "用只刷一边的方式证明减少毛躁、顺滑和不打结，比单纯口播更可信。",
-        "cta": "结尾说“确实是好入手”，并放橙色购物车，测评逻辑自然过渡到购买。",
-        "reusable": "干发测试 + 半边对比 + 无剪辑证明 + 效果总结 + 橙色购物车。"
+        "hookType": "流量观察型",
+        "hook": "标题围绕“Respuesta a @Celyn Mendes así es como queda el cabello  cepillando en seco #cabello #cepillo #alisado #viral”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 1061，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 1.3%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
-        "Excel 第 2756 行显示曝光 1061、点击率 1.3%，无出单时按流量进入榜单。",
-        "脚本来自 TikTok 页面字幕资源 /videos/7659140720355216658.vtt，关键帧来自该视频页面连续截图。",
-        "开头直接说“测试这个爆款刷子在干发上”，场景具体，适合吸引想看真实效果的人。",
-        "结尾说“确实是好入手”，并放橙色购物车，测评逻辑自然过渡到购买。"
+        "出单量为 0，按曝光 1061 参与流量排序。",
+        "点赞 30、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 132 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2756,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 132,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -844,10 +515,7 @@
           "likes": "带货视频点赞数",
           "comments": "带货视频评论数"
         }
-      },
-      "videoReady": true,
-      "mediaType": "gif",
-      "transcriptFile": "/videos/7659140720355216658.vtt"
+      }
     },
     {
       "id": "7659053756922826004",
@@ -869,111 +537,50 @@
       "ctr": 1.91,
       "rpm": 0,
       "commission": 0,
-      "cover": "/keyframes/7659053756922826004-00.png",
-      "videoFile": "/videos/7659053756922826004.gif",
+      "cover": "/video-cover.png",
+      "videoFile": "/videos/7659053756922826004.mp4",
       "frames": [
         {
           "time": "00:00",
-          "title": "三重折扣",
-          "image": "/keyframes/7659053756922826004-00.png",
-          "note": "第一句“有三重折扣”直接抛出利益点，适合促销期间抢停留。"
+          "title": "首帧待抽取",
+          "note": "视频下载后自动替换为真实关键画面，用于判断首秒是否露出人、商品或痛点。",
+          "image": "/frames/frame-00.png"
         },
         {
           "time": "00:03",
-          "title": "功能连发",
-          "image": "/keyframes/7659053756922826004-03.png",
-          "note": "卖点覆盖按摩头皮、野猪毛、控毛躁、减少断发、头发更柔顺。"
+          "title": "卖点待抽取",
+          "note": "结合字幕、口播和商品出现位置，拆出最强卖点证明。",
+          "image": "/frames/frame-02.png"
         },
         {
           "time": "00:06",
-          "title": "购物车承接",
-          "image": "/keyframes/7659053756922826004-06.png",
-          "note": "结尾“我爱它，橙色购物车给你”，口吻轻，适合达人种草。"
+          "title": "CTA 待抽取",
+          "note": "检查是否出现购买引导、折扣信息、购物车或评论区触发。",
+          "image": "/frames/frame-06.png"
         }
       ],
       "script": [
         {
           "time": "00:00",
-          "english": "¡Tiene triple descuento!",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:01",
-          "english": "Este cepillo",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:02",
-          "english": "que masajea delicioso",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:04",
-          "english": "la cabeza",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:05",
-          "english": "tiene porcentaje",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:06",
-          "english": "de descuento",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:06",
-          "english": "y tiene cupones",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:07",
-          "english": "y tiene envío gratis. Es este de Halo vida, ¡está lo máximo!",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:11",
-          "english": "Es de cerdas de jabalí,",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:12",
-          "english": "te ayuda a controlar el frizz,",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:13",
-          "english": "a reducir el quiebre,",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:14",
-          "english": "a que el cabello te quede mucho más suavecito.",
-          "chinese": "待人工精修翻译"
-        },
-        {
-          "time": "00:16",
-          "english": "¡Lo amo! Te lo dejo aquí en el carrito naranja",
-          "chinese": "待人工精修翻译"
+          "english": "Awaiting downloaded video transcript",
+          "chinese": "等待下载视频后补充真实脚本逐句拆解"
         }
       ],
       "breakdown": {
-        "hookType": "三重优惠型",
-        "hook": "第一句“有三重折扣”直接抛出利益点，适合促销期间抢停留。",
-        "sellingPoint": "卖点覆盖按摩头皮、野猪毛、控毛躁、减少断发、头发更柔顺。",
-        "cta": "结尾“我爱它，橙色购物车给你”，口吻轻，适合达人种草。",
-        "reusable": "三重折扣开场 + 产品功能连发 + 情绪背书 + 橙色购物车。"
+        "hookType": "流量观察型",
+        "hook": "标题围绕“#ventaquincenal #modopartido #cepillo”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 1012，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 1.91%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
-        "Excel 第 2749 行显示曝光 1012、点击率 1.91%，无出单时按流量进入榜单。",
-        "脚本来自 TikTok 页面字幕资源 /videos/7659053756922826004.vtt，关键帧来自该视频页面连续截图。",
-        "第一句“有三重折扣”直接抛出利益点，适合促销期间抢停留。",
-        "结尾“我爱它，橙色购物车给你”，口吻轻，适合达人种草。"
+        "出单量为 0，按曝光 1012 参与流量排序。",
+        "点赞 2、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 125 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2749,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 125,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -986,10 +593,7 @@
           "likes": "带货视频点赞数",
           "comments": "带货视频评论数"
         }
-      },
-      "videoReady": true,
-      "mediaType": "gif",
-      "transcriptFile": "/videos/7659053756922826004.vtt"
+      }
     },
     {
       "id": "7658816525301746964",
@@ -1011,96 +615,50 @@
       "ctr": 0.9,
       "rpm": 0,
       "commission": 0,
-      "cover": "/keyframes/7658816525301746964-00.png",
-      "videoFile": "/videos/7658816525301746964.gif",
+      "cover": "/video-cover.png",
+      "videoFile": "/videos/7658816525301746964.mp4",
       "frames": [
         {
           "time": "00:00",
-          "title": "爆款点名",
-          "image": "/keyframes/7658816525301746964-00.png",
-          "note": "开头点名 TikTok Shop 爆款 Halovida 梳子，快速告诉观众这是平台热卖品。"
+          "title": "首帧待抽取",
+          "note": "视频下载后自动替换为真实关键画面，用于判断首秒是否露出人、商品或痛点。",
+          "image": "/frames/frame-00.png"
         },
         {
           "time": "00:03",
-          "title": "折扣说明",
-          "image": "/keyframes/7658816525301746964-03.png",
-          "note": "野猪毛、灵活梳齿和橙色购物车折扣是核心信息，适合短平快促销素材。"
+          "title": "卖点待抽取",
+          "note": "结合字幕、口播和商品出现位置，拆出最强卖点证明。",
+          "image": "/frames/frame-02.png"
         },
         {
           "time": "00:06",
-          "title": "官方链接",
-          "image": "/keyframes/7658816525301746964-06.png",
-          "note": "强调必须点击这里，因为是官方商店链接，并叠加折扣、优惠券和免运费。"
+          "title": "CTA 待抽取",
+          "note": "检查是否出现购买引导、折扣信息、购物车或评论区触发。",
+          "image": "/frames/frame-06.png"
         }
       ],
       "script": [
         {
           "time": "00:00",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "TikTok商店病毒梳理光环生活"
-        },
-        {
-          "time": "00:02",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "有野猪毛"
-        },
-        {
-          "time": "00:04",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "非常灵活"
-        },
-        {
-          "time": "00:06",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "今天你在橙色购物车里有折扣百分比"
-        },
-        {
-          "time": "00:10",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "利用促销活动"
-        },
-        {
-          "time": "00:11",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "并获得折扣百分比"
-        },
-        {
-          "time": "00:14",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "提供优惠券和免运费"
-        },
-        {
-          "time": "00:16",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "但点击这里非常重要"
-        },
-        {
-          "time": "00:18",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "因为它是官方商店链接"
-        },
-        {
-          "time": "00:20",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "你可以利用这三个折扣"
+          "english": "Awaiting downloaded video transcript",
+          "chinese": "等待下载视频后补充真实脚本逐句拆解"
         }
       ],
       "breakdown": {
-        "hookType": "爆款商品点名型",
-        "hook": "开头点名 TikTok Shop 爆款 Halovida 梳子，快速告诉观众这是平台热卖品。",
-        "sellingPoint": "野猪毛、灵活梳齿和橙色购物车折扣是核心信息，适合短平快促销素材。",
-        "cta": "强调必须点击这里，因为是官方商店链接，并叠加折扣、优惠券和免运费。",
-        "reusable": "爆款点名 + 两个核心卖点 + 官方链接 + 三重优惠。"
+        "hookType": "流量观察型",
+        "hook": "标题围绕“⚠️ Promoción vigente al momento de publicar este video. Los precios, descuentos y disponibilidad pueden cambiar sin previo aviso. #hair #ModoPartido #halovida #ventaquincenal #ventadeverano”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 899，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 0.9%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
-        "Excel 第 2739 行显示曝光 899、点击率 0.9%，无出单时按流量进入榜单。",
-        "脚本来自 TikTok 页面字幕资源 /videos/7658816525301746964.vtt，关键帧来自该视频页面连续截图。",
-        "开头点名 TikTok Shop 爆款 Halovida 梳子，快速告诉观众这是平台热卖品。",
-        "强调必须点击这里，因为是官方商店链接，并叠加折扣、优惠券和免运费。"
+        "出单量为 0，按曝光 899 参与流量排序。",
+        "点赞 0、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 115 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2739,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 115,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -1113,10 +671,7 @@
           "likes": "带货视频点赞数",
           "comments": "带货视频评论数"
         }
-      },
-      "videoReady": true,
-      "mediaType": "gif",
-      "transcriptFile": "/videos/7658816525301746964.vtt"
+      }
     },
     {
       "id": "7658821638300994836",
@@ -1138,171 +693,50 @@
       "ctr": 2.34,
       "rpm": 0,
       "commission": 0,
-      "cover": "/keyframes/7658821638300994836-00.png",
-      "videoFile": "/videos/7658821638300994836.gif",
+      "cover": "/video-cover.png",
+      "videoFile": "/videos/7658821638300994836.mp4",
       "frames": [
         {
           "time": "00:00",
-          "title": "等待折扣",
-          "image": "/keyframes/7658821638300994836-00.png",
-          "note": "用“你在等 Halovida 打折吗？今天到了”切入，精准打犹豫购买人群。"
+          "title": "首帧待抽取",
+          "note": "视频下载后自动替换为真实关键画面，用于判断首秒是否露出人、商品或痛点。",
+          "image": "/frames/frame-00.png"
         },
         {
           "time": "00:03",
-          "title": "优惠券路径",
-          "image": "/keyframes/7658821638300994836-03.png",
-          "note": "折扣百分比、优惠券、免运费之后，再补野猪毛与快速解结，利益顺序清晰。"
+          "title": "卖点待抽取",
+          "note": "结合字幕、口播和商品出现位置，拆出最强卖点证明。",
+          "image": "/frames/frame-02.png"
         },
         {
           "time": "00:06",
-          "title": "解结卖点",
-          "image": "/keyframes/7658821638300994836-06.png",
-          "note": "反复提示橙色购物车和蓝色优惠券，动作路径非常明确。"
+          "title": "CTA 待抽取",
+          "note": "检查是否出现购买引导、折扣信息、购物车或评论区触发。",
+          "image": "/frames/frame-06.png"
         }
       ],
       "script": [
         {
           "time": "00:00",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "你在等待"
-        },
-        {
-          "time": "00:01",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "给光环生活打折"
-        },
-        {
-          "time": "00:03",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "把它带给你"
-        },
-        {
-          "time": "00:05",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "今天是时候了"
-        },
-        {
-          "time": "00:06",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "检查这里的链接"
-        },
-        {
-          "time": "00:07",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "在橙色购物车里"
-        },
-        {
-          "time": "00:08",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "你会"
-        },
-        {
-          "time": "00:09",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "出现"
-        },
-        {
-          "time": "00:09",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "你刚刚收到的销售百分比折扣"
-        },
-        {
-          "time": "00:12",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "双周"
-        },
-        {
-          "time": "00:13",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "也有优惠券"
-        },
-        {
-          "time": "00:15",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "你可以激活"
-        },
-        {
-          "time": "00:17",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "记住"
-        },
-        {
-          "time": "00:18",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "激活蓝色优惠券"
-        },
-        {
-          "time": "00:20",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "免运费到达"
-        },
-        {
-          "time": "00:22",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "适合你"
-        },
-        {
-          "time": "00:22",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "到达"
-        },
-        {
-          "time": "00:22",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "你的痛苦"
-        },
-        {
-          "time": "00:23",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "用刷毛"
-        },
-        {
-          "time": "00:24",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "野猪"
-        },
-        {
-          "time": "00:24",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "去"
-        },
-        {
-          "time": "00:25",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "离开"
-        },
-        {
-          "time": "00:25",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "你的头发"
-        },
-        {
-          "time": "00:26",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "几秒钟内解开"
-        },
-        {
-          "time": "00:28",
-          "english": "TikTok 自动字幕译文",
-          "chinese": "折扣很大"
+          "english": "Awaiting downloaded video transcript",
+          "chinese": "等待下载视频后补充真实脚本逐句拆解"
         }
       ],
       "breakdown": {
-        "hookType": "等待折扣型",
-        "hook": "用“你在等 Halovida 打折吗？今天到了”切入，精准打犹豫购买人群。",
-        "sellingPoint": "折扣百分比、优惠券、免运费之后，再补野猪毛与快速解结，利益顺序清晰。",
-        "cta": "反复提示橙色购物车和蓝色优惠券，动作路径非常明确。",
-        "reusable": "等待折扣问题 + 今天到了 + 购物车/优惠券路径 + 功能补强。"
+        "hookType": "流量观察型",
+        "hook": "标题围绕“⚠️ Promoción vigente al momento de publicar este video. Los precios, descuentos y disponibilidad pueden cambiar sin previo aviso. #ventadeverano #ventaquincenal #halovida #hair”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 809，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 2.34%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
-        "Excel 第 2741 行显示曝光 809、点击率 2.34%，无出单时按流量进入榜单。",
-        "脚本来自 TikTok 页面字幕资源 /videos/7658821638300994836.vtt，关键帧来自该视频页面连续截图。",
-        "用“你在等 Halovida 打折吗？今天到了”切入，精准打犹豫购买人群。",
-        "反复提示橙色购物车和蓝色优惠券，动作路径非常明确。"
+        "出单量为 0，按曝光 809 参与流量排序。",
+        "点赞 1、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 117 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2741,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 117,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -1315,10 +749,7 @@
           "likes": "带货视频点赞数",
           "comments": "带货视频评论数"
         }
-      },
-      "videoReady": true,
-      "mediaType": "gif",
-      "transcriptFile": "/videos/7658821638300994836.vtt"
+      }
     },
     {
       "id": "7658931538612014356",
@@ -1340,51 +771,50 @@
       "ctr": 2.75,
       "rpm": 0,
       "commission": 0,
-      "cover": "/keyframes/7658931538612014356-00.png",
-      "videoFile": "/videos/7658931538612014356.gif",
+      "cover": "/video-cover.png",
+      "videoFile": "/videos/7658931538612014356.mp4",
       "frames": [
         {
           "time": "00:00",
-          "title": "产品露出",
-          "image": "/keyframes/7658931538612014356-00.png",
-          "note": "标题直接列出 Halovida 圆梳、抗静电、按摩和蓬松，偏搜索流量打法。"
+          "title": "首帧待抽取",
+          "note": "视频下载后自动替换为真实关键画面，用于判断首秒是否露出人、商品或痛点。",
+          "image": "/frames/frame-00.png"
         },
         {
           "time": "00:03",
-          "title": "功能展示",
-          "image": "/keyframes/7658931538612014356-03.png",
-          "note": "重点是防毛躁、减少热损伤、快速干发、蓬松造型，适合功能党。"
+          "title": "卖点待抽取",
+          "note": "结合字幕、口播和商品出现位置，拆出最强卖点证明。",
+          "image": "/frames/frame-02.png"
         },
         {
           "time": "00:06",
-          "title": "购物标签",
-          "image": "/keyframes/7658931538612014356-06.png",
-          "note": "虽然字幕未取到，但标题含 TikTok Shop 和 fyp 标签，说明靠商品词和平台购物入口承接。"
+          "title": "CTA 待抽取",
+          "note": "检查是否出现购买引导、折扣信息、购物车或评论区触发。",
+          "image": "/frames/frame-06.png"
         }
       ],
       "script": [
         {
           "time": "00:00",
-          "english": "Halovida Cepillo de Cerdas Redondas Hueco – Cepillo antielectrostático con masaje para mayor volumen y cuidado del cuero cabelludo, cepillo anti frizz,reduce el daño por calor, ideal para secado rápido y peinados voluminosos#antistaticcomb #hairstylingtools #tiktokshop #tiktokmademebuyit #foryou",
-          "chinese": "字幕资源暂时 403，先按标题和画面做拆解"
+          "english": "Awaiting downloaded video transcript",
+          "chinese": "等待下载视频后补充真实脚本逐句拆解"
         }
       ],
       "breakdown": {
-        "hookType": "功能罗列型",
-        "hook": "标题直接列出 Halovida 圆梳、抗静电、按摩和蓬松，偏搜索流量打法。",
-        "sellingPoint": "重点是防毛躁、减少热损伤、快速干发、蓬松造型，适合功能党。",
-        "cta": "虽然字幕未取到，但标题含 TikTok Shop 和 fyp 标签，说明靠商品词和平台购物入口承接。",
-        "reusable": "产品全名 + 功能关键词堆叠 + 使用场景 + TikTok Shop 标签。"
+        "hookType": "流量观察型",
+        "hook": "标题围绕“Halovida Cepillo de Cerdas Redondas Hueco – Cepillo antielectrostático con masaje para mayor volumen y cuidado del cuero cabelludo, cepillo anti frizz,reduce el daño por calor, ideal para secado rápido y peinados voluminosos#antistaticcomb #hairstylingtools #tiktokshop #tiktokmademebuyit #foryou”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 595，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 2.75%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
-        "Excel 第 2748 行显示曝光 595、点击率 2.75%，无出单时按流量进入榜单。",
-        "字幕资源暂时 403；当前拆解依据为 TikTok 标题、真实动图预览、关键帧和 Excel 指标。",
-        "标题直接列出 Halovida 圆梳、抗静电、按摩和蓬松，偏搜索流量打法。",
-        "虽然字幕未取到，但标题含 TikTok Shop 和 fyp 标签，说明靠商品词和平台购物入口承接。"
+        "出单量为 0，按曝光 595 参与流量排序。",
+        "点赞 13、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 124 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2748,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 124,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -1397,9 +827,7 @@
           "likes": "带货视频点赞数",
           "comments": "带货视频评论数"
         }
-      },
-      "videoReady": true,
-      "mediaType": "gif"
+      }
     },
     {
       "id": "7658930893137939733",
@@ -1421,51 +849,50 @@
       "ctr": 2.99,
       "rpm": 0,
       "commission": 0,
-      "cover": "/keyframes/7658930893137939733-00.png",
-      "videoFile": "/videos/7658930893137939733.gif",
+      "cover": "/video-cover.png",
+      "videoFile": "/videos/7658930893137939733.mp4",
       "frames": [
         {
           "time": "00:00",
-          "title": "商品词",
-          "image": "/keyframes/7658930893137939733-00.png",
-          "note": "同样用 Halovida 圆梳完整商品名切入，方便搜索和推荐系统识别商品。"
+          "title": "首帧待抽取",
+          "note": "视频下载后自动替换为真实关键画面，用于判断首秒是否露出人、商品或痛点。",
+          "image": "/frames/frame-00.png"
         },
         {
           "time": "00:03",
-          "title": "卖点画面",
-          "image": "/keyframes/7658930893137939733-03.png",
-          "note": "抗静电、按摩头皮、防毛躁、减少热损伤和蓬松造型，是可复用的一组卖点。"
+          "title": "卖点待抽取",
+          "note": "结合字幕、口播和商品出现位置，拆出最强卖点证明。",
+          "image": "/frames/frame-02.png"
         },
         {
           "time": "00:06",
-          "title": "标签承接",
-          "image": "/keyframes/7658930893137939733-06.png",
-          "note": "通过 TikTok Shop、tiktokmademebuyit、foryou 标签承接购物兴趣。"
+          "title": "CTA 待抽取",
+          "note": "检查是否出现购买引导、折扣信息、购物车或评论区触发。",
+          "image": "/frames/frame-06.png"
         }
       ],
       "script": [
         {
           "time": "00:00",
-          "english": "Halovida Cepillo de Cerdas Redondas Hueco – Cepillo antielectrostático con masaje para mayor volumen y cuidado del cuero cabelludo, cepillo anti frizz,reduce el daño por calor, ideal para secado rápido y peinados voluminosos#antistaticcomb#hairstylingtools #tiktokshop #tiktokmademebuyit #foryou",
-          "chinese": "字幕资源暂时 403，先按标题和画面做拆解"
+          "english": "Awaiting downloaded video transcript",
+          "chinese": "等待下载视频后补充真实脚本逐句拆解"
         }
       ],
       "breakdown": {
-        "hookType": "功能罗列型",
-        "hook": "同样用 Halovida 圆梳完整商品名切入，方便搜索和推荐系统识别商品。",
-        "sellingPoint": "抗静电、按摩头皮、防毛躁、减少热损伤和蓬松造型，是可复用的一组卖点。",
-        "cta": "通过 TikTok Shop、tiktokmademebuyit、foryou 标签承接购物兴趣。",
-        "reusable": "完整商品词 + 高频功能词 + 场景利益 + 购物标签。"
+        "hookType": "流量观察型",
+        "hook": "标题围绕“Halovida Cepillo de Cerdas Redondas Hueco – Cepillo antielectrostático con masaje para mayor volumen y cuidado del cuero cabelludo, cepillo anti frizz,reduce el daño por calor, ideal para secado rápido y peinados voluminosos#antistaticcomb#hairstylingtools #tiktokshop #tiktokmademebuyit #foryou”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 584，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 2.99%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
-        "Excel 第 2746 行显示曝光 584、点击率 2.99%，无出单时按流量进入榜单。",
-        "字幕资源暂时 403；当前拆解依据为 TikTok 标题、真实动图预览、关键帧和 Excel 指标。",
-        "同样用 Halovida 圆梳完整商品名切入，方便搜索和推荐系统识别商品。",
-        "通过 TikTok Shop、tiktokmademebuyit、foryou 标签承接购物兴趣。"
+        "出单量为 0，按曝光 584 参与流量排序。",
+        "点赞 11、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 122 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2746,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 122,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -1478,9 +905,7 @@
           "likes": "带货视频点赞数",
           "comments": "带货视频评论数"
         }
-      },
-      "videoReady": true,
-      "mediaType": "gif"
+      }
     },
     {
       "id": "7658726489604508948",
@@ -1536,16 +961,16 @@
         "hook": "标题围绕“⚠️ Promoción vigente al momento de publicar este video. Sujeta a cambios y disponibilidad. #halovida  #VentaDeVerano  #VentaQuincenal”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 549，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.51%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 549 参与流量排序。",
         "点赞 1、评论 5，可作为互动强弱依据。",
-        "数据来自 Excel 第 2736 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 112 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2736,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 112,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -1614,16 +1039,16 @@
         "hook": "标题围绕“@HALOVIDA MX #cepilloviral #tiktokmexico #carritonaranja”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 487，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.2%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 487 参与流量排序。",
         "点赞 1、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2755 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 131 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2755,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 131,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -1692,16 +1117,16 @@
         "hook": "标题围绕“#halovida #cepillo #productoviral #cuidatucabello”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 423，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.09%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 423 参与流量排序。",
         "点赞 2、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2754 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 130 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2754,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 130,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -1770,16 +1195,16 @@
         "hook": "标题围绕“#hotsaleentiktokshopmx #ModoPartido #ventaquincenal #halovida”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 292，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 4.68%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 292 参与流量排序。",
         "点赞 65、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2758 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 134 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2758,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 134,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -1848,16 +1273,16 @@
         "hook": "标题围绕“Para mis pelonas #cabellolargo #grwm #mujeres #babylisspro #tiktokshop @HALOVIDA MX @Garnier México”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 281，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.24%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 281 参与流量排序。",
         "点赞 4、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2751 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 127 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2751,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 127,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -1926,16 +1351,16 @@
         "hook": "标题围绕“Shampoo gel en seco! 😱 día de no lavar el cabello y queda como nuevo! @HALOVIDA MX #shampooenseco #cabello #unajimena”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 235，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.59%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 235 参与流量排序。",
         "点赞 8、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2744 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 120 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2744,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 120,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -2004,16 +1429,16 @@
         "hook": "标题围绕“#ventaquincenal #ventadeverano #cepilloantifrizz Disclaimer: El precio mostrado es el vigente al momento de la grabación y puede cambiar. Las promociones puedes tener restricciones o disponibilidad limitada.”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 218，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.44%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 218 参与流量排序。",
         "点赞 11、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2753 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 129 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2753,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 129,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -2082,16 +1507,16 @@
         "hook": "标题围绕“#tiktokshop#fyppppppppppppppppppppppp”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 194，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.26%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 194 参与流量排序。",
         "点赞 0、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2745 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 121 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2745,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 121,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -2160,16 +1585,16 @@
         "hook": "标题围绕“#halovida”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 187，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.47%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 187 参与流量排序。",
         "点赞 2、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2759 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 135 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2759,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 135,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -2238,16 +1663,16 @@
         "hook": "标题围绕“#ventaquincenal #ventadeverano”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 129，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.59%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 129 参与流量排序。",
         "点赞 3、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2752 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 128 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2752,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 128,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -2315,17 +1740,17 @@
         "hookType": "流量观察型",
         "hook": "标题围绕“Halovida Cepillo de Cerdas Redondas Hueco – Cepillo antielectrostático con masaje para mayor volumen y cuidado del cuero cabelludo, cepillo anti frizz,reduce el daño por calor, ideal para secado rápido y peinados voluminosos#antistaticcomb #hairstylingtools #tiktokshop #tiktokmademebuyit #foryou”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 75，适合从高流量素材中拆解选题、节奏和人群匹配。",
-        "cta": "Excel 未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "cta": "数据源未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 75 参与流量排序。",
         "点赞 3、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2747 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 123 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2747,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 123,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -2393,17 +1818,17 @@
         "hookType": "流量观察型",
         "hook": "标题围绕“✨ Un cepillo que desenreda con suavidad mientras brinda un agradable masaje al cuero cabelludo. Cabello más suave, brillante y con una apariencia saludable. 🧡 #ModoPartido #halovida #antifrizz #cepillocapilar #sinfrizz @HALOVIDA”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 32，适合从高流量素材中拆解选题、节奏和人群匹配。",
-        "cta": "Excel 未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "cta": "数据源未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 32 参与流量排序。",
         "点赞 2、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2760 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 136 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2760,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 136,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -2471,17 +1896,17 @@
         "hookType": "流量观察型",
         "hook": "标题围绕“Un mes usándolo así que creo que ya puedo decirte que si funciona totalmente! Invierte en un buen cepillo como este y luego me agradeces jaja”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 24，适合从高流量素材中拆解选题、节奏和人群匹配。",
-        "cta": "Excel 未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "cta": "数据源未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 24 参与流量排序。",
         "点赞 0、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2761 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 137 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2761,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 137,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -2558,8 +1983,8 @@
         "数据来自 Excel 第 61 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 61,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 9,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -2636,8 +2061,8 @@
         "数据来自 Excel 第 45 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 45,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 5,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -2714,8 +2139,8 @@
         "数据来自 Excel 第 85 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 85,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 15,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -2792,8 +2217,8 @@
         "数据来自 Excel 第 84 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 84,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 14,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -2870,8 +2295,8 @@
         "数据来自 Excel 第 113 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 113,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 21,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -2948,8 +2373,8 @@
         "数据来自 Excel 第 112 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 112,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 20,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -3026,8 +2451,8 @@
         "数据来自 Excel 第 92 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 92,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 17,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -3096,16 +2521,16 @@
         "hook": "标题围绕“#ventaquincenal #halovida #cepilloantifrizz #frizz #antifriz”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 2055，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 5.02%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 2055 参与流量排序。",
         "点赞 10、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2720 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 96 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2720,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 96,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -3174,16 +2599,16 @@
         "hook": "标题围绕“El cepillo que masajea y desenreda tu cabello de lo más fácil está en Tik Tok 😍 y es de @HALOVIDA MX  #ModoPartido #halovida #cepillodesenredante #haircare #cepillodecerdasdejabali”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 1247，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.62%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 1247 参与流量排序。",
         "点赞 10、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2725 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 101 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2725,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 101,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -3252,16 +2677,16 @@
         "hook": "标题围绕“Cepillo de Cabello Redondo Hueco #cepillo #cepillodecabello #cuidadodelcabello #tiktokshop #cabellosano”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 679，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.49%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 679 参与流量排序。",
         "点赞 1、评论 2，可作为互动强弱依据。",
-        "数据来自 Excel 第 2714 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 91 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2714,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 91,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -3330,16 +2755,16 @@
         "hook": "标题围绕“#tiktokshop#fyppppppppppppppppppppppp”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 676，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.75%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 676 参与流量排序。",
         "点赞 2、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2728 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 104 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2728,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 104,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -3408,16 +2833,16 @@
         "hook": "标题围绕“#halovida cepillo que te da brillo o y no maltrata”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 623，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.32%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 623 参与流量排序。",
         "点赞 6、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2734 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 110 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2734,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 110,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -3486,16 +2911,16 @@
         "hook": "标题围绕“El mejor cepillo Anti-Frizz💋 @HALOVIDA MX #halovida #cepillo #antifrizz #cabellosaludable”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 592，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.99%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 592 参与流量排序。",
         "点赞 10、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2742 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 118 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2742,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 118,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -3564,16 +2989,16 @@
         "hook": "标题围绕“#tiktokshop #tiktokgood #foryou #fyp #flyyyyyyyyyyyyy”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 520，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.65%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 520 参与流量排序。",
         "点赞 1、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2721 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 97 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2721,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 97,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -3642,16 +3067,16 @@
         "hook": "标题围绕“#fyp #tiktokshop #fyppppppppppppppppppppppp”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 518，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.19%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 518 参与流量排序。",
         "点赞 0、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2737 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 113 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2737,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 113,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -3720,16 +3145,16 @@
         "hook": "标题围绕“#tiktokshop #tiktokgood #foryou #fyp #flyyyyyyyyyyyyy”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 497，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.41%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 497 参与流量排序。",
         "点赞 0、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2722 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 98 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2722,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 98,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -3798,16 +3223,16 @@
         "hook": "标题围绕“El mejor para desenredar #halovida #cepillodecabello #cuidadodelcabello #cepillo #tiktokshop”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 432，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.53%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 432 参与流量排序。",
         "点赞 2、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2743 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 119 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2743,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 119,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -3876,16 +3301,16 @@
         "hook": "标题围绕“#tiktokshop #fyp #fypppp”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 335，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.61%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 335 参与流量排序。",
         "点赞 4、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2729 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 105 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2729,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 105,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -3954,16 +3379,16 @@
         "hook": "标题围绕“#ventaquincenal #ModoPartido #cepilloantifrizz @HALOVIDA MX”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 244，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.83%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 244 参与流量排序。",
         "点赞 5、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2731 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 107 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2731,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 107,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -4032,16 +3457,16 @@
         "hook": "标题围绕“#ventaquincenal #fyp”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 243，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.77%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 243 参与流量排序。",
         "点赞 11、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2733 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 109 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2733,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 109,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -4110,16 +3535,16 @@
         "hook": "标题围绕“#ventaquincenal #fyp”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 222，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.98%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 222 参与流量排序。",
         "点赞 6、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2732 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 108 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2732,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 108,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -4188,16 +3613,16 @@
         "hook": "标题围绕“#fyp #tiktokshop”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 205，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.33%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 205 参与流量排序。",
         "点赞 0、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2730 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 106 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2730,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 106,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -4266,16 +3691,16 @@
         "hook": "标题围绕“Demostración de producto generada por IA.fyppppppppppppppppppppppp #tiktokshop #tiktok #fyp”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 194，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.55%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 194 参与流量排序。",
         "点赞 3、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2726 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 102 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2726,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 102,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -4343,17 +3768,17 @@
         "hookType": "流量观察型",
         "hook": "标题围绕“#tiktokshop #tiktokgood #foryou #fyp #flyyyyyyyyyyyyy”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 191，适合从高流量素材中拆解选题、节奏和人群匹配。",
-        "cta": "Excel 未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "cta": "数据源未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 191 参与流量排序。",
         "点赞 0、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2724 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 100 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2724,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 100,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -4422,16 +3847,16 @@
         "hook": "标题围绕“#tiktokshop #tiktokgood #foryou #fyp #flyyyyyyyyyyyyy”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 189，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.58%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 189 参与流量排序。",
         "点赞 2、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2723 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 99 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2723,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 99,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -4500,16 +3925,16 @@
         "hook": "标题围绕“#tiktok #fypシ゚ #fyppppppppppppppppppppppp #tiktokshop #tiktoknewyear”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 50，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 4.29%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 50 参与流量排序。",
         "点赞 0、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2727 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 103 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2727,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 103,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -4577,17 +4002,17 @@
         "hookType": "流量观察型",
         "hook": "标题围绕“#fyp #tiktokshop”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 3，适合从高流量素材中拆解选题、节奏和人群匹配。",
-        "cta": "Excel 未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "cta": "数据源未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 3 参与流量排序。",
         "点赞 1、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2740 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 116 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2740,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 116,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -4664,8 +4089,8 @@
         "数据来自 Excel 第 59 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 59,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 8,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -4742,8 +4167,8 @@
         "数据来自 Excel 第 143 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 143,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 26,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -4820,8 +4245,8 @@
         "数据来自 Excel 第 125 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 125,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 25,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -4890,16 +4315,16 @@
         "hook": "标题围绕“#ventaquincenal #ModoPartido #cepilloantifrizz @HALOVIDA MX”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 2029，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 3.83%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 2029 参与流量排序。",
         "点赞 8、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2709 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 86 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2709,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 86,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -4968,16 +4393,16 @@
         "hook": "标题围绕“Es que si te ayuda mucho al frizz del cabello 🥰 #frizz #cabelo #peine #lacio #cabellolargo”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 1814，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.36%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 1814 参与流量排序。",
         "点赞 42、评论 36，可作为互动强弱依据。",
-        "数据来自 Excel 第 2718 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 94 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2718,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 94,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -5046,16 +4471,16 @@
         "hook": "标题围绕“#modopartido #ventaquincenal”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 1608，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 3.69%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 1608 参与流量排序。",
         "点赞 3、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2708 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 85 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2708,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 85,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -5124,16 +4549,16 @@
         "hook": "标题围绕“#fyppppppppppppppppppppppp #tiktokshop #fyp”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 1224，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 3.84%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 1224 参与流量排序。",
         "点赞 3、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2706 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 83 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2706,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 83,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -5202,16 +4627,16 @@
         "hook": "标题围绕“#cepilloantifrizz #ventaquincenal #ModoPartido @HALOVIDA MX Disclaimer: El precio mostrado es el vigente al momento de la grabación y puede cambiar. Las promociones puedes tener restricciones o disponibilidad limitada.”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 847，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.2%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 847 参与流量排序。",
         "点赞 4、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2717 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 93 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2717,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 93,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -5280,16 +4705,16 @@
         "hook": "标题围绕“#tiktok #tiktokshop #fpy #foryou #unboxing”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 753，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.01%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 753 参与流量排序。",
         "点赞 4、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2701 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 78 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2701,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 78,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -5358,16 +4783,16 @@
         "hook": "标题围绕“#fyppppppppppppppppppppppp #tiktokshop #fyp”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 710，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.13%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 710 参与流量排序。",
         "点赞 0、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2705 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 82 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2705,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 82,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -5436,16 +4861,16 @@
         "hook": "标题围绕“#cepillo #cepilloviral #halovida #ventaquicenal”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 703，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.33%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 703 参与流量排序。",
         "点赞 0、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2707 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 84 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2707,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 84,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -5514,16 +4939,16 @@
         "hook": "标题围绕“#cepillocabello #cepilloelectrostatico #cabellosano #cuidadodelcabello”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 700，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.95%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 700 参与流量排序。",
         "点赞 3、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2711 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 88 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2711,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 88,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -5592,16 +5017,16 @@
         "hook": "标题围绕“#unboxing Miraaaa que me llegó! 🚨🚨 🥹 jajajajaja perdón no podía dejar de cepillar el cabello es que se sentía tan rico #halovida #recomendado #cepilloviraltiktok @HALOVIDA MX”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 663，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 3.01%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 663 参与流量排序。",
         "点赞 4、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2712 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 89 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2712,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 89,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -5670,16 +5095,16 @@
         "hook": "标题围绕“Demostración de producto generada por IA. No fue probada en una tienda real Disclaimer: El precio mostrado es el vigente al momento de la grabación del video y puede cambiar. Las promociones pueden tener restricciones o disponibilidad limitada.#tiktok #like #fryyyyyyyyyyyyyyyyyyyyyyyyy #foryou #partiiiiiiiiiiiiiiiiiiiiiiiii #fyp #2026”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 588，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.2%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 588 参与流量排序。",
         "点赞 0、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2703 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 80 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2703,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 80,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -5748,16 +5173,16 @@
         "hook": "标题围绕“La tía cosa #ventaquincenal”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 525，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.08%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 525 参与流量排序。",
         "点赞 3、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2696 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 73 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2696,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 73,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -5825,17 +5250,17 @@
         "hookType": "流量观察型",
         "hook": "标题围绕“¡Tus nuevas favoritas! 💜👟 ¡No vas a creer lo fácil que es limpiar ahora! ✨ Estos trapos de microfibra son una joya en la cocina. Absorben todo, no rayan y secan al instante. 🧽 Desde que los uso, mi limpieza es mucho más rápida. ¡Tienes que tener los tuyos! 🏃‍♂️💨 #LimpiezaHogar #TipsDeLimpieza #CocinaLimpia #HacksDeLimpieza #Microfibra #OrdenEnCasa #TikTokMexico #LimpiezaHogar #TipsDeLimpieza #CocinaLimpia #HacksDeLimpieza #Microfibra #OrdenEnCasa #TikTokMexico”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 451，适合从高流量素材中拆解选题、节奏和人群匹配。",
-        "cta": "Excel 未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "cta": "数据源未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 451 参与流量排序。",
         "点赞 9、评论 1，可作为互动强弱依据。",
-        "数据来自 Excel 第 2710 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 87 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2710,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 87,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -5904,16 +5329,16 @@
         "hook": "标题围绕“Magia en tu cabello????😳🤩 #cabello #cepillo #viral #oferta”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 222，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.24%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 222 参与流量排序。",
         "点赞 4、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2719 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 95 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2719,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 95,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -5982,16 +5407,16 @@
         "hook": "标题围绕“#ventaquincenal #cepillo #cabellosaludable #peinado #peinadofacil”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 211，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.42%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 211 参与流量排序。",
         "点赞 4、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2697 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 74 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2697,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 74,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -6068,8 +5493,8 @@
         "数据来自 Excel 第 2653 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2653,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 31,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -6138,16 +5563,16 @@
         "hook": "标题围绕“#fyp #tiktokshop”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 132，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.63%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 132 参与流量排序。",
         "点赞 1、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2704 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 81 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2704,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 81,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -6216,16 +5641,16 @@
         "hook": "标题围绕“halovida aceite capilar en oferta@HALOVIDA MX #ModoPartido #ventaquincenal #halovida #sinfrizz #cabellobrilloso”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 127，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.68%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 127 参与流量排序。",
         "点赞 1、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2715 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 92 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2715,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 92,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -6293,17 +5718,17 @@
         "hookType": "流量观察型",
         "hook": "标题围绕“#viral #foryoupage❤️❤️ #parati #trending #foryourpage #explore #pourtoi #tiktok #tiktokshop #keşfet #fyppppppppppppppppppppppp”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 93，适合从高流量素材中拆解选题、节奏和人群匹配。",
-        "cta": "Excel 未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "cta": "数据源未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 93 参与流量排序。",
         "点赞 2、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2713 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 90 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2713,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 90,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -6380,8 +5805,8 @@
         "数据来自 Excel 第 64 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 64,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 10,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -6458,8 +5883,8 @@
         "数据来自 Excel 第 52 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 52,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 7,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -6536,8 +5961,8 @@
         "数据来自 Excel 第 124 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 124,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 24,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -6614,8 +6039,8 @@
         "数据来自 Excel 第 82 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 82,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 13,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -6692,8 +6117,8 @@
         "数据来自 Excel 第 123 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 123,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 23,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -6762,16 +6187,16 @@
         "hook": "标题围绕“@HALOVIDA #cepillo #halovida #cabellosano”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 3093，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 24.35%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 3093 参与流量排序。",
         "点赞 51、评论 1，可作为互动强弱依据。",
-        "数据来自 Excel 第 2702 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 79 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2702,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 79,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -6840,16 +6265,16 @@
         "hook": "标题围绕“#vamostiktokshop #ModoPartido #ventaquincenal #halovida #cepillocabello”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 1909，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 7.11%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 1909 参与流量排序。",
         "点赞 136、评论 1，可作为互动强弱依据。",
-        "数据来自 Excel 第 2695 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 72 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2695,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 72,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -6918,16 +6343,16 @@
         "hook": "标题围绕“Cepillo halo vida 🪮 #halovida #cepilloantienredos #cepillosparaelcabello”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 1730，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.98%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 1730 参与流量排序。",
         "点赞 12、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2686 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 63 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2686,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 63,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -6996,16 +6421,16 @@
         "hook": "标题围绕“Halovida Cepillo de Cerdas Red”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 1716，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.82%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 1716 参与流量排序。",
         "点赞 5、评论 1，可作为互动强弱依据。",
-        "数据来自 Excel 第 2689 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 66 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2689,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 66,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -7074,16 +6499,16 @@
         "hook": "标题围绕“👌 ¡SÚPER RECOMENDADO! ⚠️ Promoción vigente al momento de publicar este video. Sujeta a cambios y disponibilidad. #Halovida  #VentaQuincenal”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 1705，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.36%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 1705 参与流量排序。",
         "点赞 0、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2663 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 41 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2663,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 41,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -7152,16 +6577,16 @@
         "hook": "标题围绕“🚨 ¡NO TE QUEDES SIN EL TUYO! #Halovida  #VentaQuincenal”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 1033，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.41%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 1033 参与流量排序。",
         "点赞 2、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2661 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 39 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2661,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 39,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -7230,16 +6655,16 @@
         "hook": "标题围绕“🚨 No la dejes pasar. ⚠️ Promoción vigente al momento de publicar este video. Sujeta a cambios y disponibilidad. #VentaQuincenal  #Halovida”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 930，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.13%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 930 参与流量排序。",
         "点赞 1、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2662 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 40 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2662,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 40,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -7308,16 +6733,16 @@
         "hook": "标题围绕“Respuesta a @karensaenz12t  El mejor cepillo para desenredar nuestro cabello , HALOVIDA!  #cepillo #cabello #halovida #desenredarcabello #tiktokshop”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 892，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.77%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 892 参与流量排序。",
         "点赞 6、评论 2，可作为互动强弱依据。",
-        "数据来自 Excel 第 2690 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 67 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2690,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 67,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -7386,16 +6811,16 @@
         "hook": "标题围绕“✨ HaloFlex Spa Brush masajea el cuero cabelludo mientras desenreda suavemente el cabello. Sus cerdas de jabalí y nylon ayudan a dejarlo más suave, brillante y con un aspecto saludable. ¡Un cuidado de spa en cada cepillado! 💆‍♀️ #ModoPartido #halovida #cepilloantifrizz #frizz @HALOVIDA MX”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 882，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.01%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 882 参与流量排序。",
         "点赞 4、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2692 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 69 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2692,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 69,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -7464,16 +6889,16 @@
         "hook": "标题围绕“Sin mentiras, este producto cambió mi rutina 🙌 Fácil de usar, duradero y muy práctico. 100% recomendado para todos los mexicanos! Si buscas algo útil y económico, este es el indicado✅”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 817，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.52%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 817 参与流量排序。",
         "点赞 3、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2678 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 55 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2678,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 55,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -7542,16 +6967,16 @@
         "hook": "标题围绕“Cepillo antijalones de halovida #cabellolargo  #cabello  #cepillo #ModoPartido #ventaquincenal”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 806，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.29%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 806 参与流量排序。",
         "点赞 6、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2688 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 65 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2688,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 65,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -7619,17 +7044,17 @@
         "hookType": "流量观察型",
         "hook": "标题围绕“Pantalones casuales de denim con cremallera de botón para hombres de tubo recto, pantalones casuales de denim elástico micro, versión cómoda de tubo recto, versión de tubo delgado, adecuados para el ocio diario y los negocios, pantalones para hombres necesarios para la tendencia YL03#tiktok #tiktokshop #fyp #fyppppppppppppppppppppppp”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 797，适合从高流量素材中拆解选题、节奏和人群匹配。",
-        "cta": "Excel 未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "cta": "数据源未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 797 参与流量排序。",
         "点赞 3、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2680 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 57 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2680,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 57,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -7698,16 +7123,16 @@
         "hook": "标题围绕“Está en oferta‼️ ⚠️ Promoción vigente al momento de publicar este video. Sujeta a cambios y disponibilidad. #VentaQuincenal  #Halovida”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 774，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.31%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 774 参与流量排序。",
         "点赞 2、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2664 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 42 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2664,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 42,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -7776,16 +7201,16 @@
         "hook": "标题围绕“Y aparte esta con decuento 😱‼️ #cepillo #cabello #desenredarcabello #ventaquincenal”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 757，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.9%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 757 参与流量排序。",
         "点赞 4、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2691 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 68 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2691,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 68,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -7854,16 +7279,16 @@
         "hook": "标题围绕“#ventaquincenal #ModoPartido  Disclaimer: El precio mostrado es el vigente al momento de la grabación y puede cambiar. Las promociones puedes tener restricciones o disponibilidad limitada.  @HALOVIDA MX”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 744，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.73%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 744 参与流量排序。",
         "点赞 6、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2684 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 61 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2684,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 61,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -7932,16 +7357,16 @@
         "hook": "标题围绕“#modopartido #ventaquincenal”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 705，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.08%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 705 参与流量排序。",
         "点赞 5、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2694 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 71 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2694,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 71,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -8010,16 +7435,16 @@
         "hook": "标题围绕““Si eres hombre y tu cabello se ve aplastado o sin vida, prueba esto durante 30 días. Este cepillo de cerdas de jabalí ayuda a distribuir los aceites naturales y a masajear el cuero cabelludo. Mira el cambio.” #TikTokShop #TikTokMadeMeBuyIt #HairTok #CabelloHombre #MensGrooming”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 676，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.13%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 676 参与流量排序。",
         "点赞 3、评论 1，可作为互动强弱依据。",
-        "数据来自 Excel 第 2681 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 58 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2681,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 58,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -8088,16 +7513,16 @@
         "hook": "标题围绕“#cepillo #cepilloviral #halovida #ModoPartido #ventaquincenal”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 663，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.13%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 663 参与流量排序。",
         "点赞 1、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2682 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 59 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2682,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 59,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -8166,16 +7591,16 @@
         "hook": "标题围绕“Cabello al 100💅🏼 #ModoPartido #fyp #belleza #tiktokshop”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 647，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.31%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 647 参与流量排序。",
         "点赞 11、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2687 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 64 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2687,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 64,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -8244,16 +7669,16 @@
         "hook": "标题围绕“Tener el pelazo de tu vida depende de varias cosas, pero una muy importante es como lo cepillas @HALOVIDA MX  #hair #hairtip #halovida #cepillo #capilar”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 647，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.46%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 647 参与流量排序。",
         "点赞 11、评论 2，可作为互动强弱依据。",
-        "数据来自 Excel 第 2693 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 70 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2693,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 70,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -8322,16 +7747,16 @@
         "hook": "标题围绕“#HotSaleEnTikTokShopMX #foryou #fpy #tiktokshop #tiktok”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 632，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.91%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 632 参与流量排序。",
         "点赞 1、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2679 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 56 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2679,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 56,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -8400,16 +7825,16 @@
         "hook": "标题围绕“Necesitas este cepillo! #halovida @HALOVIDA MX #cepilloplateado #cepillo”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 577，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.17%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 577 参与流量排序。",
         "点赞 6、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2698 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 75 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2698,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 75,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -8478,16 +7903,16 @@
         "hook": "标题围绕“Chicas corran a pedir el suyo se los dejo en mi carrito naranja está a súper precio $$$ pero corran que se agotan es súper relajante lo mejor que no te arranca cabello ⬇️➡️🛒⬇️🧡corran chicas pidan el suyo ya !”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 530，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.27%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 530 参与流量排序。",
         "点赞 10、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2674 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 51 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2674,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 51,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -8556,16 +7981,16 @@
         "hook": "标题围绕“#ventaquincenal”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 435，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 3.62%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 435 参与流量排序。",
         "点赞 2、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2676 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 53 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2676,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 53,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -8634,16 +8059,16 @@
         "hook": "标题围绕“Demostración de producto generada por IA.fyppppppppppppppppppppppp #tiktokshop #tiktok #fyp”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 310，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.98%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 310 参与流量排序。",
         "点赞 0、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2677 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 54 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2677,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 54,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -8712,16 +8137,16 @@
         "hook": "标题围绕“aceite capilar @Ayvanna Rever #ModoPartido #ventaquincenal #ofertasimperdibles #cabellosaludable #sinfrizz”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 302，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.56%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 302 参与流量排序。",
         "点赞 2、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2683 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 60 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2683,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 60,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -8790,16 +8215,16 @@
         "hook": "标题围绕“El favorito de mis hijos! #halovida @HALOVIDA MX @HALOVIDA”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 275，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.42%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 275 参与流量排序。",
         "点赞 4、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2700 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 77 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2700,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 77,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -8868,16 +8293,16 @@
         "hook": "标题围绕“Halovida Cepillo de Cerdas redondas hueco”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 273，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.99%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 273 参与流量排序。",
         "点赞 9、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2685 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 62 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2685,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 62,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -8946,16 +8371,16 @@
         "hook": "标题围绕“Este cepillo desaparece al frizz #halovida @HALOVIDA @HALOVIDA MX”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 238，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.06%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 238 参与流量排序。",
         "点赞 1、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2699 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 76 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2699,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 76,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -9024,16 +8449,16 @@
         "hook": "标题围绕“#ventaquincenal”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 229，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 3.26%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 229 参与流量排序。",
         "点赞 1、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2675 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 52 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2675,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 52,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -9110,8 +8535,8 @@
         "数据来自 Excel 第 14 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 14,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 2,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -9188,8 +8613,8 @@
         "数据来自 Excel 第 30 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 30,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 3,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -9266,8 +8691,8 @@
         "数据来自 Excel 第 37 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 37,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 4,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -9344,8 +8769,8 @@
         "数据来自 Excel 第 46 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 46,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 6,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -9422,8 +8847,8 @@
         "数据来自 Excel 第 93 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 93,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 18,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -9500,8 +8925,8 @@
         "数据来自 Excel 第 78 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 78,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 12,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -9578,8 +9003,8 @@
         "数据来自 Excel 第 91 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 91,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 16,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -9656,8 +9081,8 @@
         "数据来自 Excel 第 122 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 122,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 22,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -9726,16 +9151,16 @@
         "hook": "标题围绕“El mejor”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 13517，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.61%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 13517 参与流量排序。",
         "点赞 384、评论 12，可作为互动强弱依据。",
-        "数据来自 Excel 第 2658 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 36 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2658,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 36,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -9804,16 +9229,16 @@
         "hook": "标题围绕“Cepillo Halovida cerdas redondas hueco cerdas de jabalí antifrizz desenredante masaje capilar mayor volumen 💆‍♀️✨ ⚠️ Descargo de responsabilidad: El precio mostrado es el vigente al momento de la grabación y puede cambiar. Las promociones pueden tener restricciones o disponibilidad limitada. #publicidad”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 3720，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 4.88%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 3720 参与流量排序。",
         "点赞 30、评论 2，可作为互动强弱依据。",
-        "数据来自 Excel 第 2668 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 45 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2668,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 45,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -9882,16 +9307,16 @@
         "hook": "标题围绕“#cepillo #cepilloviral #halovida #ventaquincenal”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 1418，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 4.01%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 1418 参与流量排序。",
         "点赞 2、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2657 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 35 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2657,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 35,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -9960,16 +9385,16 @@
         "hook": "标题围绕“Cepillo de cerdas suaves de jabalí #ventaquincenal #viralvideo #cepillo #cabello #ofertas”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 1412，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 3.79%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 1412 参与流量排序。",
         "点赞 6、评论 5，可作为互动强弱依据。",
-        "数据来自 Excel 第 2670 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 47 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2670,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 47,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -10038,16 +9463,16 @@
         "hook": "标题围绕“#cabello #cepillo”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 1051，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.3%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 1051 参与流量排序。",
         "点赞 7、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2666 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 43 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2666,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 43,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -10124,8 +9549,8 @@
         "数据来自 Excel 第 2652 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2652,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 30,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -10194,16 +9619,16 @@
         "hook": "标题围绕“#cepillo #cepilloviral #halovida #ventaquincenal”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 945，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.59%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 945 参与流量排序。",
         "点赞 2、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2656 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 34 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2656,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 34,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -10272,16 +9697,16 @@
         "hook": "标题围绕“#ventaquincenal #halovida #cepillo #antifrizz #cepilloantifrizz”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 855，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 2.55%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 855 参与流量排序。",
         "点赞 3、评论 2，可作为互动强弱依据。",
-        "数据来自 Excel 第 2671 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 48 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2671,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 48,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -10350,16 +9775,16 @@
         "hook": "标题围绕“#ventaquincenal”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 820，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.97%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 820 参与流量排序。",
         "点赞 2、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2659 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 37 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2659,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 37,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -10428,16 +9853,16 @@
         "hook": "标题围绕“#cuidadodelcabello #cepilloparacabello #cabellofuerte”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 810，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.45%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 810 参与流量排序。",
         "点赞 2、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2669 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 46 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2669,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 46,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -10506,16 +9931,16 @@
         "hook": "标题围绕“Cepillo de HALOVIDA #cepillohalovida #Halovida #cepillo #cabello”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 777，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 3.42%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 777 参与流量排序。",
         "点赞 7、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2660 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 38 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2660,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 38,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -10592,8 +10017,8 @@
         "数据来自 Excel 第 2651 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2651,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 29,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -10662,16 +10087,16 @@
         "hook": "标题围绕“El #cepillo que todas necesitamos #peinados #cepilloparaelcabello #cabellodesenredado #cabello”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 676，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.71%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 676 参与流量排序。",
         "点赞 11、评论 1，可作为互动强弱依据。",
-        "数据来自 Excel 第 2667 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 44 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2667,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 44,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -10748,8 +10173,8 @@
         "数据来自 Excel 第 2540 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2540,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 27,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -10818,16 +10243,16 @@
         "hook": "标题围绕“#ti̇ktok #tiktokindia #tiktokviral”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 574，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.04%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 574 参与流量排序。",
         "点赞 1、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2655 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 33 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2655,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 33,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -10896,16 +10321,16 @@
         "hook": "标题围绕“#ventaquincenal #compraaqui #carritonaranja”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 493，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 1.62%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 493 参与流量排序。",
         "点赞 3、评论 0，可作为互动强弱依据。",
-        "数据来自 Excel 第 2673 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 50 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2673,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 50,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -10974,16 +10399,16 @@
         "hook": "标题围绕“Aún no te convences que es muy buen cepillo? Su diseño y materiales son lo que lo hacen diferentes.  #cepillohalovida #halovida #cepillodecabello #cabellosano #cabellosaludable”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
         "sellingPoint": "该视频当前订单为 0，但曝光 454，适合从高流量素材中拆解选题、节奏和人群匹配。",
         "cta": "联盟点击率为 0.2%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
-        "reusable": "Excel 排序定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
         "出单量为 0，按曝光 454 参与流量排序。",
         "点赞 5、评论 3，可作为互动强弱依据。",
-        "数据来自 Excel 第 2672 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "数据来自 Feishu:TikTok每日视频数据 第 49 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2672,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 49,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -11060,8 +10485,8 @@
         "数据来自 Excel 第 2654 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2654,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 32,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -11138,8 +10563,8 @@
         "数据来自 Excel 第 2635 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
-        "file": "tiktok-video-list-20260629-20260705.xlsx",
-        "row": 2635,
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 28,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",

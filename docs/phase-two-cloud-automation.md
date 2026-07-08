@@ -33,7 +33,7 @@
 
 ```text
 https://xinchimcn.feishu.cn/wiki/VUs4wyJ6Mi1MlHkhQkCcrx8hnvh
-工作表：达人视频总表
+工作表：TikTok每日视频数据
 日期范围：2026-07-01 及之后
 ```
 

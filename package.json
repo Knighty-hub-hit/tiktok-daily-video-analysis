@@ -14,7 +14,7 @@
     "data:validate": "node scripts/validate-site-data.mjs",
     "feishu:import": "node scripts/import-feishu-sheet-to-site-data.mjs",
     "report:download": "node scripts/download-tiktok-report.mjs",
-    "pages:build": "GITHUB_PAGES=true NEXT_PUBLIC_SITE_BASE_PATH=/tiktok-daily-video-analysis next build",
+    "pages:build": "GITHUB_PAGES=true NEXT_PUBLIC_SITE_BASE_PATH=/tiktok-daily-video-analysis next build --webpack",
     "pages:check": "npm run data:validate && npm run pages:build",
     "workflow:check": "npm run data:validate && npm run build",
     "db:generate": "drizzle-kit generate"

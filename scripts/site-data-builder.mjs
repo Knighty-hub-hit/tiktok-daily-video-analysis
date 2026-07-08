@@ -167,7 +167,7 @@ function mergeDisplayAssets(record, existingRecord) {
 export function rowToSiteRecord(row, { sourceLabel, sourceRow }) {
   const link = String(getRowValue(row, FIELD_ALIASES.link) ?? "").trim();
   const date = normalizeDate(getRowValue(row, FIELD_ALIASES.date));
-  const title = String(getRowValue(row, FIELD_ALIASES.title) ?? "未命名视频").trim();
+  const title = String(getRowValue(row, FIELD_ALIASES.title) ?? "").trim() || "未命名视频";
   const creator = extractCreator(link, getRowValue(row, FIELD_ALIASES.creator));
   const gmv = toNumber(getRowValue(row, FIELD_ALIASES.revenue));
   const totalGmv = toNumber(getRowValue(row, FIELD_ALIASES.totalRevenue));
