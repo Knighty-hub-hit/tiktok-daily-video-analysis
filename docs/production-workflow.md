@@ -11,8 +11,9 @@
 - 网站代码已经在本仓库中。
 - 网站读取 `data/site-videos.json` 作为展示数据源。
 - 已有 TikTok Excel 到网站数据的转换脚本：`scratch/export_tiktok_excel_to_site_data.mjs`。
+- 已有飞书表格到网站数据的转换脚本：`scripts/import-feishu-sheet-to-site-data.mjs`。
 - 已有 Sites 托管配置：`.openai/hosting.json`。
-- 飞书表格自动录入逻辑已验证，需要接入每日定时流程。
+- 飞书表格将作为网站的主数据源，字段规范见 `docs/feishu-data-source.md`。
 
 ## 每日自动化闭环
 
@@ -34,15 +35,21 @@ flowchart LR
 
 优先使用稳定来源作为每日输入：
 
-- TikTok Shop 后台导出的 Excel
-- 已保存的视频链接清单
+- 飞书表格 `达人视频总表`
+- TikTok Shop 后台导出的 Excel，作为手动兜底
 - 后续可扩展为自动抓取 TikTok 页面、字幕和素材
 
-需要保留原始文件到 `data/exports/`，便于追溯每一天的数据来源。
+飞书表格只处理 `2026-07-01` 及之后的视频数据。Excel 兜底文件需要保留到 `data/exports/`，便于追溯每一天的数据来源。
 
 ### 2. 数据标准化
 
-执行 Excel 转换脚本，把导出表格整理为网站可读的 JSON：
+执行飞书导入脚本，把表格整理为网站可读的 JSON：
+
+```bash
+npm run feishu:import
+```
+
+手动 Excel 兜底时执行：
 
 ```bash
 node scratch/export_tiktok_excel_to_site_data.mjs <xlsx路径> data/site-videos.json

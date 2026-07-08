@@ -28,16 +28,30 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     env:
       REPORT_URL: ${{ github.event.inputs.report_url || secrets.TIKTOK_REPORT_URL }}
+      FEISHU_SHEET_URL: ${{ secrets.FEISHU_SHEET_URL }}
+      FEISHU_SHEET_NAME: ${{ secrets.FEISHU_SHEET_NAME }}
+      FEISHU_SHEET_ID: ${{ secrets.FEISHU_SHEET_ID }}
+      FEISHU_SPREADSHEET_TOKEN: ${{ secrets.FEISHU_SPREADSHEET_TOKEN }}
+      FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
+      FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+      LARK_APP_ID: ${{ secrets.LARK_APP_ID }}
+      LARK_APP_SECRET: ${{ secrets.LARK_APP_SECRET }}
     steps:
-      - name: Check report source
+      - name: Check data source
         id: source
         shell: bash
         run: |
-          if [ -z "$REPORT_URL" ]; then
-            echo "configured=false" >> "$GITHUB_OUTPUT"
-            echo "No report URL configured. Set TIKTOK_REPORT_URL to enable scheduled refresh."
-          else
+          if [ -n "$REPORT_URL" ]; then
             echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "mode=report" >> "$GITHUB_OUTPUT"
+            echo "Using one-time or configured TikTok report URL."
+          elif [ -n "$FEISHU_SHEET_URL" ] && { [ -n "$FEISHU_APP_ID" ] || [ -n "$LARK_APP_ID" ]; } && { [ -n "$FEISHU_APP_SECRET" ] || [ -n "$LARK_APP_SECRET" ]; }; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "mode=feishu" >> "$GITHUB_OUTPUT"
+            echo "Using Feishu sheet as the daily source."
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "No data source configured. Set FEISHU_SHEET_URL plus FEISHU_APP_ID/FEISHU_APP_SECRET, or set TIKTOK_REPORT_URL."
           fi
 
       - name: Check out repository
@@ -56,7 +70,7 @@ jobs:
         run: npm ci
 
       - name: Download TikTok report
-        if: steps.source.outputs.configured == 'true'
+        if: steps.source.outputs.mode == 'report'
         env:
           TIKTOK_REPORT_AUTHORIZATION: ${{ secrets.TIKTOK_REPORT_AUTHORIZATION }}
           TIKTOK_REPORT_COOKIE: ${{ secrets.TIKTOK_REPORT_COOKIE }}
@@ -65,8 +79,12 @@ jobs:
         run: npm run report:download
 
       - name: Import site data
-        if: steps.source.outputs.configured == 'true'
+        if: steps.source.outputs.mode == 'report'
         run: npm run data:import -- data/exports/tiktok-report-${{ github.run_id }}.xlsx
+
+      - name: Import Feishu sheet data
+        if: steps.source.outputs.mode == 'feishu'
+        run: npm run feishu:import
 
       - name: Build public site
         if: steps.source.outputs.configured == 'true'
