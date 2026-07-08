@@ -1,6 +1,9 @@
 name: Daily data refresh
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       report_url:
@@ -49,6 +52,10 @@ jobs:
             echo "configured=true" >> "$GITHUB_OUTPUT"
             echo "mode=feishu" >> "$GITHUB_OUTPUT"
             echo "Using Feishu sheet as the daily source."
+          elif [ "${{ github.event_name }}" = "push" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "mode=existing" >> "$GITHUB_OUTPUT"
+            echo "Using committed site data for push deployment."
           else
             echo "configured=false" >> "$GITHUB_OUTPUT"
             echo "No data source configured. Set FEISHU_SHEET_URL plus FEISHU_APP_ID/FEISHU_APP_SECRET, or set TIKTOK_REPORT_URL."
