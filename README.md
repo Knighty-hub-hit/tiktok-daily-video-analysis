@@ -1,97 +1,55 @@
-# vinext-starter
+# TikTok 每日视频分析台
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+这是一个用于沉淀 TikTok Shop 每日带货视频数据、素材预览和拆解结论的内部分析台。当前网站会读取 `data/site-videos.json`，展示每日榜单、关键指标、视频预览、关键帧、字幕脚本和复盘要点。
 
-## Prerequisites
+## 当前能力
 
-- Node.js `>=22.13.0`
+- 按日期浏览每日视频榜单
+- 查看 GMV、订单、曝光、点击率、互动等核心指标
+- 展示本地保存的视频 GIF 预览、字幕和关键帧
+- 对重点视频沉淀 Hook、卖点、CTA 和可复用脚本结构
+- 从 TikTok 导出的 Excel 生成网站数据
+- 保留 Sites 托管配置，可发布成团队可访问链接
 
-## Quick Start
+## 关键目录
+
+- `app/`: 网站页面和样式入口
+- `data/site-videos.json`: 网站当前读取的视频分析数据
+- `data/exports/`: TikTok 每日或周期导出的 Excel 原始文件
+- `public/videos/`: 视频预览和字幕文件
+- `public/keyframes/`: 每条视频的关键帧截图
+- `scratch/export_tiktok_excel_to_site_data.mjs`: Excel 转网站数据脚本
+- `.openai/hosting.json`: Sites 托管项目配置
+- `docs/production-workflow.md`: 上线、自动化和飞书链路说明
+
+## 本地运行
 
 ```bash
 npm install
 npm run dev
+```
+
+## 生成网站数据
+
+```bash
+node scratch/export_tiktok_excel_to_site_data.mjs data/exports/tiktok-video-list-20260629-20260705.xlsx
+```
+
+默认会输出到 `data/site-videos.json`。更新数据后重新构建或发布网站即可看到最新内容。
+
+## 验证构建
+
+```bash
 npm run build
 ```
 
-This starter does not use `wrangler.jsonc`.
+## 生产化方向
 
-## Included Shape
+完整链路见 `docs/production-workflow.md`。核心目标是每天自动完成：
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
-
-## Workspace Auth Headers
-
-OpenAI workspace sites can read the current user's email from
-`oai-authenticated-user-email`.
-
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
-```
-
-## Optional Dispatch-Owned ChatGPT Sign-In
-
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
-
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
-
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
-
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
-
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
-
-## Useful Commands
-
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm run db:generate`: generate Drizzle migrations after schema changes
-
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+1. 获取 TikTok 每日视频数据
+2. 生成或更新网站数据
+3. 写入飞书电子表格
+4. 发布或刷新网站
+5. 推送飞书群日报
+6. 记录日志并在失败时告警
