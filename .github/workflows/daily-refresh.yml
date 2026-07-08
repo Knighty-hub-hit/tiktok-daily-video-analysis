@@ -1,0 +1,102 @@
+name: Daily data refresh
+
+on:
+  workflow_dispatch:
+    inputs:
+      report_url:
+        description: Optional one-time XLSX report URL
+        required: false
+        type: string
+  schedule:
+    - cron: "15 9 * * *"
+      timezone: "Asia/Shanghai"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      REPORT_URL: ${{ github.event.inputs.report_url || secrets.TIKTOK_REPORT_URL }}
+    steps:
+      - name: Check report source
+        id: source
+        shell: bash
+        run: |
+          if [ -z "$REPORT_URL" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "No report URL configured. Set TIKTOK_REPORT_URL to enable scheduled refresh."
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check out repository
+        if: steps.source.outputs.configured == 'true'
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        if: steps.source.outputs.configured == 'true'
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        if: steps.source.outputs.configured == 'true'
+        run: npm ci
+
+      - name: Download TikTok report
+        if: steps.source.outputs.configured == 'true'
+        env:
+          TIKTOK_REPORT_AUTHORIZATION: ${{ secrets.TIKTOK_REPORT_AUTHORIZATION }}
+          TIKTOK_REPORT_COOKIE: ${{ secrets.TIKTOK_REPORT_COOKIE }}
+          TIKTOK_REPORT_OUTPUT: data/exports/tiktok-report-${{ github.run_id }}.xlsx
+          TIKTOK_REPORT_URL: ${{ env.REPORT_URL }}
+        run: npm run report:download
+
+      - name: Import site data
+        if: steps.source.outputs.configured == 'true'
+        run: npm run data:import -- data/exports/tiktok-report-${{ github.run_id }}.xlsx
+
+      - name: Build public site
+        if: steps.source.outputs.configured == 'true'
+        run: npm run pages:build
+
+      - name: Save refreshed data
+        if: steps.source.outputs.configured == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/site-videos.json
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "Refresh TikTok data [skip ci]"
+            git push
+          fi
+
+      - name: Configure GitHub Pages
+        if: steps.source.outputs.configured == 'true'
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        if: steps.source.outputs.configured == 'true'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: out
+
+      - name: Deploy to GitHub Pages
+        if: steps.source.outputs.configured == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v4

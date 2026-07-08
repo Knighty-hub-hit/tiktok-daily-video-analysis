@@ -20,9 +20,11 @@
 - `public/keyframes/`: 每条视频的关键帧截图
 - `scratch/export_tiktok_excel_to_site_data.mjs`: Excel 转网站数据脚本
 - `scripts/refresh-site-data.mjs`: 导入 Excel 并校验网站数据
+- `scripts/download-tiktok-report.mjs`: 从云端下载每日 TikTok Excel 报表
 - `scripts/validate-site-data.mjs`: 校验网站展示数据和素材路径
 - `.openai/hosting.json`: Sites 托管项目配置
 - `docs/phase-one-workflow.md`: 第一阶段网站展示链路
+- `docs/phase-two-cloud-automation.md`: 第二阶段云端每日自动更新
 - `docs/production-workflow.md`: 上线、自动化和飞书链路说明
 
 ## 本地运行
@@ -54,6 +56,14 @@ npm run workflow:check
 
 这个命令会先校验 `data/site-videos.json`，再构建网站。
 
+## 公开网站构建
+
+```bash
+npm run pages:check
+```
+
+这个命令会校验数据并生成 GitHub Pages 可发布的静态站点。GitHub 云端发布配置在 `.github/workflows/pages.yml`。
+
 ## 生产化方向
 
 第一阶段只做网站展示链路，见 `docs/phase-one-workflow.md`：
@@ -67,7 +77,10 @@ npm run workflow:check
 
 完整链路见 `docs/production-workflow.md`。第二阶段再继续接入：
 
+- 云端每日自动获取 TikTok 报表
 - 写入飞书电子表格
 - 生成飞书日报摘要
 - 飞书群定时推送
 - 长期自动化调度和告警
+
+第二阶段云端任务说明见 `docs/phase-two-cloud-automation.md`。
