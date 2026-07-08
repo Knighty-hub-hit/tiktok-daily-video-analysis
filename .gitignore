@@ -30,6 +30,7 @@ yarn-error.log*
 .dev-home/
 .dev-tools/
 scratch/node_modules
+.tiktok_feishu_state.json
 data/*-media-url.txt
 data/discovered-video-url.txt
 public/keyframes/*-seq/

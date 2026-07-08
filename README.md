@@ -19,7 +19,10 @@
 - `public/videos/`: 视频预览和字幕文件
 - `public/keyframes/`: 每条视频的关键帧截图
 - `scratch/export_tiktok_excel_to_site_data.mjs`: Excel 转网站数据脚本
+- `scripts/refresh-site-data.mjs`: 导入 Excel 并校验网站数据
+- `scripts/validate-site-data.mjs`: 校验网站展示数据和素材路径
 - `.openai/hosting.json`: Sites 托管项目配置
+- `docs/phase-one-workflow.md`: 第一阶段网站展示链路
 - `docs/production-workflow.md`: 上线、自动化和飞书链路说明
 
 ## 本地运行
@@ -32,24 +35,39 @@ npm run dev
 ## 生成网站数据
 
 ```bash
-node scratch/export_tiktok_excel_to_site_data.mjs data/exports/tiktok-video-list-20260629-20260705.xlsx
+npm run data:import -- data/exports/tiktok-video-list-20260629-20260705.xlsx
 ```
 
-默认会输出到 `data/site-videos.json`。更新数据后重新构建或发布网站即可看到最新内容。
+默认会输出到 `data/site-videos.json`，并自动校验数据结构、重复视频、指标类型和素材路径。更新数据后重新构建或发布网站即可看到最新内容。
+
+## 校验数据
+
+```bash
+npm run data:validate
+```
 
 ## 验证构建
 
 ```bash
-npm run build
+npm run workflow:check
 ```
+
+这个命令会先校验 `data/site-videos.json`，再构建网站。
 
 ## 生产化方向
 
-完整链路见 `docs/production-workflow.md`。核心目标是每天自动完成：
+第一阶段只做网站展示链路，见 `docs/phase-one-workflow.md`：
 
-1. 获取 TikTok 每日视频数据
-2. 生成或更新网站数据
-3. 写入飞书电子表格
-4. 发布或刷新网站
-5. 推送飞书群日报
-6. 记录日志并在失败时告警
+1. 获取 TikTok 每日数据源
+2. 标准化 Excel / 原始记录
+3. 生成 `site-videos.json`
+4. 更新网站展示数据
+5. 构建并发布网站
+6. 交付团队访问链接
+
+完整链路见 `docs/production-workflow.md`。第二阶段再继续接入：
+
+- 写入飞书电子表格
+- 生成飞书日报摘要
+- 飞书群定时推送
+- 长期自动化调度和告警

@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { FileBlob, SpreadsheetFile } from "@oai/artifact-tool";
 
@@ -70,6 +70,10 @@ function videoIdFromLink(link) {
   return String(link).match(/\/video\/(\d+)/)?.[1] ?? "";
 }
 
+function isTikTokVideoLink(link) {
+  return /^https?:\/\/(?:www\.)?tiktok\.com\/@[^/]+\/video\/\d+/.test(String(link));
+}
+
 function slugify(value) {
   return String(value)
     .toLowerCase()
@@ -102,6 +106,37 @@ function analysisFromRow({ title, orders, views, ctr, gmv }) {
   };
 }
 
+async function loadExistingRecords(filePath) {
+  try {
+    const data = JSON.parse(await readFile(filePath, "utf8"));
+    const records = Array.isArray(data.records) ? data.records : [];
+    return new Map(records.map((record) => [record.id, record]));
+  } catch {
+    return new Map();
+  }
+}
+
+function mergeDisplayAssets(record, existingRecord) {
+  if (!existingRecord) {
+    return record;
+  }
+
+  return {
+    ...record,
+    cover: existingRecord.cover ?? record.cover,
+    videoFile: existingRecord.videoFile ?? record.videoFile,
+    videoReady: existingRecord.videoReady ?? record.videoReady,
+    mediaType: existingRecord.mediaType ?? record.mediaType,
+    transcriptFile: existingRecord.transcriptFile ?? record.transcriptFile,
+    frames: existingRecord.frames?.length ? existingRecord.frames : record.frames,
+    script: existingRecord.script?.length ? existingRecord.script : record.script,
+    breakdown: existingRecord.breakdown ?? record.breakdown,
+    reasons: existingRecord.reasons?.length ? existingRecord.reasons : record.reasons,
+    source: record.source,
+  };
+}
+
+const existingRecordsById = await loadExistingRecords(outputPath);
 const input = await FileBlob.load(inputPath);
 const workbook = await SpreadsheetFile.importXlsx(input);
 const sheet = workbook.worksheets.getItemAt(0);
@@ -206,7 +241,8 @@ const records = values
       },
     };
   })
-  .filter((record) => record.link && record.date >= JULY_START);
+  .map((record) => mergeDisplayAssets(record, existingRecordsById.get(record.id)))
+  .filter((record) => isTikTokVideoLink(record.link) && record.date >= JULY_START);
 
 const byDate = new Map();
 

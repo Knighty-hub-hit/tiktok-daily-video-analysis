@@ -10,6 +10,9 @@
     "build": "vinext build",
     "start": "vinext start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern .dev-tools",
+    "data:import": "node scripts/refresh-site-data.mjs",
+    "data:validate": "node scripts/validate-site-data.mjs",
+    "workflow:check": "npm run data:validate && npm run build",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
