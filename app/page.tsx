@@ -62,6 +62,15 @@ type VideoRecord = {
 };
 
 const excelVideos = siteVideoData.records as VideoRecord[];
+const siteBasePath = process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? "";
+
+function withSiteBasePath(path: string | undefined) {
+  if (!path || !path.startsWith("/") || !siteBasePath) {
+    return path ?? "";
+  }
+
+  return `${siteBasePath}${path}`;
+}
 
 const sampleFrames: Frame[] = [
   {
@@ -468,7 +477,7 @@ export default function Home() {
                       className="row-preview-image"
                       fill
                       sizes="180px"
-                      src={video.videoReady && video.videoFile ? video.videoFile : video.cover}
+                      src={withSiteBasePath(video.videoReady && video.videoFile ? video.videoFile : video.cover)}
                       unoptimized={video.mediaType === "gif"}
                     />
                   </span>
@@ -491,7 +500,7 @@ export default function Home() {
                     fill
                     priority
                     sizes="330px"
-                    src={activeVideo.videoFile}
+                    src={withSiteBasePath(activeVideo.videoFile)}
                     unoptimized
                   />
                 ) : activeVideo.videoReady && activeVideo.videoFile ? (
@@ -499,8 +508,8 @@ export default function Home() {
                     className="phone-video"
                     controls
                     playsInline
-                    poster={activeVideo.cover}
-                    src={activeVideo.videoFile}
+                    poster={withSiteBasePath(activeVideo.cover)}
+                    src={withSiteBasePath(activeVideo.videoFile)}
                   />
                 ) : (
                   <Image
@@ -509,7 +518,7 @@ export default function Home() {
                     fill
                     priority
                     sizes="330px"
-                    src={activeVideo.cover}
+                    src={withSiteBasePath(activeVideo.cover)}
                   />
                 )}
                 <div className="play-layer">
@@ -581,7 +590,7 @@ export default function Home() {
                         className="frame-image"
                         fill
                         sizes="(max-width: 760px) 50vw, (max-width: 1180px) 33vw, 180px"
-                        src={frame.image}
+                        src={withSiteBasePath(frame.image)}
                       />
                     </div>
                     <strong>{frame.time}</strong>
