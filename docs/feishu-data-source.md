@@ -79,4 +79,4 @@ npm run feishu:sync -- data/tiktok-feishu-latest.json
 
 该步骤会保留 `2026-07-01` 及之后的数据，按视频链接/视频 ID 去重，并保留全部 18 个原始字段。同步时会先读取飞书现有数据，再用最新 Excel 覆盖同视频的指标；这样即使 TikTok 导出只包含最近 7 天，也不会丢掉 7 月以来更早的历史行。
 
-每日 10:00，GitHub Actions 会按 `TikTok Excel -> 飞书 TikTok每日视频数据 -> data/site-videos.json -> GitHub Pages` 的顺序刷新。这一段不依赖本机飞书登录状态。
+每日北京时间 12:00，GitHub Actions 会按 `TikTok Excel -> 飞书 TikTok每日视频数据 -> data/site-videos.json -> GitHub Pages -> 飞书群推送` 的顺序刷新。这一段不依赖本机飞书登录状态。

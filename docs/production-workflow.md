@@ -116,7 +116,7 @@ node scratch/export_tiktok_excel_to_site_data.mjs <xlsx路径> data/site-videos.
 - Cloudflare/云函数定时任务
 - 公司内部自动化平台
 
-当前 GitHub Actions 配置为北京时间每天 10:00 执行一次。
+当前 GitHub Actions 配置为北京时间每天 12:00 执行一次。网站部署成功后，会用“柯学的飞书 CLI”应用机器人向飞书群推送网站链接和当日摘要。
 
 ## 环境变量
 
@@ -131,9 +131,15 @@ node scratch/export_tiktok_excel_to_site_data.mjs <xlsx路径> data/site-videos.
 - `TIKTOK_REPORT_COOKIE`
 - `TIKTOK_REPORT_AUTHORIZATION`
 - `LARK_TARGET_CHAT_ID`
+- `LARK_TARGET_CHAT_NAME`，未配置时默认使用 `墨区小组`
 - `SITE_PUBLIC_URL`
 
 不要提交 `.env` 文件。
+
+飞书应用机器人需要加入目标群，并至少开通这些 IM 权限：
+
+- `im:message`
+- `im:chat:read`，仅当未配置 `LARK_TARGET_CHAT_ID`、需要按群名搜索时使用
 
 ## 验收标准
 

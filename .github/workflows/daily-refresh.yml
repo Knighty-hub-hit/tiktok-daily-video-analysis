@@ -11,8 +11,8 @@ on:
         required: false
         type: string
   schedule:
-    # 10:00 Beijing time = 02:00 UTC.
-    - cron: "0 2 * * *"
+    # 12:00 Beijing time = 04:00 UTC.
+    - cron: "0 4 * * *"
 
 permissions:
   contents: write
@@ -39,6 +39,9 @@ jobs:
       FEISHU_APP_SECRET: ${{ secrets.LARK_APP_SECRET }}
       LARK_APP_ID: ${{ secrets.LARK_APP_ID }}
       LARK_APP_SECRET: ${{ secrets.LARK_APP_SECRET }}
+      LARK_TARGET_CHAT_ID: ${{ secrets.LARK_TARGET_CHAT_ID }}
+      LARK_TARGET_CHAT_NAME: ${{ secrets.LARK_TARGET_CHAT_NAME || '墨区小组' }}
+      SITE_PUBLIC_URL: https://knighty-hub-hit.github.io/tiktok-daily-video-analysis/
     steps:
       - name: Check data source
         id: source
@@ -153,3 +156,9 @@ jobs:
         if: steps.source.outputs.configured == 'true'
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Notify Feishu group
+        if: steps.source.outputs.configured == 'true' && github.event_name != 'push'
+        env:
+          SITE_PUBLIC_URL: ${{ steps.deployment.outputs.page_url || env.SITE_PUBLIC_URL }}
+        run: npm run feishu:notify

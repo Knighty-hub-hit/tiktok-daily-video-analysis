@@ -70,7 +70,7 @@ npm run feishu:import
 npm run pages:build
 ```
 
-GitHub Actions 每天北京时间 10:00 会自动执行这条链路：下载 TikTok Excel、合并写入飞书 `TikTok每日视频数据`、读取飞书生成网站数据并发布。
+GitHub Actions 每天北京时间 12:00 会自动执行这条链路：下载 TikTok Excel、合并写入飞书 `TikTok每日视频数据`、读取飞书生成网站数据、发布网站，并通过“柯学的飞书 CLI”应用机器人推送到飞书群。
 
 ## 验证构建
 
@@ -97,12 +97,12 @@ npm run pages:check
 3. 合并写入飞书 `TikTok每日视频数据`
 4. 读取飞书生成 `site-videos.json`
 5. 构建并发布 GitHub Pages
-6. 交付团队访问链接
+6. 发布成功后推送飞书群 `墨区小组`
+7. 交付团队访问链接
 
 完整链路见 `docs/production-workflow.md`。第二阶段再继续接入：
 
-- 生成飞书日报摘要
-- 飞书群定时推送
 - 长期自动化调度和告警
+- 视频素材下载、关键帧、字幕和脚本拆解
 
 第二阶段云端任务说明见 `docs/phase-two-cloud-automation.md`。

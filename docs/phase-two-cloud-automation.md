@@ -128,4 +128,4 @@ Upgrade or make this repository public to enable Pages
 - `data/site-videos.json` 的 `generatedAt` 每天更新。
 - 网站展示最新日期数据。
 - 任务失败时能在 GitHub Actions 日志里看到失败步骤。
-- 后续接飞书群推送时，失败原因可以同步到群里。
+- 网站发布成功后，“柯学的飞书 CLI”应用机器人会把网站链接和当日摘要推送到飞书群。
