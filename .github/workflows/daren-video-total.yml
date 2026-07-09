@@ -1,0 +1,75 @@
+name: Daily TikTok to Feishu Daren Video Total
+
+on:
+  workflow_dispatch:
+    inputs:
+      report_url:
+        description: Optional one-time TikTok XLSX export URL
+        required: false
+        type: string
+  schedule:
+    # 09:30 Beijing time = 01:30 UTC.
+    - cron: "30 1 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: daren-video-total
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    env:
+      REPORT_URL: ${{ github.event.inputs.report_url || secrets.TIKTOK_REPORT_URL }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check TikTok export source
+        id: source
+        shell: bash
+        run: |
+          if [ -z "$REPORT_URL" ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::No TikTok export URL configured. Set TIKTOK_REPORT_URL or run workflow_dispatch with report_url."
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Download TikTok report
+        if: steps.source.outputs.ready == 'true'
+        env:
+          TIKTOK_REPORT_AUTHORIZATION: ${{ secrets.TIKTOK_REPORT_AUTHORIZATION }}
+          TIKTOK_REPORT_COOKIE: ${{ secrets.TIKTOK_REPORT_COOKIE }}
+          TIKTOK_REPORT_OUTPUT: data/exports/tiktok-report-${{ github.run_id }}.xlsx
+          TIKTOK_REPORT_URL: ${{ env.REPORT_URL }}
+        run: npm run report:download
+
+      - name: Prepare rows for 达人视频总表
+        if: steps.source.outputs.ready == 'true'
+        run: npm run daren:prepare -- data/exports/tiktok-report-${{ github.run_id }}.xlsx data/daren-video-total-latest.csv data/daren-video-total-state.json
+
+      - name: Upload prepared import file
+        if: steps.source.outputs.ready == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: daren-video-total-import
+          path: |
+            data/daren-video-total-latest.csv
+            data/daren-video-total-latest.meta.json
+
+      - name: Feishu import note
+        if: steps.source.outputs.ready == 'true'
+        run: |
+          echo "::notice::Prepared the rows for 飞书【达人视频总表】. Direct cloud write still needs a Feishu API token for that table; the local Codex automation handles the browser-based import."

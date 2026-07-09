@@ -10,10 +10,6 @@ on:
         description: Optional one-time XLSX report URL
         required: false
         type: string
-  schedule:
-    # Run after the 09:30 local TikTok export has refreshed Feishu.
-    - cron: "0 10 * * *"
-      timezone: "Asia/Shanghai"
 
 permissions:
   contents: write
