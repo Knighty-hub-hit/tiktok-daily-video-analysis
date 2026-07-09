@@ -158,8 +158,8 @@ function mergeDisplayAssets(record, existingRecord) {
     transcriptFile: existingRecord.transcriptFile ?? record.transcriptFile,
     frames: existingRecord.frames?.length ? existingRecord.frames : record.frames,
     script: existingRecord.script?.length ? existingRecord.script : record.script,
-    breakdown: existingRecord.breakdown ?? record.breakdown,
-    reasons: existingRecord.reasons?.length ? existingRecord.reasons : record.reasons,
+    breakdown: record.breakdown,
+    reasons: record.reasons,
     source: record.source,
   };
 }

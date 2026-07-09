@@ -108,12 +108,18 @@ jobs:
         run: npm run feishu:prepare -- data/exports/tiktok-report-${{ github.run_id }}.xlsx data/tiktok-feishu-latest.json
 
       - name: Sync TikTok report into Feishu sheet
+        id: sync_feishu
         if: steps.source.outputs.mode == 'report'
+        continue-on-error: true
         run: npm run feishu:sync -- data/tiktok-feishu-latest.json
 
       - name: Import Feishu sheet data
-        if: steps.source.outputs.mode == 'feishu' || steps.source.outputs.mode == 'report'
+        if: steps.source.outputs.mode == 'feishu' || (steps.source.outputs.mode == 'report' && steps.sync_feishu.outcome == 'success')
         run: npm run feishu:import
+
+      - name: Import site data from TikTok report fallback
+        if: steps.source.outputs.mode == 'report' && steps.sync_feishu.outcome != 'success'
+        run: npm run data:import -- data/exports/tiktok-report-${{ github.run_id }}.xlsx
 
       - name: Build public site
         if: steps.source.outputs.configured == 'true'
