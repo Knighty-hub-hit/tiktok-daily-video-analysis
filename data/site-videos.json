@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-09T19:20:34.661Z",
+  "generatedAt": "2026-07-09T19:43:36.810Z",
   "sourceFile": "Feishu:TikTok每日视频数据",
   "sourceHeaders": [
     "视频名称",
@@ -44,7 +44,7 @@
       "ctr": 0,
       "rpm": 0,
       "commission": 0,
-      "cover": "/placeholders/video-pending.svg",
+      "cover": "/covers/7659503226634489109.jpg",
       "frames": [
         {
           "time": "00:00",
@@ -102,7 +102,7 @@
       },
       "videoReady": false,
       "mediaStatus": {
-        "cover": "pending",
+        "cover": "matched",
         "video": "pending",
         "keyframes": 0,
         "transcript": "pending"
@@ -128,7 +128,7 @@
       "ctr": 0,
       "rpm": 0,
       "commission": 0,
-      "cover": "/placeholders/video-pending.svg",
+      "cover": "/covers/7660020362905980181.jpg",
       "frames": [
         {
           "time": "00:00",
@@ -186,7 +186,7 @@
       },
       "videoReady": false,
       "mediaStatus": {
-        "cover": "pending",
+        "cover": "matched",
         "video": "pending",
         "keyframes": 0,
         "transcript": "pending"
