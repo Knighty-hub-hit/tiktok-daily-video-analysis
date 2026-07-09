@@ -36,8 +36,8 @@ jobs:
       FEISHU_SHEET_NAME: ${{ secrets.FEISHU_SHEET_NAME }}
       FEISHU_SHEET_ID: ${{ secrets.FEISHU_SHEET_ID }}
       FEISHU_SPREADSHEET_TOKEN: ${{ secrets.FEISHU_SPREADSHEET_TOKEN }}
-      FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
-      FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+      FEISHU_APP_ID: ${{ secrets.LARK_APP_ID }}
+      FEISHU_APP_SECRET: ${{ secrets.LARK_APP_SECRET }}
       LARK_APP_ID: ${{ secrets.LARK_APP_ID }}
       LARK_APP_SECRET: ${{ secrets.LARK_APP_SECRET }}
     steps:
