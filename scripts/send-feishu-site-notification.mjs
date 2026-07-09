@@ -31,6 +31,26 @@ function formatMoney(value) {
   }).format(Number(value) || 0)}`;
 }
 
+function formatSignedNumber(value) {
+  const number = Number(value) || 0;
+
+  if (number === 0) {
+    return "持平";
+  }
+
+  return `${number > 0 ? "+" : "-"}${formatNumber(Math.abs(number))}`;
+}
+
+function formatSignedMoney(value) {
+  const number = Number(value) || 0;
+
+  if (number === 0) {
+    return "持平";
+  }
+
+  return `${number > 0 ? "+" : "-"}${formatMoney(Math.abs(number))}`;
+}
+
 function summarizeRecords(records) {
   const byDate = new Map();
 
@@ -55,8 +75,19 @@ function summarizeRecords(records) {
     byDate.set(record.date, summary);
   }
 
-  const latestDate = Array.from(byDate.keys()).sort().at(-1) ?? "";
+  const sortedDates = Array.from(byDate.keys()).sort();
+  const latestDate = sortedDates.at(-1) ?? "";
+  const previousDate = sortedDates.at(-2) ?? "";
   const latestSummary = byDate.get(latestDate) ?? {
+    count: 0,
+    orders: 0,
+    revenue: 0,
+    views: 0,
+    likes: 0,
+    comments: 0,
+    records: [],
+  };
+  const previousSummary = byDate.get(previousDate) ?? {
     count: 0,
     orders: 0,
     revenue: 0,
@@ -73,7 +104,7 @@ function summarizeRecords(records) {
       (Number(b.views) || 0) - (Number(a.views) || 0),
   );
 
-  return { latestDate, latestSummary };
+  return { latestDate, latestSummary, previousDate, previousSummary };
 }
 
 function clip(value, maxLength = 54) {
@@ -88,28 +119,44 @@ function clip(value, maxLength = 54) {
 
 function buildMessage(data) {
   const records = Array.isArray(data.records) ? data.records : [];
-  const { latestDate, latestSummary } = summarizeRecords(records);
+  const { latestDate, latestSummary, previousDate, previousSummary } = summarizeRecords(records);
   const siteUrl = getEnv("SITE_PUBLIC_URL", "NEXT_PUBLIC_SITE_URL") || DEFAULT_SITE_URL;
   const backupSiteUrl = getEnv("SITE_BACKUP_URL", "NEXT_PUBLIC_BACKUP_SITE_URL") || DEFAULT_BACKUP_SITE_URL;
   const sheetUrl = getEnv("FEISHU_SHEET_URL", "LARK_SHEET_URL") || DEFAULT_SHEET_URL;
+  const topRecord = latestSummary.records[0];
+  const countDelta = latestSummary.count - previousSummary.count;
+  const orderDelta = latestSummary.orders - previousSummary.orders;
+  const revenueDelta = latestSummary.revenue - previousSummary.revenue;
   const topLines = latestSummary.records.slice(0, 5).map((record, index) => {
     const title = clip(record.title || record.product || record.link);
-    return `${index + 1}. ${record.creator}｜${formatMoney(record.revenue)}｜${formatNumber(record.orders)} 单｜${title}`;
+    return `${index + 1}. ${record.creator}｜${formatMoney(record.revenue)}｜${formatNumber(record.orders)} 单｜${formatNumber(record.views)} 曝光｜${title}`;
   });
+  const focusLines = [
+    `新视频 ${formatNumber(latestSummary.count)} 条${previousDate ? `（较 ${previousDate} ${formatSignedNumber(countDelta)}）` : ""}`,
+    `订单 ${formatNumber(latestSummary.orders)} 单${previousDate ? `（较 ${previousDate} ${formatSignedNumber(orderDelta)}）` : ""}`,
+    `GMV ${formatMoney(latestSummary.revenue)}${previousDate ? `（较 ${previousDate} ${formatSignedMoney(revenueDelta)}）` : ""}`,
+    topRecord ? `Top 1 ${topRecord.creator}｜${clip(topRecord.title || topRecord.product, 32)}` : "暂无 Top 视频",
+  ];
+  const statusLine =
+    latestSummary.orders > 0
+      ? "有出单视频，优先复盘成交 Hook、卖点证明和 CTA。"
+      : "今日暂无出单，优先看新增素材、首屏画面和后续点击变化。";
 
   return [
-    "TikTok 每日爆款视频拆解已更新",
+    "【重点】TikTok 每日爆款视频拆解已更新",
+    focusLines.join("\n"),
     "",
-    `最新日期：${latestDate || "暂无日期"}`,
-    `当日视频：${formatNumber(latestSummary.count)} 条`,
-    `当日 GMV：${formatMoney(latestSummary.revenue)}`,
-    `当日订单：${formatNumber(latestSummary.orders)} 单`,
-    `当日曝光：${formatNumber(latestSummary.views)}`,
-    `累计入库：${formatNumber(records.length)} 条`,
+    "【今日概览】",
+    `日期：${latestDate || "暂无日期"}`,
+    `视频：${formatNumber(latestSummary.count)} 条｜累计 ${formatNumber(records.length)} 条`,
+    `GMV：${formatMoney(latestSummary.revenue)}｜订单：${formatNumber(latestSummary.orders)}｜曝光：${formatNumber(latestSummary.views)}`,
+    `互动：点赞 ${formatNumber(latestSummary.likes)}｜评论 ${formatNumber(latestSummary.comments)}`,
+    `状态：${statusLine}`,
     "",
-    "Top 视频：",
+    "【Top 视频】",
     ...(topLines.length ? topLines : ["暂无可展示视频"]),
     "",
+    "【打开入口】",
     `网站：${siteUrl}`,
     `备用链接：${backupSiteUrl}`,
     `飞书表格：${sheetUrl}`,

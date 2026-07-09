@@ -20,8 +20,9 @@
     "report:download": "node scripts/download-tiktok-report.mjs",
     "pages:build": "GITHUB_PAGES=true NEXT_PUBLIC_SITE_BASE_PATH=/tiktok-daily-video-analysis next build --webpack",
     "pages:check": "npm run data:validate && npm run pages:build",
-    "miaoda:build": "GITHUB_PAGES=true NEXT_PUBLIC_SITE_BASE_PATH= next build --webpack",
-    "miaoda:publish": "npm run data:validate && npm run miaoda:build && lark-cli apps +html-publish --app-id app_179t4tka49p --path ./out --as user",
+    "miaoda:build": "GITHUB_PAGES=true NEXT_PUBLIC_SITE_BASE_PATH=/app/app_179t4tka49p next build --webpack",
+    "miaoda:prepare": "node scripts/prepare-miaoda-html.mjs out",
+    "miaoda:publish": "npm run data:validate && npm run miaoda:build && npm run miaoda:prepare && lark-cli apps +html-publish --app-id app_179t4tka49p --path ./out --as user",
     "workflow:check": "npm run data:validate && npm run build",
     "db:generate": "drizzle-kit generate"
   },

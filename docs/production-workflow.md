@@ -143,6 +143,7 @@ node scratch/export_tiktok_excel_to_site_data.mjs <xlsx路径> data/site-videos.
 - 妙搭访问链接：`https://xinchimcn.aiforce.cloud/app/app_179t4tka49p`
 - 可见范围：飞书群 `墨区小组`
 - 本地重新发布命令：`npm run miaoda:publish`
+- 自动化边界：GitHub Actions 每天自动刷新飞书表格、`data/site-videos.json`、GitHub Pages 和飞书群消息；妙搭 HTML 重新发布目前只能用 `--as user`，机器人无法直接发布。若要求妙搭链接每天云端自动实时更新，下一阶段需要改为妙搭全栈运行时读取飞书/站点数据，或为 CI 配置用户发布凭证。
 
 飞书应用机器人需要加入目标群，并至少开通这些 IM 权限：
 
@@ -152,7 +153,8 @@ node scratch/export_tiktok_excel_to_site_data.mjs <xlsx路径> data/site-videos.
 ## 验收标准
 
 - 同事可以通过链接打开网站
-- 网站展示的是最新日期数据
+- GitHub Pages 展示的是最新日期数据
+- 妙搭链接在飞书内可打开；若使用静态 HTML 发布版，需要在数据更新后重新发布，或升级为全栈运行时读取数据
 - 飞书表格每天自动新增或更新记录
 - 飞书群每天收到摘要
 - 飞书群消息主链接使用妙搭域名，备用链接使用 GitHub Pages

@@ -94,7 +94,9 @@ npm run pages:check
 npm run miaoda:publish
 ```
 
-这个命令会生成根路径静态站点，并发布到飞书妙搭应用 `app_179t4tka49p`：`https://xinchimcn.aiforce.cloud/app/app_179t4tka49p`。这个链接已经放开给飞书群 `墨区小组` 访问，用于解决飞书内置浏览器打不开 `github.io` 的问题。
+这个命令会生成飞书内稳定打开的静态站点，并发布到飞书妙搭应用 `app_179t4tka49p`：`https://xinchimcn.aiforce.cloud/app/app_179t4tka49p`。这个链接已经放开给飞书群 `墨区小组` 访问，用于解决飞书内置浏览器打不开 `github.io` 的问题。
+
+注意：妙搭 HTML 发布命令只支持用户身份，因此 GitHub Actions 里的机器人不能直接每天重发妙搭静态包。当前每日云端自动化会稳定刷新 GitHub Pages 和飞书群消息；妙搭链接要做到每天自动实时更新，下一阶段应迁移为妙搭全栈应用，让页面运行时读取飞书或公开站点数据。
 
 ## 生产化方向
 
