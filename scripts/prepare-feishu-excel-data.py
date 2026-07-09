@@ -256,12 +256,12 @@ def main():
     date_index = source_headers.index("视频发布日期")
     link_index = source_headers.index("视频链接")
 
-    rows_by_link = {}
+    rows_by_key = {}
     for source_index, source_row in enumerate(raw_rows[1:], start=2):
         video_date = normalize_date(source_row[date_index] if date_index < len(source_row) else "")
         link = clean_cell(source_row[link_index] if link_index < len(source_row) else "")
 
-        if not video_date or video_date < start_date or "tiktok.com/" not in link:
+        if not video_date or video_date < start_date:
             continue
 
         values = []
@@ -276,14 +276,15 @@ def main():
             else:
                 values.append(clean_cell(value))
 
-        rows_by_link[link] = {
+        row_key = link if "tiktok.com/" in link else f"source-row:{source_index}"
+        rows_by_key[row_key] = {
             "sourceRow": source_index,
             "date": video_date,
             "link": link,
             "values": values,
         }
 
-    rows = list(rows_by_link.values())
+    rows = list(rows_by_key.values())
     if not rows:
         raise ValueError(f"No TikTok rows found on or after {start_date}.")
 

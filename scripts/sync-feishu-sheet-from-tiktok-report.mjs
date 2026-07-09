@@ -70,6 +70,20 @@ function videoKey(link) {
   return videoId ? `video:${videoId}` : `link:${text}`;
 }
 
+function rowKey(row, { linkHeader, dateHeader, titleHeader, creatorHeader }, fallbackIndex) {
+  const link = row[linkHeader];
+
+  if (isTikTokLink(link)) {
+    return videoKey(link);
+  }
+
+  const date = normalizeDate(row[dateHeader]);
+  const title = String(row[titleHeader] ?? "").trim();
+  const creator = String(row[creatorHeader] ?? "").trim();
+  const fallback = [date, title, creator].filter(Boolean).join("|");
+  return fallback ? `row:${fallback}|${fallbackIndex}` : `row-index:${fallbackIndex}`;
+}
+
 function isTikTokLink(link) {
   return /^https?:\/\/(?:www\.)?tiktok\.com\/@[^/]+\/video\/\d+/.test(String(link ?? "").trim());
 }
@@ -342,6 +356,8 @@ export function mergeRows({ targetHeaders, existingValues, incomingRows }) {
   const incomingObjects = rowsToObjects(targetHeaders, incomingRows);
   const linkHeader = findHeader(targetHeaders, ["视频链接", "视频URL", "视频地址", "TikTok链接", "link"]);
   const dateHeader = findHeader(targetHeaders, ["视频发布日期", "发布日期", "日期", "date"]);
+  const titleHeader = findHeader(targetHeaders, ["视频名称", "视频标题", "标题", "title"]);
+  const creatorHeader = findHeader(targetHeaders, ["达人用户名", "达人昵称", "达人账号", "达人ID", "creator"]);
   const ordersHeader = findHeader(targetHeaders, ["联盟订单量", "订单量", "orders"]);
   const viewsHeader = findHeader(targetHeaders, ["带货视频曝光次数", "曝光次数", "曝光", "views"]);
 
@@ -351,26 +367,30 @@ export function mergeRows({ targetHeaders, existingValues, incomingRows }) {
 
   const mergedByVideo = new Map();
 
-  for (const row of existingObjects) {
-    const link = row[linkHeader];
+  for (const [index, row] of existingObjects.entries()) {
     const date = normalizeDate(row[dateHeader]);
 
-    if (!isTikTokLink(link) || !date || date < startDate) {
+    if (!date || date < startDate) {
       continue;
     }
 
-    mergedByVideo.set(videoKey(link), { ...row, [dateHeader]: date });
+    mergedByVideo.set(rowKey(row, { linkHeader, dateHeader, titleHeader, creatorHeader }, index), {
+      ...row,
+      [dateHeader]: date,
+    });
   }
 
-  for (const row of incomingObjects) {
-    const link = row[linkHeader];
+  for (const [index, row] of incomingObjects.entries()) {
     const date = normalizeDate(row[dateHeader]);
 
-    if (!isTikTokLink(link) || !date || date < startDate) {
+    if (!date || date < startDate) {
       continue;
     }
 
-    mergedByVideo.set(videoKey(link), { ...row, [dateHeader]: date });
+    mergedByVideo.set(rowKey(row, { linkHeader, dateHeader, titleHeader, creatorHeader }, index), {
+      ...row,
+      [dateHeader]: date,
+    });
   }
 
   const mergedObjects = Array.from(mergedByVideo.values()).sort((a, b) => {
