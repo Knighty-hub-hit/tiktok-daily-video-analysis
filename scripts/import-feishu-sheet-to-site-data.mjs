@@ -288,7 +288,7 @@ async function feishuRequest(path, token, options = {}) {
     throw new Error(`Feishu API failed: ${response.status} ${JSON.stringify(data)}`);
   }
 
-  return data.data;
+  return data.data ?? data;
 }
 
 async function getTenantAccessToken() {
@@ -306,6 +306,10 @@ async function getTenantAccessToken() {
       app_secret: appSecret,
     }),
   });
+
+  if (!data.tenant_access_token) {
+    throw new Error(`Feishu tenant token response did not include tenant_access_token: ${JSON.stringify(data)}`);
+  }
 
   return data.tenant_access_token;
 }
