@@ -10,6 +10,9 @@ on:
         description: Optional one-time XLSX report URL
         required: false
         type: string
+  schedule:
+    # 10:00 Beijing time = 02:00 UTC.
+    - cron: "0 2 * * *"
 
 permissions:
   contents: write
@@ -41,18 +44,32 @@ jobs:
         id: source
         shell: bash
         run: |
-          if [ -n "$REPORT_URL" ]; then
-            echo "configured=true" >> "$GITHUB_OUTPUT"
-            echo "mode=report" >> "$GITHUB_OUTPUT"
-            echo "Using one-time or configured TikTok report URL."
-          elif [ -n "$FEISHU_SHEET_URL" ] && { [ -n "$FEISHU_APP_ID" ] || [ -n "$LARK_APP_ID" ]; } && { [ -n "$FEISHU_APP_SECRET" ] || [ -n "$LARK_APP_SECRET" ]; }; then
-            echo "configured=true" >> "$GITHUB_OUTPUT"
-            echo "mode=feishu" >> "$GITHUB_OUTPUT"
-            echo "Using Feishu sheet as the daily source."
-          elif [ "${{ github.event_name }}" = "push" ]; then
+          has_feishu_target=false
+          if [ -n "$FEISHU_SHEET_URL" ] || [ -n "$FEISHU_SPREADSHEET_TOKEN" ]; then
+            has_feishu_target=true
+          fi
+
+          has_feishu_auth=false
+          if { [ -n "$FEISHU_APP_ID" ] || [ -n "$LARK_APP_ID" ]; } && { [ -n "$FEISHU_APP_SECRET" ] || [ -n "$LARK_APP_SECRET" ]; }; then
+            has_feishu_auth=true
+          fi
+
+          if [ "${{ github.event_name }}" = "push" ]; then
             echo "configured=true" >> "$GITHUB_OUTPUT"
             echo "mode=existing" >> "$GITHUB_OUTPUT"
             echo "Using committed site data for push deployment."
+          elif [ -n "$REPORT_URL" ] && [ "$has_feishu_target" = "true" ] && [ "$has_feishu_auth" = "true" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "mode=report" >> "$GITHUB_OUTPUT"
+            echo "Using TikTok report URL, then syncing Feishu before building the site."
+          elif [ -n "$REPORT_URL" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "mode=report-only" >> "$GITHUB_OUTPUT"
+            echo "Using TikTok report URL without Feishu sync because Feishu settings are incomplete."
+          elif [ "$has_feishu_target" = "true" ] && [ "$has_feishu_auth" = "true" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "mode=feishu" >> "$GITHUB_OUTPUT"
+            echo "Using Feishu sheet as the daily source."
           else
             echo "configured=false" >> "$GITHUB_OUTPUT"
             echo "No data source configured. Set FEISHU_SHEET_URL plus FEISHU_APP_ID/FEISHU_APP_SECRET, or set TIKTOK_REPORT_URL."
@@ -83,11 +100,19 @@ jobs:
         run: npm run report:download
 
       - name: Import site data
-        if: steps.source.outputs.mode == 'report'
+        if: steps.source.outputs.mode == 'report-only'
         run: npm run data:import -- data/exports/tiktok-report-${{ github.run_id }}.xlsx
 
+      - name: Prepare Feishu rows from TikTok report
+        if: steps.source.outputs.mode == 'report'
+        run: npm run feishu:prepare -- data/exports/tiktok-report-${{ github.run_id }}.xlsx data/tiktok-feishu-latest.json
+
+      - name: Sync TikTok report into Feishu sheet
+        if: steps.source.outputs.mode == 'report'
+        run: npm run feishu:sync -- data/tiktok-feishu-latest.json
+
       - name: Import Feishu sheet data
-        if: steps.source.outputs.mode == 'feishu'
+        if: steps.source.outputs.mode == 'feishu' || steps.source.outputs.mode == 'report'
         run: npm run feishu:import
 
       - name: Build public site

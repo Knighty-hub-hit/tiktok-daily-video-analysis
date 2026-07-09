@@ -22,6 +22,8 @@
 - `scripts/refresh-site-data.mjs`: 导入 Excel 并校验网站数据
 - `scripts/import-feishu-sheet-to-site-data.mjs`: 从飞书表格生成网站数据
 - `scripts/download-tiktok-report.mjs`: 从云端下载每日 TikTok Excel 报表
+- `scripts/prepare-feishu-excel-data.py`: 把 TikTok Excel 整理为飞书 18 列完整字段
+- `scripts/sync-feishu-sheet-from-tiktok-report.mjs`: 用飞书 OpenAPI 合并写入 `TikTok每日视频数据`
 - `scripts/validate-site-data.mjs`: 校验网站展示数据和素材路径
 - `.openai/hosting.json`: Sites 托管项目配置
 - `docs/phase-one-workflow.md`: 第一阶段网站展示链路
@@ -58,6 +60,18 @@ FEISHU_READ_MODE=lark-cli npm run feishu:import
 
 云端自动任务会使用飞书应用密钥读取表格，不依赖本机登录态。目标表和字段规范见 `docs/feishu-data-source.md`。
 
+## TikTok Excel 写入飞书并刷新网站
+
+```bash
+npm run report:download
+npm run feishu:prepare -- data/exports/tiktok-report.xlsx data/tiktok-feishu-latest.json
+npm run feishu:sync -- data/tiktok-feishu-latest.json
+npm run feishu:import
+npm run pages:build
+```
+
+GitHub Actions 每天北京时间 10:00 会自动执行这条链路：下载 TikTok Excel、合并写入飞书 `TikTok每日视频数据`、读取飞书生成网站数据并发布。
+
 ## 验证构建
 
 ```bash
@@ -76,19 +90,17 @@ npm run pages:check
 
 ## 生产化方向
 
-第一阶段只做网站展示链路，见 `docs/phase-one-workflow.md`：
+第一阶段现在做数据自动更新链路：
 
-1. 获取 TikTok 每日数据源
-2. 标准化 Excel / 原始记录
-3. 生成 `site-videos.json`
-4. 更新网站展示数据
-5. 构建并发布网站
+1. 下载 TikTok 每日 Excel
+2. 解析并保留 18 列完整字段
+3. 合并写入飞书 `TikTok每日视频数据`
+4. 读取飞书生成 `site-videos.json`
+5. 构建并发布 GitHub Pages
 6. 交付团队访问链接
 
 完整链路见 `docs/production-workflow.md`。第二阶段再继续接入：
 
-- 云端每日自动获取 TikTok 报表
-- 从飞书电子表格读取完整字段
 - 生成飞书日报摘要
 - 飞书群定时推送
 - 长期自动化调度和告警

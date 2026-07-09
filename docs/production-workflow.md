@@ -4,7 +4,7 @@
 
 把当前本地网站升级为团队可访问、每天自动更新、自动写入飞书表格并推送飞书群的生产链路。
 
-第一阶段先只执行上半部分的网站展示链路，详见 `docs/phase-one-workflow.md`。飞书写表、日报摘要和群推送先不接入。
+第一阶段现在执行数据上半链路：TikTok Excel 自动下载、完整字段写入飞书、读取飞书生成网站并发布。视频素材拆解、云存储和飞书群推送留在第二阶段。
 
 ## 当前项目状态
 
@@ -12,6 +12,7 @@
 - 网站读取 `data/site-videos.json` 作为展示数据源。
 - 已有 TikTok Excel 到网站数据的转换脚本：`scratch/export_tiktok_excel_to_site_data.mjs`。
 - 已有飞书表格到网站数据的转换脚本：`scripts/import-feishu-sheet-to-site-data.mjs`。
+- 已有 TikTok Excel 到飞书完整字段的同步脚本：`scripts/prepare-feishu-excel-data.py` 和 `scripts/sync-feishu-sheet-from-tiktok-report.mjs`。
 - 已有 Sites 托管配置：`.openai/hosting.json`。
 - 飞书表格将作为网站的主数据源，字段规范见 `docs/feishu-data-source.md`。
 
@@ -19,14 +20,13 @@
 
 ```mermaid
 flowchart LR
-  A["TikTok 每日数据源"] --> B["标准化 Excel / 原始记录"]
-  B --> C["生成 site-videos.json"]
-  C --> D["更新网站展示数据"]
-  C --> E["写入飞书电子表格"]
-  D --> F["构建并发布网站"]
-  E --> G["生成飞书日报摘要"]
-  F --> H["团队访问链接"]
-  G --> I["飞书群定时推送"]
+  A["TikTok 联盟 Excel"] --> B["解析最新导出"]
+  B --> C["合并写入飞书 TikTok每日视频数据"]
+  C --> D["读取飞书生成 site-videos.json"]
+  D --> E["构建并发布网站"]
+  E --> F["团队访问链接"]
+  D -. "第二阶段" .-> G["视频下载 / 关键帧 / 字幕 / 脚本拆解"]
+  D -. "第二阶段" .-> H["飞书群日报推送"]
 ```
 
 ## 步骤拆分
@@ -35,8 +35,9 @@ flowchart LR
 
 优先使用稳定来源作为每日输入：
 
-- 飞书表格 `TikTok每日视频数据`
-- TikTok Shop 后台导出的 Excel，作为手动兜底
+- TikTok Shop 后台导出的 Excel，作为自动任务入口
+- 飞书表格 `TikTok每日视频数据`，作为网站主数据源
+- 手动上传 Excel，作为临时兜底
 - 后续可扩展为自动抓取 TikTok 页面、字幕和素材
 
 飞书表格只处理 `2026-07-01` 及之后的视频数据。Excel 兜底文件需要保留到 `data/exports/`，便于追溯每一天的数据来源。
@@ -77,12 +78,13 @@ node scratch/export_tiktok_excel_to_site_data.mjs <xlsx路径> data/site-videos.
 
 每日流程中固定执行飞书表格写入：
 
-- 新视频追加到表尾
+- 新视频写入飞书
 - 已存在视频按 `video_id` 或视频链接更新指标
+- 每次写入前先读取飞书现有数据，避免最近 7 天导出覆盖掉 7 月以来旧数据
 - 保留日期、达人、标题、链接、GMV、订单、曝光、点击率、互动等字段
 - 写入成功后回读关键行数，确认没有重复或漏写
 
-飞书权限和登录态需要放在运行机器的安全环境中，不把 token、secret、cookie 写入仓库。
+飞书应用密钥和 TikTok 报表访问凭据放在 GitHub Secrets 中，不把 token、secret、cookie 写入仓库。
 
 ### 5. 网站发布
 
@@ -114,7 +116,7 @@ node scratch/export_tiktok_excel_to_site_data.mjs <xlsx路径> data/site-videos.
 - Cloudflare/云函数定时任务
 - 公司内部自动化平台
 
-建议北京时间每天固定执行一次，例如 09:00。
+当前 GitHub Actions 配置为北京时间每天 10:00 执行一次。
 
 ## 环境变量
 
@@ -122,10 +124,14 @@ node scratch/export_tiktok_excel_to_site_data.mjs <xlsx路径> data/site-videos.
 
 - `LARK_APP_ID`
 - `LARK_APP_SECRET`
-- `LARK_SHEET_URL`
+- `FEISHU_SHEET_URL`
+- `FEISHU_SPREADSHEET_TOKEN`
+- `FEISHU_SHEET_ID`
+- `TIKTOK_REPORT_URL`
+- `TIKTOK_REPORT_COOKIE`
+- `TIKTOK_REPORT_AUTHORIZATION`
 - `LARK_TARGET_CHAT_ID`
 - `SITE_PUBLIC_URL`
-- `TIKTOK_INPUT_SOURCE`
 
 不要提交 `.env` 文件。
 

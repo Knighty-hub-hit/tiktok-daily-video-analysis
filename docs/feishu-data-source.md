@@ -70,6 +70,13 @@ TikTok 联盟中心导出的 Excel 需要先整理为飞书可直接批量写入
 npm run feishu:prepare -- <TikTok导出.xlsx> <输出.csv>
 ```
 
-该步骤会保留 `2026-07-01` 及之后的数据，按视频链接去重，并保留全部 18 个原始字段。每日 09:30 的本地任务使用已登录的飞书用户身份覆盖普通工作表 `TikTok每日视频数据`，这样已有视频的 GMV、订单、曝光等指标也会随最新导出更新。
+云端自动任务使用 JSON 中间文件，随后通过飞书 OpenAPI 合并写入普通工作表：
 
-每日 10:00，GitHub Actions 使用飞书应用身份读取工作表，生成网站数据并重新发布 GitHub Pages。这一段不依赖本机飞书登录状态。
+```bash
+npm run feishu:prepare -- <TikTok导出.xlsx> data/tiktok-feishu-latest.json
+npm run feishu:sync -- data/tiktok-feishu-latest.json
+```
+
+该步骤会保留 `2026-07-01` 及之后的数据，按视频链接/视频 ID 去重，并保留全部 18 个原始字段。同步时会先读取飞书现有数据，再用最新 Excel 覆盖同视频的指标；这样即使 TikTok 导出只包含最近 7 天，也不会丢掉 7 月以来更早的历史行。
+
+每日 10:00，GitHub Actions 会按 `TikTok Excel -> 飞书 TikTok每日视频数据 -> data/site-videos.json -> GitHub Pages` 的顺序刷新。这一段不依赖本机飞书登录状态。
