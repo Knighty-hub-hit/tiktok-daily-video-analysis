@@ -1,5 +1,6 @@
 import { mkdir, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { sortRecordsForDailyRank } from "./site-data-builder.mjs";
 
 const DEFAULT_BASE_PATH = "/app/app_179t4tka49p";
 const MAX_UNCOMPRESSED_BYTES = 200 * 1024 * 1024;
@@ -50,12 +51,8 @@ function assetPath(value) {
   return value.startsWith("/") ? `${basePath}${value}` : `${basePath}/${value}`;
 }
 
-function recordScore(record) {
-  return (Number(record.orders) || 0) * 1_000_000 + (Number(record.revenue) || 0) * 1_000 + (Number(record.views) || 0);
-}
-
 function sortRecordsForDate(items) {
-  return [...items].sort((a, b) => recordScore(b) - recordScore(a));
+  return sortRecordsForDailyRank(items);
 }
 
 function groupRecordsByDate(items) {
@@ -118,6 +115,14 @@ function fallbackFrames(record) {
   ];
 }
 
+function isPendingCover(record) {
+  return record?.mediaStatus?.cover === "pending" || String(record?.cover ?? "").includes("/placeholders/");
+}
+
+function isPendingFrame(frame) {
+  return String(frame?.image ?? "").includes("/placeholders/");
+}
+
 function renderDateLinks(currentDate) {
   return Array.from(recordsByDate.keys())
     .map((date) => {
@@ -140,9 +145,17 @@ function renderRanking(date, selectedRecord) {
           <strong>${escapeHtml(record.creator)}</strong>
           <small>${escapeHtml(record.title || record.product || record.link)}</small>
         </span>
-        <span class="row-metric">${formatNumber(record.views)} 播放</span>
+        <span class="row-metric">${
+          Number(record.orders) > 0
+            ? `${formatNumber(record.orders)} 单`
+            : `${formatNumber(record.views)} 播放`
+        }</span>
         <span class="row-preview" aria-hidden="true">
-          <img alt="" class="row-preview-image" src="${assetPath(record.cover || "/video-cover.png")}"/>
+          ${
+            isPendingCover(record)
+              ? `<span class="row-preview-placeholder">待下载</span>`
+              : `<img alt="" class="row-preview-image" src="${assetPath(record.cover)}"/>`
+          }
         </span>
       </a>`;
     })
@@ -171,7 +184,11 @@ function renderFrames(record) {
     .slice(0, 5)
     .map(
       (frame) => `<article class="frame-card">
-        <div class="frame-image-wrap"><img class="frame-image" alt="${escapeHtml(`${frame.time} ${frame.title}`)}" src="${assetPath(frame.image)}"/></div>
+        <div class="frame-image-wrap">${
+          isPendingFrame(frame)
+            ? `<div class="frame-placeholder"><strong>待抽取</strong><span>${escapeHtml(frame.time)}</span></div>`
+            : `<img class="frame-image" alt="${escapeHtml(`${frame.time} ${frame.title}`)}" src="${assetPath(frame.image)}"/>`
+        }</div>
         <strong>${escapeHtml(frame.time)}</strong>
         <h4>${escapeHtml(frame.title)}</h4>
         <p>${escapeHtml(frame.note)}</p>
@@ -233,7 +250,7 @@ function renderReasons(record) {
   const reasons = Array.isArray(record.reasons) && record.reasons.length > 0
     ? record.reasons
     : [
-        `出单量为 ${formatNumber(record.orders)}，按 GMV、订单和曝光参与排序。`,
+        `出单量为 ${formatNumber(record.orders)}，当天有成单时按成单从大到小排序；无成单时按播放从高到低排序。`,
         `点赞 ${formatNumber(record.likes)}、评论 ${formatNumber(record.comments)}，可作为互动强弱依据。`,
         `数据来自 ${record.source?.file || siteData.sourceFile || "Feishu:TikTok每日视频数据"}，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。`,
       ];
@@ -258,6 +275,8 @@ function renderPage(date, selectedRecord, css) {
   const source = selectedRecord.source ?? {};
   const sourceFile = source.file || siteData.sourceFile || "Feishu:TikTok每日视频数据";
   const sourceRow = source.row ? ` 第 ${source.row} 行` : "";
+  const mediaPending = !selectedRecord.mediaStatus?.keyframes;
+  const dateHasOrders = dateRecords.some((record) => Number(record.orders) > 0);
 
   return `<!DOCTYPE html>
 <html lang="zh-CN">
@@ -292,7 +311,7 @@ function renderPage(date, selectedRecord, css) {
         <div class="panel">
           <div class="section-title with-action">
             <div><span></span><h2>每日榜单</h2></div>
-            <small>${Number(selectedRecord.orders) > 0 ? "按成交优先排序" : "无出单，按流量从好到坏"}</small>
+            <small>${dateHasOrders ? "按成单从大到小" : "无成单，按播放从高到低"}</small>
           </div>
           <div class="ranking-summary">${escapeHtml(date)} · Top 1-${Math.min(10, dateRecords.length)}</div>
           <div class="video-list">${renderRanking(date, selectedRecord)}</div>
@@ -304,10 +323,14 @@ function renderPage(date, selectedRecord, css) {
         <section class="panel video-detail">
           <div class="video-stage">
             <div class="phone-frame">
-              <img class="phone-image" alt="${escapeHtml(`${selectedRecord.title} 视频封面`)}" src="${assetPath(selectedRecord.cover || "/video-cover.png")}"/>
-              <div class="play-layer"><span>${selectedRecord.videoReady ? "GIF 预览" : "待下载视频"}</span></div>
+              ${
+                isPendingCover(selectedRecord)
+                  ? `<div class="phone-placeholder"><strong>视频素材待下载</strong><span>不会展示其他视频画面</span><small>下载该 TikTok 视频后自动补封面、关键帧和脚本</small></div>`
+                  : `<img class="phone-image" alt="${escapeHtml(`${selectedRecord.title} 视频封面`)}" src="${assetPath(selectedRecord.cover)}"/>`
+              }
+              <div class="play-layer"><span>${selectedRecord.videoReady ? "GIF 预览" : "素材待处理"}</span></div>
             </div>
-            <p class="video-hint">暂未下载到本地时，点击链接可查看原 TikTok 视频</p>
+            <p class="video-hint">${selectedRecord.videoReady ? "视频已下载到站点，可直接预览" : "暂未下载到本地，不展示其他视频画面；点击链接可查看原 TikTok 视频"}</p>
           </div>
           <div class="detail-content">
             <div class="detail-heading">
@@ -320,6 +343,7 @@ function renderPage(date, selectedRecord, css) {
               <span>${escapeHtml(sourceFile)}${escapeHtml(sourceRow)}：视频名称 / 视频链接 / 视频发布日期 / 达人用户名 / GMV / 联盟订单量 / 带货视频曝光次数 / 联盟点击率 / 带货视频点赞数 / 带货视频评论数</span>
             </div>
             <div class="section-title mt-5"><span></span><h3>关键画面截图与脚本分析</h3></div>
+            ${mediaPending ? `<p class="media-status-note">该视频还没有对应关键帧，以下是待处理状态；不会复用其他视频截图。</p>` : ""}
             <div class="frames-grid">${renderFrames(selectedRecord)}</div>
           </div>
         </section>

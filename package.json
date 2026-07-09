@@ -16,6 +16,7 @@
     "feishu:prepare": "python3 scripts/prepare-feishu-excel-data.py",
     "feishu:sync": "node scripts/sync-feishu-sheet-from-tiktok-report.mjs",
     "feishu:notify": "node scripts/send-feishu-site-notification.mjs",
+    "media:enrich": "node scripts/enrich-tiktok-media.mjs",
     "daren:prepare": "python3 scripts/prepare-daren-video-total.py",
     "report:download": "node scripts/download-tiktok-report.mjs",
     "pages:build": "GITHUB_PAGES=true NEXT_PUBLIC_SITE_BASE_PATH=/tiktok-daily-video-analysis next build --webpack",

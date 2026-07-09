@@ -87,6 +87,13 @@ def excel_serial_to_date(value):
     return (datetime(1899, 12, 30) + timedelta(days=serial)).date().isoformat()
 
 
+def valid_date(year, month, day):
+    try:
+        return datetime(int(year), int(month), int(day)).date().isoformat()
+    except ValueError:
+        return ""
+
+
 def normalize_date(value):
     text = clean_cell(value)
     if not text:
@@ -97,14 +104,18 @@ def normalize_date(value):
 
     match = re.search(r"(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})", text)
     if match:
-        return f"{match.group(1)}-{int(match.group(2)):02d}-{int(match.group(3)):02d}"
+        return valid_date(match.group(1), match.group(2), match.group(3))
 
     short_match = re.search(r"(\d{1,2})[-/.](\d{1,2})[-/.](\d{2})", text)
     if short_match:
         year = 2000 + int(short_match.group(3))
-        return f"{year}-{int(short_match.group(1)):02d}-{int(short_match.group(2)):02d}"
+        return valid_date(year, short_match.group(1), short_match.group(2))
 
     return ""
+
+
+def is_tiktok_video_link(value):
+    return bool(re.match(r"^https?://(?:www\.)?tiktok\.com/@[^/]+/video/\d+", clean_cell(value)))
 
 
 def parse_number(value):
@@ -229,6 +240,7 @@ def write_json(file_path, input_path, headers, rows, start_date):
                 "headers": headers,
                 "rows": rows,
                 "startDate": start_date,
+                "importMode": os.environ.get("TIKTOK_IMPORT_MODE", "latest-date"),
             },
             ensure_ascii=False,
             indent=2,
@@ -245,6 +257,7 @@ def main():
     input_path = sys.argv[1]
     output_path = sys.argv[2]
     start_date = os.environ.get("SITE_DATA_START_DATE", "2026-07-01")
+    import_mode = os.environ.get("TIKTOK_IMPORT_MODE", "latest-date").strip().lower()
 
     raw_rows = read_xlsx_rows(input_path)
     if not raw_rows:
@@ -261,7 +274,7 @@ def main():
         video_date = normalize_date(source_row[date_index] if date_index < len(source_row) else "")
         link = clean_cell(source_row[link_index] if link_index < len(source_row) else "")
 
-        if not video_date or video_date < start_date:
+        if not video_date or video_date < start_date or not is_tiktok_video_link(link):
             continue
 
         values = []
@@ -288,6 +301,17 @@ def main():
     if not rows:
         raise ValueError(f"No TikTok rows found on or after {start_date}.")
 
+    if import_mode in {"latest", "latest-date", "daily", "incremental"}:
+        latest_date = max(row["date"] for row in rows)
+        rows = [row for row in rows if row["date"] == latest_date]
+    elif import_mode in {"all", "all-since-start", "backfill"}:
+        latest_date = max(row["date"] for row in rows)
+    else:
+        raise ValueError(
+            "TIKTOK_IMPORT_MODE must be latest-date or all-since-start. "
+            f"Received: {import_mode}"
+        )
+
     if Path(output_path).suffix.lower() == ".json":
         write_json(output_path, input_path, output_headers, rows, start_date)
     else:
@@ -302,6 +326,8 @@ def main():
                 "rows": len(rows),
                 "startDate": dates[0],
                 "endDate": dates[-1],
+                "latestDateInReport": latest_date,
+                "importMode": import_mode,
                 "format": "json" if Path(output_path).suffix.lower() == ".json" else "csv",
             },
             ensure_ascii=False,

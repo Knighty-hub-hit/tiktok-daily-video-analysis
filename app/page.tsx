@@ -54,6 +54,12 @@ type VideoRecord = {
   script: ScriptLine[];
   breakdown: Breakdown;
   reasons: string[];
+  mediaStatus?: {
+    cover?: "matched" | "pending";
+    video?: "matched" | "pending";
+    keyframes?: number;
+    transcript?: "matched" | "pending";
+  };
   source?: {
     file: string;
     row: number;
@@ -340,6 +346,30 @@ function getWeekLabel(dateValue: string) {
   return `${date.getFullYear()} 第 ${week} 周`;
 }
 
+function isPendingCover(video: VideoRecord) {
+  return video.mediaStatus?.cover === "pending" || video.cover.includes("/placeholders/");
+}
+
+function isPendingFrame(frame: Frame) {
+  return frame.image.includes("/placeholders/");
+}
+
+function sortVideosForDailyRank(videos: VideoRecord[]) {
+  const hasOrders = videos.some((video) => video.orders > 0);
+
+  return [...videos].sort((a, b) => {
+    const orderDelta = b.orders - a.orders;
+    const viewDelta = b.views - a.views;
+    const likeDelta = b.likes - a.likes;
+
+    if (hasOrders && orderDelta !== 0) {
+      return orderDelta;
+    }
+
+    return viewDelta || likeDelta;
+  });
+}
+
 export default function Home() {
   const baseVideos = excelVideos.length > 0 ? excelVideos : seedVideos;
   const [selectedDate, setSelectedDate] = useState(baseVideos[0].date);
@@ -357,15 +387,7 @@ export default function Home() {
 
   const visibleVideos = useMemo(() => {
     const filtered = allVideos.filter((video) => video.date === selectedDate);
-    const hasOrders = filtered.some((video) => video.orders > 0);
-
-    return [...filtered].sort((a, b) => {
-      if (hasOrders) {
-        return b.orders - a.orders || b.views - a.views || b.likes - a.likes;
-      }
-
-      return b.views - a.views || b.likes - a.likes;
-    });
+    return sortVideosForDailyRank(filtered);
   }, [allVideos, selectedDate]);
 
   const pageBounds = getPageBounds(pageRange);
@@ -379,8 +401,8 @@ export default function Home() {
     visibleVideos.findIndex((video) => video.id === activeVideo.id) + 1 || 1;
 
   const sortLabel = visibleVideos.some((video) => video.orders > 0)
-    ? "出单量从大到小"
-    : "无出单，按流量从好到坏";
+    ? "按成单从大到小"
+    : "无成单，按播放从高到低";
   const weekLabel = getWeekLabel(selectedDate);
   const minDate = dates[dates.length - 1] ?? selectedDate;
   const maxDate = dates[0] ?? selectedDate;
@@ -391,7 +413,9 @@ export default function Home() {
     }
 
     setSelectedDate(date);
-    const firstForDate = allVideos.find((video) => video.date === date);
+    const firstForDate = sortVideosForDailyRank(
+      allVideos.filter((video) => video.date === date),
+    )[0];
 
     if (firstForDate) {
       setActiveVideoId(firstForDate.id);
@@ -472,14 +496,18 @@ export default function Home() {
                       : `${formatNumber(video.views)} 播放`}
                   </span>
                   <span className="row-preview" aria-hidden="true">
-                    <Image
-                      alt=""
-                      className="row-preview-image"
-                      fill
-                      sizes="180px"
-                      src={withSiteBasePath(video.videoReady && video.videoFile ? video.videoFile : video.cover)}
-                      unoptimized={video.mediaType === "gif"}
-                    />
+                    {isPendingCover(video) ? (
+                      <span className="row-preview-placeholder">待下载</span>
+                    ) : (
+                      <Image
+                        alt=""
+                        className="row-preview-image"
+                        fill
+                        sizes="180px"
+                        src={withSiteBasePath(video.videoReady && video.videoFile ? video.videoFile : video.cover)}
+                        unoptimized={video.mediaType === "gif"}
+                      />
+                    )}
                   </span>
                 </button>
               ))}
@@ -511,6 +539,12 @@ export default function Home() {
                     poster={withSiteBasePath(activeVideo.cover)}
                     src={withSiteBasePath(activeVideo.videoFile)}
                   />
+                ) : isPendingCover(activeVideo) ? (
+                  <div className="phone-placeholder">
+                    <strong>视频素材待下载</strong>
+                    <span>不会展示其他视频画面</span>
+                    <small>下载该 TikTok 视频后自动补封面、关键帧和脚本</small>
+                  </div>
                 ) : (
                   <Image
                     alt={`${activeVideo.product} 视频封面`}
@@ -522,13 +556,13 @@ export default function Home() {
                   />
                 )}
                 <div className="play-layer">
-                  <span>{activeVideo.videoReady ? "本地视频" : "待下载视频"}</span>
+                  <span>{activeVideo.videoReady ? "本地视频" : "素材待处理"}</span>
                 </div>
               </div>
               <p className="video-hint">
                 {activeVideo.videoReady
                   ? "视频已下载到站点，可直接播放"
-                  : "暂未下载到本地，点击链接可查看原 TikTok 视频"}
+                  : "暂未下载到本地，不展示其他视频画面；点击链接可查看原 TikTok 视频"}
               </p>
             </div>
 
@@ -581,17 +615,29 @@ export default function Home() {
                 <span />
                 <h3>关键画面截图与脚本分析</h3>
               </div>
+              {activeVideo.mediaStatus?.keyframes ? null : (
+                <p className="media-status-note">
+                  该视频还没有对应关键帧，以下是待处理状态；不会复用其他视频截图。
+                </p>
+              )}
               <div className="frames-grid">
                 {activeVideo.frames.map((frame) => (
                   <article className="frame-card" key={`${activeVideo.id}-${frame.time}`}>
                     <div className="frame-image-wrap">
-                      <Image
-                        alt={`${frame.time} ${frame.title}`}
-                        className="frame-image"
-                        fill
-                        sizes="(max-width: 760px) 50vw, (max-width: 1180px) 33vw, 180px"
-                        src={withSiteBasePath(frame.image)}
-                      />
+                      {isPendingFrame(frame) ? (
+                        <div className="frame-placeholder">
+                          <strong>待抽取</strong>
+                          <span>{frame.time}</span>
+                        </div>
+                      ) : (
+                        <Image
+                          alt={`${frame.time} ${frame.title}`}
+                          className="frame-image"
+                          fill
+                          sizes="(max-width: 760px) 50vw, (max-width: 1180px) 33vw, 180px"
+                          src={withSiteBasePath(frame.image)}
+                        />
+                      )}
                     </div>
                     <strong>{frame.time}</strong>
                     <h4>{frame.title}</h4>

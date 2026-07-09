@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="600" viewBox="0 0 480 600" role="img" aria-labelledby="title desc">
+  <title id="title">关键帧待抽取</title>
+  <desc id="desc">该位置等待同一视频的真实关键帧截图。</desc>
+  <rect width="480" height="600" rx="20" fill="#f8fafc"/>
+  <rect x="34" y="42" width="412" height="516" rx="18" fill="#eef2f7" stroke="#d9e2ef" stroke-width="3"/>
+  <path d="M166 252h148v96H166z" fill="#dbe5f3"/>
+  <path d="M166 252l54 52 34-32 60 76H166z" fill="#c8d5e7"/>
+  <circle cx="306" cy="278" r="18" fill="#b5c5dc"/>
+  <text x="240" y="408" text-anchor="middle" fill="#344054" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="800">关键帧待抽取</text>
+  <text x="240" y="454" text-anchor="middle" fill="#667085" font-family="Arial, Helvetica, sans-serif" font-size="20">等待对应视频素材</text>
+</svg>

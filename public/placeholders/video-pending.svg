@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1280" viewBox="0 0 720 1280" role="img" aria-labelledby="title desc">
+  <title id="title">视频素材待下载</title>
+  <desc id="desc">该视频暂未下载真实素材，不展示其他视频画面。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#101828"/>
+      <stop offset="1" stop-color="#1f2937"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="1280" fill="url(#bg)"/>
+  <rect x="88" y="220" width="544" height="840" rx="42" fill="#ffffff" opacity=".06"/>
+  <circle cx="360" cy="540" r="92" fill="#ffffff" opacity=".11"/>
+  <path d="M333 489v102l86-51-86-51z" fill="#ffffff" opacity=".82"/>
+  <text x="360" y="690" text-anchor="middle" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="800">视频素材待下载</text>
+  <text x="360" y="750" text-anchor="middle" fill="#cbd5e1" font-family="Arial, Helvetica, sans-serif" font-size="24">不会展示其他视频画面</text>
+  <text x="360" y="805" text-anchor="middle" fill="#94a3b8" font-family="Arial, Helvetica, sans-serif" font-size="22">下载原视频后自动补封面、关键帧和脚本</text>
+</svg>

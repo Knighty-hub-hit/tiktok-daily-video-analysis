@@ -77,8 +77,14 @@ npm run feishu:prepare -- <TikTok导出.xlsx> data/tiktok-feishu-latest.json
 npm run feishu:sync -- data/tiktok-feishu-latest.json
 ```
 
-该步骤会保留 `2026-07-01` 及之后的数据，按视频链接/视频 ID 去重，并保留全部 18 个原始字段。同步时会先读取飞书现有数据，再用最新 Excel 覆盖同视频的指标；这样即使 TikTok 导出只包含最近 7 天，也不会丢掉 7 月以来更早的历史行。
+默认每日模式只取 TikTok 导出文件里的最新日期视频，按视频链接/视频 ID 去重，并保留全部 18 个原始字段。同步时会先读取飞书现有数据，再用最新 Excel 覆盖同视频的指标；这样每日只追加/更新当天新视频，同时不会丢掉 `2026-07-01` 以来更早的历史行。
 
-每日北京时间 12:00，GitHub Actions 会按 `TikTok Excel -> 飞书 TikTok每日视频数据 -> data/site-videos.json -> GitHub Pages -> 飞书群推送` 的顺序刷新。这一段不依赖本机飞书登录状态。
+需要历史补录时，可以临时使用全量模式：
 
-飞书群消息的主链接使用妙搭域名 `https://xinchimcn.aiforce.cloud/app/app_179t4tka49p`，用于避开飞书内置浏览器访问 `github.io` 不稳定的问题。当前妙搭版本是稳定 HTML 发布版，发布命令 `lark-cli apps +html-publish` 只支持用户身份，所以每日云端任务不会自动重新发布妙搭静态包；要让妙搭链接也每天自动实时更新，需要下一阶段改成妙搭全栈应用运行时读取飞书/站点数据，或在 CI 中配置可用的用户发布凭证。
+```bash
+TIKTOK_IMPORT_MODE=all-since-start npm run feishu:prepare -- <TikTok导出.xlsx> data/tiktok-feishu-latest.json
+```
+
+每日北京时间 09:00，GitHub Actions 会按 `TikTok Excel -> 飞书 TikTok每日视频数据 -> data/site-videos.json -> 素材状态匹配 -> GitHub Pages -> 飞书群推送` 的顺序刷新。这一段不依赖本机飞书登录状态。
+
+飞书群消息的主链接使用妙搭域名 `https://xinchimcn.aiforce.cloud/app/app_179t4tka49p`，用于避开飞书内置浏览器访问 `github.io` 不稳定的问题。当前妙搭版本是稳定 HTML 发布版，发布命令 `lark-cli apps +html-publish` 只支持用户身份，所以每日云端任务会自动刷新 GitHub Pages 和群消息；要让妙搭链接本身也每天自动实时更新，需要下一阶段改成妙搭全栈应用运行时读取飞书/站点数据，或在 CI 中配置可用的用户发布凭证。

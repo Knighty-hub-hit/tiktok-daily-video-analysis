@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import { sortRecordsForDailyRank } from "./site-data-builder.mjs";
 
 const DEFAULT_SITE_URL = "https://xinchimcn.aiforce.cloud/app/app_179t4tka49p";
 const DEFAULT_BACKUP_SITE_URL = "https://knighty-hub-hit.github.io/tiktok-daily-video-analysis/";
@@ -97,12 +98,7 @@ function summarizeRecords(records) {
     records: [],
   };
 
-  latestSummary.records.sort(
-    (a, b) =>
-      (Number(b.orders) || 0) - (Number(a.orders) || 0) ||
-      (Number(b.revenue) || 0) - (Number(a.revenue) || 0) ||
-      (Number(b.views) || 0) - (Number(a.views) || 0),
-  );
+  latestSummary.records = sortRecordsForDailyRank(latestSummary.records);
 
   return { latestDate, latestSummary, previousDate, previousSummary };
 }

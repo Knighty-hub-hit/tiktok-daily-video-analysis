@@ -5,8 +5,10 @@
 ## 当前能力
 
 - 按日期浏览每日视频榜单
+- 每日榜单按“有成单先按成单数从高到低；无成单按播放/曝光从高到低”排序
 - 查看 GMV、订单、曝光、点击率、互动等核心指标
 - 展示本地保存的视频 GIF 预览、字幕和关键帧
+- 没有对应视频素材时显示待处理状态，不复用其他视频的封面、关键帧或脚本
 - 对重点视频沉淀 Hook、卖点、CTA 和可复用脚本结构
 - 从 TikTok 导出的 Excel 生成网站数据
 - 保留 Sites 托管配置，可发布成团队可访问链接
@@ -24,6 +26,7 @@
 - `scripts/download-tiktok-report.mjs`: 从云端下载每日 TikTok Excel 报表
 - `scripts/prepare-feishu-excel-data.py`: 把 TikTok Excel 整理为飞书 18 列完整字段
 - `scripts/sync-feishu-sheet-from-tiktok-report.mjs`: 用飞书 OpenAPI 合并写入 `TikTok每日视频数据`
+- `scripts/enrich-tiktok-media.mjs`: 按视频 ID 匹配本地素材，并为缺失素材使用明确的待处理占位
 - `scripts/validate-site-data.mjs`: 校验网站展示数据和素材路径
 - `.openai/hosting.json`: Sites 托管项目配置
 - `docs/phase-one-workflow.md`: 第一阶段网站展示链路
@@ -67,10 +70,11 @@ npm run report:download
 npm run feishu:prepare -- data/exports/tiktok-report.xlsx data/tiktok-feishu-latest.json
 npm run feishu:sync -- data/tiktok-feishu-latest.json
 npm run feishu:import
+npm run media:enrich -- --latest-date
 npm run pages:build
 ```
 
-GitHub Actions 每天北京时间 12:00 会自动执行这条链路：下载 TikTok Excel、合并写入飞书 `TikTok每日视频数据`、读取飞书生成网站数据、发布 GitHub Pages，并通过“柯学的飞书 CLI”应用机器人推送到飞书群。群消息里的主链接使用飞书妙搭版本，备用链接使用 GitHub Pages。
+GitHub Actions 每天北京时间 09:00 会自动执行这条链路：下载 TikTok Excel、只解析导出文件里的最新日期视频、合并写入飞书 `TikTok每日视频数据`、读取飞书生成网站数据、补齐可匹配的视频素材状态、发布 GitHub Pages，并通过“柯学的飞书 CLI”应用机器人推送到飞书群。群消息里的主链接使用飞书妙搭版本，备用链接使用 GitHub Pages。
 
 ## 验证构建
 
@@ -103,17 +107,18 @@ npm run miaoda:publish
 第一阶段现在做数据自动更新链路：
 
 1. 下载 TikTok 每日 Excel
-2. 解析并保留 18 列完整字段
+2. 只解析最新日期的新视频，并保留 18 列完整字段
 3. 合并写入飞书 `TikTok每日视频数据`
 4. 读取飞书生成 `site-videos.json`
-5. 构建并发布 GitHub Pages
-6. 按需发布飞书妙搭访问版本
-7. 发布成功后推送飞书群 `墨区小组`
-8. 交付团队访问链接
+5. 按视频 ID 匹配本地封面、GIF、关键帧和字幕；缺失时显示待处理，不显示错图
+6. 构建并发布 GitHub Pages
+7. 按需发布飞书妙搭访问版本
+8. 发布成功后推送飞书群 `墨区小组`
+9. 交付团队访问链接
 
 完整链路见 `docs/production-workflow.md`。第二阶段再继续接入：
 
-- 长期自动化调度和告警
-- 视频素材下载、关键帧、字幕和脚本拆解
+- 更完整的视频下载、关键帧、字幕和脚本拆解
+- 妙搭全栈运行时读取最新数据，让飞书内链接也完全自动实时更新
 
 第二阶段云端任务说明见 `docs/phase-two-cloud-automation.md`。

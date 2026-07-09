@@ -1,8 +1,10 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 export const SITE_DATA_START_DATE = process.env.SITE_DATA_START_DATE ?? "2026-07-01";
 export const MAX_PER_DATE = Number.parseInt(process.env.SITE_DATA_MAX_PER_DATE ?? "100", 10);
+export const PENDING_COVER = "/placeholders/video-pending.svg";
+export const PENDING_FRAME = "/placeholders/frame-pending.svg";
 
 export const FIELD_ALIASES = {
   title: ["视频名称", "视频标题", "标题", "title", "video_title", "videoName"],
@@ -134,6 +136,248 @@ function analysisFromRow({ title, orders, views, ctr, gmv }) {
   };
 }
 
+export function compareRecordsForDailyRank(a, b, hasOrders) {
+  const orderDelta = (Number(b.orders) || 0) - (Number(a.orders) || 0);
+  const viewDelta = (Number(b.views) || 0) - (Number(a.views) || 0);
+  const likeDelta = (Number(b.likes) || 0) - (Number(a.likes) || 0);
+
+  if (hasOrders && orderDelta !== 0) {
+    return orderDelta;
+  }
+
+  return viewDelta || likeDelta;
+}
+
+export function sortRecordsForDailyRank(records) {
+  const hasOrders = records.some((record) => (Number(record.orders) || 0) > 0);
+  return [...records].sort((a, b) => compareRecordsForDailyRank(a, b, hasOrders));
+}
+
+function publicAssetPath(assetPath) {
+  if (!assetPath || !String(assetPath).startsWith("/")) {
+    return "";
+  }
+
+  return path.join("public", String(assetPath).slice(1));
+}
+
+async function publicAssetExists(assetPath) {
+  const localPath = publicAssetPath(assetPath);
+
+  if (!localPath) {
+    return false;
+  }
+
+  try {
+    await access(localPath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function firstExistingAsset(paths) {
+  for (const assetPath of paths) {
+    if (await publicAssetExists(assetPath)) {
+      return assetPath;
+    }
+  }
+
+  return "";
+}
+
+function isGenericCover(assetPath) {
+  return !assetPath || ["/video-cover.png", PENDING_COVER].includes(String(assetPath));
+}
+
+function isGenericFrame(assetPath) {
+  return !assetPath || String(assetPath).startsWith("/frames/") || String(assetPath) === PENDING_FRAME;
+}
+
+function isPendingScript(script) {
+  if (!Array.isArray(script) || script.length === 0) {
+    return true;
+  }
+
+  return script.every((line) => {
+    const english = String(line?.english ?? "");
+    const chinese = String(line?.chinese ?? "");
+    return english.includes("Awaiting downloaded video transcript") || chinese.includes("等待下载视频");
+  });
+}
+
+function pendingFrames() {
+  return [
+    {
+      time: "00:00",
+      title: "素材待下载",
+      note: "当前还没有拿到这条视频的真实首帧，不展示其他视频画面，避免错配。",
+      image: PENDING_FRAME,
+    },
+    {
+      time: "00:03",
+      title: "关键帧待抽取",
+      note: "视频下载后会用同一视频 ID 的关键帧替换，用于判断卖点、商品露出和节奏。",
+      image: PENDING_FRAME,
+    },
+    {
+      time: "00:06",
+      title: "脚本待拆解",
+      note: "拿到字幕或视频后再补充真实口播、字幕和 CTA 拆解。",
+      image: PENDING_FRAME,
+    },
+  ];
+}
+
+function pendingScript() {
+  return [
+    {
+      time: "待处理",
+      english: "Video transcript is not available yet",
+      chinese: "该视频暂未下载字幕/音频，等待素材处理后补充真实脚本",
+    },
+  ];
+}
+
+function cueTimestampToSeconds(value) {
+  const parts = String(value).replace(",", ".").split(":").map(Number);
+
+  if (parts.length === 3) {
+    return parts[0] * 3600 + parts[1] * 60 + parts[2];
+  }
+
+  if (parts.length === 2) {
+    return parts[0] * 60 + parts[1];
+  }
+
+  return Number(parts[0]) || 0;
+}
+
+function formatCueTime(seconds) {
+  const totalSeconds = Math.max(0, Math.floor(seconds));
+  const minutes = Math.floor(totalSeconds / 60);
+  const second = totalSeconds % 60;
+  return `${String(minutes).padStart(2, "0")}:${String(second).padStart(2, "0")}`;
+}
+
+function parseVttTranscript(text) {
+  const cues = [];
+  const blocks = String(text)
+    .replace(/\r/g, "")
+    .split(/\n{2,}/)
+    .map((block) => block.trim())
+    .filter(Boolean);
+
+  for (const block of blocks) {
+    if (block === "WEBVTT" || block.startsWith("NOTE")) {
+      continue;
+    }
+
+    const lines = block.split("\n").filter(Boolean);
+    const timeLineIndex = lines.findIndex((line) => line.includes("-->"));
+
+    if (timeLineIndex < 0) {
+      continue;
+    }
+
+    const [start] = lines[timeLineIndex].split("-->");
+    const textLines = lines
+      .slice(timeLineIndex + 1)
+      .map((line) => line.replace(/<[^>]+>/g, "").trim())
+      .filter(Boolean);
+    const cueText = textLines.join(" ").replace(/\s+/g, " ").trim();
+
+    if (!cueText) {
+      continue;
+    }
+
+    cues.push({
+      time: formatCueTime(cueTimestampToSeconds(start.trim())),
+      english: cueText,
+      chinese: "待翻译 / 待二次拆解",
+    });
+  }
+
+  return cues.slice(0, 40);
+}
+
+async function parseTranscriptFile(assetPath) {
+  const localPath = publicAssetPath(assetPath);
+
+  if (!localPath) {
+    return [];
+  }
+
+  try {
+    return parseVttTranscript(await readFile(localPath, "utf8"));
+  } catch {
+    return [];
+  }
+}
+
+export async function attachLocalMediaAssets(record) {
+  const id = record.id;
+  const coverFromExisting =
+    !isGenericCover(record.cover) && (await publicAssetExists(record.cover)) ? record.cover : "";
+  const coverFromFile = await firstExistingAsset([
+    `/covers/${id}.png`,
+    `/covers/${id}.jpg`,
+    `/covers/${id}.jpeg`,
+    `/covers/${id}.webp`,
+  ]);
+  const videoGif = await firstExistingAsset([`/videos/${id}.gif`]);
+  const videoMp4 = await firstExistingAsset([`/videos/${id}.mp4`]);
+  const transcriptFile = await firstExistingAsset([`/videos/${id}.vtt`]);
+  const frameSpecs = [
+    ["00:00", "首帧画面", "来自该视频的首帧截图，用于判断开场是否直接露出人、商品或痛点。", `/keyframes/${id}-00.png`],
+    ["00:03", "3 秒画面", "来自该视频第 3 秒附近的截图，用于观察卖点展开和商品呈现。", `/keyframes/${id}-03.png`],
+    ["00:06", "6 秒画面", "来自该视频第 6 秒附近的截图，用于观察 CTA、证明点或节奏变化。", `/keyframes/${id}-06.png`],
+  ];
+  const realFrames = [];
+
+  for (const [time, title, note, image] of frameSpecs) {
+    if (await publicAssetExists(image)) {
+      realFrames.push({ time, title, note, image });
+    }
+  }
+
+  const curatedFrames =
+    Array.isArray(record.frames) &&
+    record.frames.length > 0 &&
+    record.frames.some((frame) => !isGenericFrame(frame?.image))
+      ? record.frames
+      : [];
+  const parsedScript = transcriptFile ? await parseTranscriptFile(transcriptFile) : [];
+  const curatedScript = !isPendingScript(record.script) ? record.script : [];
+  const videoFile = videoGif || videoMp4 || "";
+  const cover = coverFromExisting || coverFromFile || realFrames[0]?.image || PENDING_COVER;
+
+  return {
+    ...record,
+    cover,
+    ...(videoFile
+      ? {
+          videoFile,
+          videoReady: true,
+          mediaType: videoGif ? "gif" : "video",
+        }
+      : {
+          videoFile: undefined,
+          videoReady: false,
+          mediaType: undefined,
+        }),
+    transcriptFile: transcriptFile || undefined,
+    frames: realFrames.length > 0 ? realFrames : curatedFrames.length > 0 ? curatedFrames : pendingFrames(),
+    script: parsedScript.length > 0 ? parsedScript : curatedScript.length > 0 ? curatedScript : pendingScript(),
+    mediaStatus: {
+      cover: cover === PENDING_COVER ? "pending" : "matched",
+      video: videoFile ? "matched" : "pending",
+      keyframes: realFrames.length,
+      transcript: parsedScript.length > 0 ? "matched" : "pending",
+    },
+  };
+}
+
 export async function loadExistingRecords(filePath) {
   try {
     const data = JSON.parse(await readFile(filePath, "utf8"));
@@ -151,13 +395,13 @@ function mergeDisplayAssets(record, existingRecord) {
 
   return {
     ...record,
-    cover: existingRecord.cover ?? record.cover,
-    videoFile: existingRecord.videoFile ?? record.videoFile,
+    cover: !isGenericCover(existingRecord.cover) ? existingRecord.cover : record.cover,
+    videoFile: existingRecord.videoReady ? existingRecord.videoFile : record.videoFile,
     videoReady: existingRecord.videoReady ?? record.videoReady,
-    mediaType: existingRecord.mediaType ?? record.mediaType,
+    mediaType: existingRecord.videoReady ? existingRecord.mediaType : record.mediaType,
     transcriptFile: existingRecord.transcriptFile ?? record.transcriptFile,
-    frames: existingRecord.frames?.length ? existingRecord.frames : record.frames,
-    script: existingRecord.script?.length ? existingRecord.script : record.script,
+    frames: existingRecord.frames?.some((frame) => !isGenericFrame(frame?.image)) ? existingRecord.frames : record.frames,
+    script: !isPendingScript(existingRecord.script) ? existingRecord.script : record.script,
     breakdown: record.breakdown,
     reasons: record.reasons,
     source: record.source,
@@ -204,35 +448,10 @@ export function rowToSiteRecord(row, { sourceLabel, sourceRow }) {
     ctr,
     rpm,
     commission,
-    cover: "/video-cover.png",
-    videoFile: `/videos/${id}.mp4`,
-    frames: [
-      {
-        time: "00:00",
-        title: "首帧待抽取",
-        note: "视频下载后自动替换为真实关键画面，用于判断首秒是否露出人、商品或痛点。",
-        image: "/frames/frame-00.png",
-      },
-      {
-        time: "00:03",
-        title: "卖点待抽取",
-        note: "结合字幕、口播和商品出现位置，拆出最强卖点证明。",
-        image: "/frames/frame-02.png",
-      },
-      {
-        time: "00:06",
-        title: "CTA 待抽取",
-        note: "检查是否出现购买引导、折扣信息、购物车或评论区触发。",
-        image: "/frames/frame-06.png",
-      },
-    ],
-    script: [
-      {
-        time: "00:00",
-        english: "Awaiting downloaded video transcript",
-        chinese: "等待下载视频后补充真实脚本逐句拆解",
-      },
-    ],
+    cover: PENDING_COVER,
+    videoReady: false,
+    frames: pendingFrames(),
+    script: pendingScript(),
     breakdown: analysisFromRow({ title, creator, orders, views, ctr, gmv: revenue }),
     reasons: [
       orders > 0 ? `出单量 ${orders}，按目标规则优先进入成交榜。` : `出单量为 0，按曝光 ${views} 参与流量排序。`,
@@ -265,15 +484,18 @@ export async function buildSiteDataFromRows(rows, options = {}) {
     sourceLabel = "Feishu sheet",
   } = options;
   const existingRecordsById = await loadExistingRecords(outputPath);
-  const sourceRecords = rows
-    .map((row, index) =>
-      rowToSiteRecord(row, {
-        sourceLabel,
-        sourceRow: row.__sourceRow ?? index + 2,
+  const sourceRecords = (
+    await Promise.all(
+      rows.map(async (row, index) => {
+        const record = rowToSiteRecord(row, {
+          sourceLabel,
+          sourceRow: row.__sourceRow ?? index + 2,
+        });
+
+        return attachLocalMediaAssets(mergeDisplayAssets(record, existingRecordsById.get(record.id)));
       }),
     )
-    .map((record) => mergeDisplayAssets(record, existingRecordsById.get(record.id)))
-    .filter((record) => isTikTokVideoLink(record.link) && record.date >= SITE_DATA_START_DATE);
+  ).filter((record) => isTikTokVideoLink(record.link) && record.date >= SITE_DATA_START_DATE);
 
   const byDate = new Map();
 
@@ -284,16 +506,7 @@ export async function buildSiteDataFromRows(rows, options = {}) {
   }
 
   const siteRecords = Array.from(byDate.entries())
-    .flatMap(([, dateRecords]) => {
-      const hasOrders = dateRecords.some((record) => record.orders > 0);
-      return dateRecords
-        .sort((a, b) =>
-          hasOrders
-            ? b.orders - a.orders || b.views - a.views || b.likes - a.likes
-            : b.views - a.views || b.likes - a.likes,
-        )
-        .slice(0, MAX_PER_DATE);
-    })
+    .flatMap(([, dateRecords]) => sortRecordsForDailyRank(dateRecords).slice(0, MAX_PER_DATE))
     .sort((a, b) => (a.date === b.date ? b.orders - a.orders || b.views - a.views : b.date.localeCompare(a.date)));
 
   return {

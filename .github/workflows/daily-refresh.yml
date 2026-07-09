@@ -11,8 +11,8 @@ on:
         required: false
         type: string
   schedule:
-    # 12:00 Beijing time = 04:00 UTC.
-    - cron: "0 4 * * *"
+    # 09:00 Beijing time = 01:00 UTC.
+    - cron: "0 1 * * *"
 
 permissions:
   contents: write
@@ -95,7 +95,7 @@ jobs:
         run: npm ci
 
       - name: Download TikTok report
-        if: steps.source.outputs.mode == 'report'
+        if: steps.source.outputs.mode == 'report' || steps.source.outputs.mode == 'report-only'
         env:
           TIKTOK_REPORT_AUTHORIZATION: ${{ secrets.TIKTOK_REPORT_AUTHORIZATION }}
           TIKTOK_REPORT_COOKIE: ${{ secrets.TIKTOK_REPORT_COOKIE }}
@@ -109,6 +109,8 @@ jobs:
 
       - name: Prepare Feishu rows from TikTok report
         if: steps.source.outputs.mode == 'report'
+        env:
+          TIKTOK_IMPORT_MODE: latest-date
         run: npm run feishu:prepare -- data/exports/tiktok-report-${{ github.run_id }}.xlsx data/tiktok-feishu-latest.json
 
       - name: Sync TikTok report into Feishu sheet
@@ -125,6 +127,13 @@ jobs:
         if: steps.source.outputs.mode == 'report' && steps.sync_feishu.outcome != 'success'
         run: npm run data:import -- data/exports/tiktok-report-${{ github.run_id }}.xlsx
 
+      - name: Enrich latest video media
+        if: steps.source.outputs.configured == 'true' && github.event_name != 'push'
+        continue-on-error: true
+        env:
+          TIKTOK_MEDIA_ENRICH_LIMIT: 30
+        run: npm run media:enrich -- --latest-date
+
       - name: Build public site
         if: steps.source.outputs.configured == 'true'
         run: npm run pages:build
@@ -135,7 +144,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/site-videos.json
+          git add data/site-videos.json public/covers
           if git diff --cached --quiet; then
             echo "No data changes to commit."
           else
