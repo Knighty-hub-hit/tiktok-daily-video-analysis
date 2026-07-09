@@ -133,8 +133,16 @@ node scratch/export_tiktok_excel_to_site_data.mjs <xlsx路径> data/site-videos.
 - `LARK_TARGET_CHAT_ID`
 - `LARK_TARGET_CHAT_NAME`，未配置时默认使用 `墨区小组`
 - `SITE_PUBLIC_URL`
+- `SITE_BACKUP_URL`
 
 不要提交 `.env` 文件。
+
+当前飞书内可打开版本：
+
+- 妙搭应用 ID：`app_179t4tka49p`
+- 妙搭访问链接：`https://xinchimcn.aiforce.cloud/app/app_179t4tka49p`
+- 可见范围：飞书群 `墨区小组`
+- 本地重新发布命令：`npm run miaoda:publish`
 
 飞书应用机器人需要加入目标群，并至少开通这些 IM 权限：
 
@@ -147,6 +155,7 @@ node scratch/export_tiktok_excel_to_site_data.mjs <xlsx路径> data/site-videos.
 - 网站展示的是最新日期数据
 - 飞书表格每天自动新增或更新记录
 - 飞书群每天收到摘要
+- 飞书群消息主链接使用妙搭域名，备用链接使用 GitHub Pages
 - 重复运行不会重复写入同一视频
 - 任一步失败都会记录日志并推送提醒
 

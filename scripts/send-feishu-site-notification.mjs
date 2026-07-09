@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 
-const DEFAULT_SITE_URL = "https://knighty-hub-hit.github.io/tiktok-daily-video-analysis/";
+const DEFAULT_SITE_URL = "https://xinchimcn.aiforce.cloud/app/app_179t4tka49p";
+const DEFAULT_BACKUP_SITE_URL = "https://knighty-hub-hit.github.io/tiktok-daily-video-analysis/";
 const DEFAULT_SHEET_URL =
   "https://xinchimcn.feishu.cn/wiki/VUs4wyJ6Mi1MlHkhQkCcrx8hnvh?table=tbltCfy5ZsMAkNw0&view=vewW7k3x0w&sheet=hlCeKL";
 const DEFAULT_TARGET_CHAT_NAME = "墨区小组";
@@ -89,6 +90,7 @@ function buildMessage(data) {
   const records = Array.isArray(data.records) ? data.records : [];
   const { latestDate, latestSummary } = summarizeRecords(records);
   const siteUrl = getEnv("SITE_PUBLIC_URL", "NEXT_PUBLIC_SITE_URL") || DEFAULT_SITE_URL;
+  const backupSiteUrl = getEnv("SITE_BACKUP_URL", "NEXT_PUBLIC_BACKUP_SITE_URL") || DEFAULT_BACKUP_SITE_URL;
   const sheetUrl = getEnv("FEISHU_SHEET_URL", "LARK_SHEET_URL") || DEFAULT_SHEET_URL;
   const topLines = latestSummary.records.slice(0, 5).map((record, index) => {
     const title = clip(record.title || record.product || record.link);
@@ -109,6 +111,7 @@ function buildMessage(data) {
     ...(topLines.length ? topLines : ["暂无可展示视频"]),
     "",
     `网站：${siteUrl}`,
+    `备用链接：${backupSiteUrl}`,
     `飞书表格：${sheetUrl}`,
   ].join("\n");
 }

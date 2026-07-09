@@ -70,7 +70,7 @@ npm run feishu:import
 npm run pages:build
 ```
 
-GitHub Actions 每天北京时间 12:00 会自动执行这条链路：下载 TikTok Excel、合并写入飞书 `TikTok每日视频数据`、读取飞书生成网站数据、发布网站，并通过“柯学的飞书 CLI”应用机器人推送到飞书群。
+GitHub Actions 每天北京时间 12:00 会自动执行这条链路：下载 TikTok Excel、合并写入飞书 `TikTok每日视频数据`、读取飞书生成网站数据、发布 GitHub Pages，并通过“柯学的飞书 CLI”应用机器人推送到飞书群。群消息里的主链接使用飞书妙搭版本，备用链接使用 GitHub Pages。
 
 ## 验证构建
 
@@ -88,6 +88,14 @@ npm run pages:check
 
 这个命令会校验数据并生成 GitHub Pages 可发布的静态站点。GitHub 云端发布配置在 `.github/workflows/pages.yml`。
 
+## 飞书内可打开版本
+
+```bash
+npm run miaoda:publish
+```
+
+这个命令会生成根路径静态站点，并发布到飞书妙搭应用 `app_179t4tka49p`：`https://xinchimcn.aiforce.cloud/app/app_179t4tka49p`。这个链接已经放开给飞书群 `墨区小组` 访问，用于解决飞书内置浏览器打不开 `github.io` 的问题。
+
 ## 生产化方向
 
 第一阶段现在做数据自动更新链路：
@@ -97,8 +105,9 @@ npm run pages:check
 3. 合并写入飞书 `TikTok每日视频数据`
 4. 读取飞书生成 `site-videos.json`
 5. 构建并发布 GitHub Pages
-6. 发布成功后推送飞书群 `墨区小组`
-7. 交付团队访问链接
+6. 按需发布飞书妙搭访问版本
+7. 发布成功后推送飞书群 `墨区小组`
+8. 交付团队访问链接
 
 完整链路见 `docs/production-workflow.md`。第二阶段再继续接入：
 
