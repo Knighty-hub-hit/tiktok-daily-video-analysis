@@ -1,8 +1,9 @@
-import { access, readdir, stat } from "node:fs/promises";
+import { access, readdir, rm, stat } from "node:fs/promises";
 import path from "node:path";
 
 const MAX_UNCOMPRESSED_BYTES = 200 * 1024 * 1024;
 const outDir = process.argv[2] ?? "out";
+const UNUSED_PUBLIC_DIRS = ["covers", "frames", "keyframes", "placeholders", "videos"];
 
 async function walkFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -33,6 +34,10 @@ async function getDirectorySize(directory) {
 }
 
 await access(path.join(outDir, "index.html"));
+
+for (const directory of UNUSED_PUBLIC_DIRS) {
+  await rm(path.join(outDir, directory), { recursive: true, force: true });
+}
 
 const { files, total } = await getDirectorySize(outDir);
 
