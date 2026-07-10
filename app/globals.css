@@ -610,6 +610,7 @@ button:disabled {
 .video-row-active {
   border-color: #cf1d61;
   background: #fff8fb;
+  box-shadow: 0 0 0 3px rgb(207 29 97 / 0.08);
 }
 
 .rank {
@@ -642,9 +643,25 @@ button:disabled {
 }
 
 .row-metric {
+  align-items: end;
+  display: grid;
+  gap: 3px;
+  justify-items: end;
+  min-width: 88px;
+}
+
+.row-metric strong {
+  color: #cf1d61;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.row-metric small {
   color: #2258c7;
-  font-size: 13px;
-  font-weight: 800;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
 }
 
 .row-preview {
@@ -694,6 +711,11 @@ button:disabled {
   display: grid;
   gap: 22px;
   grid-template-columns: minmax(250px, 360px) minmax(0, 1fr);
+}
+
+.detail-dashboard {
+  min-height: 100%;
+  padding: 22px;
 }
 
 .video-stage {
@@ -788,7 +810,7 @@ button:disabled {
 
 .detail-heading h2 {
   color: #202939;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 800;
   line-height: 1.45;
   max-width: 980px;
@@ -796,16 +818,73 @@ button:disabled {
 
 .eyebrow {
   color: #111827;
-  font-size: 26px;
+  font-size: 32px;
   font-weight: 900;
   margin-bottom: 8px;
+}
+
+.hero-metrics {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  margin-top: 22px;
+}
+
+.hero-metric {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  display: grid;
+  gap: 8px;
+  min-height: 156px;
+  padding: 20px;
+}
+
+.hero-metric span,
+.hero-metric small {
+  font-weight: 900;
+}
+
+.hero-metric span {
+  color: #475467;
+  font-size: 15px;
+}
+
+.hero-metric strong {
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 0.95;
+}
+
+.hero-metric small {
+  color: #667085;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.hero-metric-orders {
+  background: #fff0f4;
+  border-color: #f7c8d8;
+}
+
+.hero-metric-orders strong {
+  color: #cf1d61;
+}
+
+.hero-metric-views {
+  background: #edf4ff;
+  border-color: #cfe0ff;
+}
+
+.hero-metric-views strong {
+  color: #2258c7;
 }
 
 .metric-strip {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 18px;
+  margin-top: 16px;
 }
 
 .metric-strip span {
@@ -1154,6 +1233,18 @@ button:disabled {
 
   .detail-heading h2 {
     font-size: 20px;
+  }
+
+  .hero-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-metric {
+    min-height: 132px;
+  }
+
+  .hero-metric strong {
+    font-size: 42px;
   }
 
   .frames-grid {

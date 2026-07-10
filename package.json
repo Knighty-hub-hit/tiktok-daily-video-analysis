@@ -11,6 +11,7 @@
     "start": "vinext start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern .dev-tools",
     "data:import": "node scripts/refresh-site-data.mjs",
+    "data:dashboard": "node scripts/build-dashboard-data.mjs",
     "data:validate": "node scripts/validate-site-data.mjs",
     "feishu:import": "node scripts/import-feishu-sheet-to-site-data.mjs",
     "feishu:prepare": "python3 scripts/prepare-feishu-excel-data.py",
@@ -19,12 +20,12 @@
     "media:enrich": "node scripts/enrich-tiktok-media.mjs",
     "daren:prepare": "python3 scripts/prepare-daren-video-total.py",
     "report:download": "node scripts/download-tiktok-report.mjs",
-    "pages:build": "GITHUB_PAGES=true NEXT_PUBLIC_SITE_BASE_PATH=/tiktok-daily-video-analysis next build --webpack",
+    "pages:build": "npm run data:dashboard && GITHUB_PAGES=true NEXT_PUBLIC_SITE_BASE_PATH=/tiktok-daily-video-analysis next build --webpack",
     "pages:check": "npm run data:validate && npm run pages:build",
-    "miaoda:build": "GITHUB_PAGES=true NEXT_PUBLIC_SITE_BASE_PATH=/app/app_179t4tka49p next build --webpack",
+    "miaoda:build": "npm run data:dashboard && GITHUB_PAGES=true NEXT_PUBLIC_SITE_BASE_PATH=/app/app_179t4tka49p next build --webpack",
     "miaoda:prepare": "node scripts/prepare-miaoda-html.mjs out",
     "miaoda:publish": "npm run data:validate && npm run miaoda:build && npm run miaoda:prepare && lark-cli apps +html-publish --app-id app_179t4tka49p --path ./out --as user",
-    "workflow:check": "npm run data:validate && npm run build",
+    "workflow:check": "npm run data:validate && npm run data:dashboard && npm run build",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
