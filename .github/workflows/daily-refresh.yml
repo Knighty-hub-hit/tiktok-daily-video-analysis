@@ -70,6 +70,11 @@ jobs:
             echo "configured=true" >> "$GITHUB_OUTPUT"
             echo "mode=report-only" >> "$GITHUB_OUTPUT"
             echo "Using TikTok report URL without Feishu sync because Feishu settings are incomplete."
+          elif [ "${{ github.event_name }}" != "push" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "mode=missing-report" >> "$GITHUB_OUTPUT"
+            echo "::error::Missing TikTok report source. Set TIKTOK_REPORT_URL or dispatch this workflow with report_url; refusing to republish stale Feishu-only data."
+            exit 1
           elif [ "$has_feishu_target" = "true" ] && [ "$has_feishu_auth" = "true" ]; then
             echo "configured=true" >> "$GITHUB_OUTPUT"
             echo "mode=feishu" >> "$GITHUB_OUTPUT"

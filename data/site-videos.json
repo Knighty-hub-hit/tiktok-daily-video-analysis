@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-10T03:42:25.234Z",
+  "generatedAt": "2026-07-10T03:58:56.599Z",
   "sourceFile": "Feishu:TikTok每日视频数据",
   "sourceHeaders": [
     "视频名称",
@@ -22,29 +22,29 @@
     "带货视频点赞数"
   ],
   "julyStart": "2026-07-01",
-  "count": 195,
+  "count": 211,
   "records": [
     {
-      "id": "7659503226634489109",
+      "id": "7660085317478731016",
       "date": "2026-07-08",
-      "creator": "@blan.cue",
-      "title": "Cepillo con cerdas de jabalí, antielectrostático, da masaje capilar mientras desenreda sin jalar.  Descuento exclusivo HOY 🚨‼️ #cuidadocapilar #cepillodecerdasdejabali #halovida #descuentosdeverano #promocionesdeverano",
-      "product": "Cepillo con cerdas de jabalí, antielectrostático, da masaje capilar mientras desenreda sin jalar.  Descuento exclusivo HOY 🚨‼️ #cuidadocapilar #cepillodecerdasdejabali #halovida #descuentosdeverano #promocionesdeverano",
+      "creator": "@luckin308",
+      "title": "Cepillo para cabello#Viral#publicidad#mx#ventaquincenal#mexico#publicidadverificada",
+      "product": "Cepillo para cabello#Viral#publicidad#mx#ventaquincenal#mexico#publicidadverificada",
       "category": "TikTok Shop Mexico",
       "audience": "Mexico / Spanish",
       "language": "Spanish",
-      "link": "https://www.tiktok.com/@blan.cue/video/7659503226634489109",
-      "views": 0,
-      "likes": 0,
+      "link": "https://www.tiktok.com/@luckin308/video/7660085317478731016",
+      "views": 1243,
+      "likes": 1,
       "comments": 0,
       "orders": 0,
       "soldItems": 0,
       "revenue": 0,
       "price": 0,
-      "ctr": 0,
+      "ctr": 2.47,
       "rpm": 0,
       "commission": 0,
-      "cover": "/covers/7659503226634489109.jpg",
+      "cover": "/covers/7660085317478731016.png",
       "videoReady": false,
       "frames": [
         {
@@ -75,19 +75,187 @@
       ],
       "breakdown": {
         "hookType": "流量观察型",
-        "hook": "标题围绕“Cepillo con cerdas de jabalí, antielectrostático, da masaje capilar mientras desenreda sin jalar.  Descuento exclusivo HOY 🚨‼️ #cuidadocapilar #cepillodecerdasdejabali #halovida #descuentosdeverano #promocionesdeverano”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
-        "sellingPoint": "该视频当前订单为 0，但曝光 0，适合从高流量素材中拆解选题、节奏和人群匹配。",
-        "cta": "数据源未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
+        "hook": "标题围绕“Cepillo para cabello#Viral#publicidad#mx#ventaquincenal#mexico#publicidadverificada”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 1243，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 2.47%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
         "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
-        "出单量为 0，按曝光 0 参与流量排序。",
-        "点赞 0、评论 0，可作为互动强弱依据。",
-        "数据来自 Feishu:TikTok每日视频数据 第 161 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+        "出单量为 0，按曝光 1243 参与流量排序。",
+        "点赞 1、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 205 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
         "file": "Feishu:TikTok每日视频数据",
-        "row": 161,
+        "row": 205,
+        "headers": {
+          "title": "视频名称",
+          "link": "视频链接",
+          "date": "视频发布日期",
+          "creator": "达人用户名",
+          "revenue": "GMV",
+          "orders": "联盟订单量",
+          "views": "带货视频曝光次数",
+          "ctr": "联盟点击率",
+          "likes": "带货视频点赞数",
+          "comments": "带货视频评论数"
+        }
+      },
+      "mediaStatus": {
+        "cover": "matched",
+        "video": "pending",
+        "keyframes": 0,
+        "transcript": "pending"
+      }
+    },
+    {
+      "id": "7660015437207457044",
+      "date": "2026-07-08",
+      "creator": "@melandmeltwins",
+      "title": "⚠️ Promoción vigente al momento de publicar este video. Los precios, descuentos y disponibilidad pueden cambiar sin previo aviso. #ventaquincenal #ventadeverano #halovida #hair",
+      "product": "⚠️ Promoción vigente al momento de publicar este video. Los precios, descuentos y disponibilidad pueden cambiar sin previo aviso. #ventaquincenal #ventadeverano #halovida #hair",
+      "category": "TikTok Shop Mexico",
+      "audience": "Mexico / Spanish",
+      "language": "Spanish",
+      "link": "https://www.tiktok.com/@melandmeltwins/video/7660015437207457044",
+      "views": 772,
+      "likes": 2,
+      "comments": 0,
+      "orders": 0,
+      "soldItems": 0,
+      "revenue": 0,
+      "price": 0,
+      "ctr": 2.51,
+      "rpm": 0,
+      "commission": 0,
+      "cover": "/covers/7660015437207457044.jpg",
+      "videoReady": false,
+      "frames": [
+        {
+          "time": "00:00",
+          "title": "素材待下载",
+          "note": "当前还没有拿到这条视频的真实首帧，不展示其他视频画面，避免错配。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:03",
+          "title": "关键帧待抽取",
+          "note": "视频下载后会用同一视频 ID 的关键帧替换，用于判断卖点、商品露出和节奏。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:06",
+          "title": "脚本待拆解",
+          "note": "拿到字幕或视频后再补充真实口播、字幕和 CTA 拆解。",
+          "image": "/placeholders/frame-pending.svg"
+        }
+      ],
+      "script": [
+        {
+          "time": "待处理",
+          "english": "Video transcript is not available yet",
+          "chinese": "该视频暂未下载字幕/音频，等待素材处理后补充真实脚本"
+        }
+      ],
+      "breakdown": {
+        "hookType": "流量观察型",
+        "hook": "标题围绕“⚠️ Promoción vigente al momento de publicar este video. Los precios, descuentos y disponibilidad pueden cambiar sin previo aviso. #ventaquincenal #ventadeverano #halovida #hair”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 772，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 2.51%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+      },
+      "reasons": [
+        "出单量为 0，按曝光 772 参与流量排序。",
+        "点赞 2、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 201 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+      ],
+      "source": {
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 201,
+        "headers": {
+          "title": "视频名称",
+          "link": "视频链接",
+          "date": "视频发布日期",
+          "creator": "达人用户名",
+          "revenue": "GMV",
+          "orders": "联盟订单量",
+          "views": "带货视频曝光次数",
+          "ctr": "联盟点击率",
+          "likes": "带货视频点赞数",
+          "comments": "带货视频评论数"
+        }
+      },
+      "mediaStatus": {
+        "cover": "matched",
+        "video": "pending",
+        "keyframes": 0,
+        "transcript": "pending"
+      }
+    },
+    {
+      "id": "7660098358647754005",
+      "date": "2026-07-08",
+      "creator": "@og2xe2eex6",
+      "title": "#parati #fypシ゚viral🖤tiktok #foryou #viral #tiktokmexico #mexico",
+      "product": "#parati #fypシ゚viral🖤tiktok #foryou #viral #tiktokmexico #mexico",
+      "category": "TikTok Shop Mexico",
+      "audience": "Mexico / Spanish",
+      "language": "Spanish",
+      "link": "https://www.tiktok.com/@og2xe2eex6/video/7660098358647754005",
+      "views": 522,
+      "likes": 0,
+      "comments": 0,
+      "orders": 0,
+      "soldItems": 0,
+      "revenue": 0,
+      "price": 0,
+      "ctr": 0.33,
+      "rpm": 0,
+      "commission": 0,
+      "cover": "/covers/7660098358647754005.png",
+      "videoReady": false,
+      "frames": [
+        {
+          "time": "00:00",
+          "title": "素材待下载",
+          "note": "当前还没有拿到这条视频的真实首帧，不展示其他视频画面，避免错配。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:03",
+          "title": "关键帧待抽取",
+          "note": "视频下载后会用同一视频 ID 的关键帧替换，用于判断卖点、商品露出和节奏。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:06",
+          "title": "脚本待拆解",
+          "note": "拿到字幕或视频后再补充真实口播、字幕和 CTA 拆解。",
+          "image": "/placeholders/frame-pending.svg"
+        }
+      ],
+      "script": [
+        {
+          "time": "待处理",
+          "english": "Video transcript is not available yet",
+          "chinese": "该视频暂未下载字幕/音频，等待素材处理后补充真实脚本"
+        }
+      ],
+      "breakdown": {
+        "hookType": "流量观察型",
+        "hook": "标题围绕“#parati #fypシ゚viral🖤tiktok #foryou #viral #tiktokmexico #mexico”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 522，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 0.33%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+      },
+      "reasons": [
+        "出单量为 0，按曝光 522 参与流量排序。",
+        "点赞 0、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 206 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+      ],
+      "source": {
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 206,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
@@ -118,14 +286,14 @@
       "audience": "Mexico / Spanish",
       "language": "Spanish",
       "link": "https://www.tiktok.com/@melandmeltwins/video/7660020362905980181",
-      "views": 0,
-      "likes": 0,
+      "views": 406,
+      "likes": 3,
       "comments": 0,
       "orders": 0,
       "soldItems": 0,
       "revenue": 0,
       "price": 0,
-      "ctr": 0,
+      "ctr": 2.13,
       "rpm": 0,
       "commission": 0,
       "cover": "/covers/7660020362905980181.jpg",
@@ -160,18 +328,1194 @@
       "breakdown": {
         "hookType": "流量观察型",
         "hook": "标题围绕“⚠️ Promoción vigente al momento de publicar este video. Los precios, descuentos y disponibilidad pueden cambiar sin previo aviso. #hair #halovida #ventadeverano #ventaquincenal”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
-        "sellingPoint": "该视频当前订单为 0，但曝光 0，适合从高流量素材中拆解选题、节奏和人群匹配。",
-        "cta": "数据源未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 406，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 2.13%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
         "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
       },
       "reasons": [
-        "出单量为 0，按曝光 0 参与流量排序。",
-        "点赞 0、评论 0，可作为互动强弱依据。",
+        "出单量为 0，按曝光 406 参与流量排序。",
+        "点赞 3、评论 0，可作为互动强弱依据。",
         "数据来自 Feishu:TikTok每日视频数据 第 200 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
       ],
       "source": {
         "file": "Feishu:TikTok每日视频数据",
         "row": 200,
+        "headers": {
+          "title": "视频名称",
+          "link": "视频链接",
+          "date": "视频发布日期",
+          "creator": "达人用户名",
+          "revenue": "GMV",
+          "orders": "联盟订单量",
+          "views": "带货视频曝光次数",
+          "ctr": "联盟点击率",
+          "likes": "带货视频点赞数",
+          "comments": "带货视频评论数"
+        }
+      },
+      "mediaStatus": {
+        "cover": "matched",
+        "video": "pending",
+        "keyframes": 0,
+        "transcript": "pending"
+      }
+    },
+    {
+      "id": "7660019095751904533",
+      "date": "2026-07-08",
+      "creator": "@melandmeltwins",
+      "title": "⚠️ Promoción vigente al momento de publicar este video. Los precios, descuentos y disponibilidad pueden cambiar sin previo aviso. #ventaquincenal #ventadeverano #halovida #hair",
+      "product": "⚠️ Promoción vigente al momento de publicar este video. Los precios, descuentos y disponibilidad pueden cambiar sin previo aviso. #ventaquincenal #ventadeverano #halovida #hair",
+      "category": "TikTok Shop Mexico",
+      "audience": "Mexico / Spanish",
+      "language": "Spanish",
+      "link": "https://www.tiktok.com/@melandmeltwins/video/7660019095751904533",
+      "views": 337,
+      "likes": 1,
+      "comments": 0,
+      "orders": 0,
+      "soldItems": 0,
+      "revenue": 0,
+      "price": 0,
+      "ctr": 2.44,
+      "rpm": 0,
+      "commission": 0,
+      "cover": "/covers/7660019095751904533.jpg",
+      "videoReady": false,
+      "frames": [
+        {
+          "time": "00:00",
+          "title": "素材待下载",
+          "note": "当前还没有拿到这条视频的真实首帧，不展示其他视频画面，避免错配。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:03",
+          "title": "关键帧待抽取",
+          "note": "视频下载后会用同一视频 ID 的关键帧替换，用于判断卖点、商品露出和节奏。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:06",
+          "title": "脚本待拆解",
+          "note": "拿到字幕或视频后再补充真实口播、字幕和 CTA 拆解。",
+          "image": "/placeholders/frame-pending.svg"
+        }
+      ],
+      "script": [
+        {
+          "time": "待处理",
+          "english": "Video transcript is not available yet",
+          "chinese": "该视频暂未下载字幕/音频，等待素材处理后补充真实脚本"
+        }
+      ],
+      "breakdown": {
+        "hookType": "流量观察型",
+        "hook": "标题围绕“⚠️ Promoción vigente al momento de publicar este video. Los precios, descuentos y disponibilidad pueden cambiar sin previo aviso. #ventaquincenal #ventadeverano #halovida #hair”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 337，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 2.44%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+      },
+      "reasons": [
+        "出单量为 0，按曝光 337 参与流量排序。",
+        "点赞 1、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 202 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+      ],
+      "source": {
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 202,
+        "headers": {
+          "title": "视频名称",
+          "link": "视频链接",
+          "date": "视频发布日期",
+          "creator": "达人用户名",
+          "revenue": "GMV",
+          "orders": "联盟订单量",
+          "views": "带货视频曝光次数",
+          "ctr": "联盟点击率",
+          "likes": "带货视频点赞数",
+          "comments": "带货视频评论数"
+        }
+      },
+      "mediaStatus": {
+        "cover": "matched",
+        "video": "pending",
+        "keyframes": 0,
+        "transcript": "pending"
+      }
+    },
+    {
+      "id": "7660175787730930964",
+      "date": "2026-07-08",
+      "creator": "@itzel.muoz88",
+      "title": "cepillo anti frizz de Halovida #cepillo #cuidadodelcabello #tiktokshopcreatorpicks #ModoPartido #tiktokshop",
+      "product": "cepillo anti frizz de Halovida #cepillo #cuidadodelcabello #tiktokshopcreatorpicks #ModoPartido #tiktokshop",
+      "category": "TikTok Shop Mexico",
+      "audience": "Mexico / Spanish",
+      "language": "Spanish",
+      "link": "https://www.tiktok.com/@itzel.muoz88/video/7660175787730930964",
+      "views": 255,
+      "likes": 6,
+      "comments": 0,
+      "orders": 0,
+      "soldItems": 0,
+      "revenue": 0,
+      "price": 0,
+      "ctr": 2.75,
+      "rpm": 0,
+      "commission": 0,
+      "cover": "/covers/7660175787730930964.png",
+      "videoReady": false,
+      "frames": [
+        {
+          "time": "00:00",
+          "title": "素材待下载",
+          "note": "当前还没有拿到这条视频的真实首帧，不展示其他视频画面，避免错配。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:03",
+          "title": "关键帧待抽取",
+          "note": "视频下载后会用同一视频 ID 的关键帧替换，用于判断卖点、商品露出和节奏。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:06",
+          "title": "脚本待拆解",
+          "note": "拿到字幕或视频后再补充真实口播、字幕和 CTA 拆解。",
+          "image": "/placeholders/frame-pending.svg"
+        }
+      ],
+      "script": [
+        {
+          "time": "待处理",
+          "english": "Video transcript is not available yet",
+          "chinese": "该视频暂未下载字幕/音频，等待素材处理后补充真实脚本"
+        }
+      ],
+      "breakdown": {
+        "hookType": "流量观察型",
+        "hook": "标题围绕“cepillo anti frizz de Halovida #cepillo #cuidadodelcabello #tiktokshopcreatorpicks #ModoPartido #tiktokshop”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 255，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 2.75%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+      },
+      "reasons": [
+        "出单量为 0，按曝光 255 参与流量排序。",
+        "点赞 6、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 207 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+      ],
+      "source": {
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 207,
+        "headers": {
+          "title": "视频名称",
+          "link": "视频链接",
+          "date": "视频发布日期",
+          "creator": "达人用户名",
+          "revenue": "GMV",
+          "orders": "联盟订单量",
+          "views": "带货视频曝光次数",
+          "ctr": "联盟点击率",
+          "likes": "带货视频点赞数",
+          "comments": "带货视频评论数"
+        }
+      },
+      "mediaStatus": {
+        "cover": "matched",
+        "video": "pending",
+        "keyframes": 0,
+        "transcript": "pending"
+      }
+    },
+    {
+      "id": "7660215213597232404",
+      "date": "2026-07-08",
+      "creator": "@karimar19196",
+      "title": "未命名视频",
+      "product": "未命名视频",
+      "category": "TikTok Shop Mexico",
+      "audience": "Mexico / Spanish",
+      "language": "Spanish",
+      "link": "https://www.tiktok.com/@karimar19196/video/7660215213597232404",
+      "views": 214,
+      "likes": 3,
+      "comments": 0,
+      "orders": 0,
+      "soldItems": 0,
+      "revenue": 0,
+      "price": 0,
+      "ctr": 0,
+      "rpm": 0,
+      "commission": 0,
+      "cover": "/covers/7660215213597232404.jpg",
+      "videoReady": false,
+      "frames": [
+        {
+          "time": "00:00",
+          "title": "素材待下载",
+          "note": "当前还没有拿到这条视频的真实首帧，不展示其他视频画面，避免错配。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:03",
+          "title": "关键帧待抽取",
+          "note": "视频下载后会用同一视频 ID 的关键帧替换，用于判断卖点、商品露出和节奏。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:06",
+          "title": "脚本待拆解",
+          "note": "拿到字幕或视频后再补充真实口播、字幕和 CTA 拆解。",
+          "image": "/placeholders/frame-pending.svg"
+        }
+      ],
+      "script": [
+        {
+          "time": "待处理",
+          "english": "Video transcript is not available yet",
+          "chinese": "该视频暂未下载字幕/音频，等待素材处理后补充真实脚本"
+        }
+      ],
+      "breakdown": {
+        "hookType": "流量观察型",
+        "hook": "数据源未提供标题细节，优先从首帧、字幕和商品露出顺序判断 Hook。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 214，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "数据源未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+      },
+      "reasons": [
+        "出单量为 0，按曝光 214 参与流量排序。",
+        "点赞 3、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 209 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+      ],
+      "source": {
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 209,
+        "headers": {
+          "title": "视频名称",
+          "link": "视频链接",
+          "date": "视频发布日期",
+          "creator": "达人用户名",
+          "revenue": "GMV",
+          "orders": "联盟订单量",
+          "views": "带货视频曝光次数",
+          "ctr": "联盟点击率",
+          "likes": "带货视频点赞数",
+          "comments": "带货视频评论数"
+        }
+      },
+      "mediaStatus": {
+        "cover": "matched",
+        "video": "pending",
+        "keyframes": 0,
+        "transcript": "pending"
+      }
+    },
+    {
+      "id": "7660199806974840085",
+      "date": "2026-07-08",
+      "creator": "@melish027",
+      "title": "Niñas ayúdenme y díganme cómo se usa  #paratiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii #foryoupage #viralvideo #maquillajetutorial",
+      "product": "Niñas ayúdenme y díganme cómo se usa  #paratiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii #foryoupage #viralvideo #maquillajetutorial",
+      "category": "TikTok Shop Mexico",
+      "audience": "Mexico / Spanish",
+      "language": "Spanish",
+      "link": "https://www.tiktok.com/@melish027/video/7660199806974840085",
+      "views": 212,
+      "likes": 11,
+      "comments": 0,
+      "orders": 0,
+      "soldItems": 0,
+      "revenue": 0,
+      "price": 0,
+      "ctr": 2.58,
+      "rpm": 0,
+      "commission": 0,
+      "cover": "/covers/7660199806974840085.jpg",
+      "videoReady": false,
+      "frames": [
+        {
+          "time": "00:00",
+          "title": "素材待下载",
+          "note": "当前还没有拿到这条视频的真实首帧，不展示其他视频画面，避免错配。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:03",
+          "title": "关键帧待抽取",
+          "note": "视频下载后会用同一视频 ID 的关键帧替换，用于判断卖点、商品露出和节奏。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:06",
+          "title": "脚本待拆解",
+          "note": "拿到字幕或视频后再补充真实口播、字幕和 CTA 拆解。",
+          "image": "/placeholders/frame-pending.svg"
+        }
+      ],
+      "script": [
+        {
+          "time": "待处理",
+          "english": "Video transcript is not available yet",
+          "chinese": "该视频暂未下载字幕/音频，等待素材处理后补充真实脚本"
+        }
+      ],
+      "breakdown": {
+        "hookType": "流量观察型",
+        "hook": "标题围绕“Niñas ayúdenme y díganme cómo se usa  #paratiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii #foryoupage #viralvideo #maquillajetutorial”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 212，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 2.58%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+      },
+      "reasons": [
+        "出单量为 0，按曝光 212 参与流量排序。",
+        "点赞 11、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 208 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+      ],
+      "source": {
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 208,
+        "headers": {
+          "title": "视频名称",
+          "link": "视频链接",
+          "date": "视频发布日期",
+          "creator": "达人用户名",
+          "revenue": "GMV",
+          "orders": "联盟订单量",
+          "views": "带货视频曝光次数",
+          "ctr": "联盟点击率",
+          "likes": "带货视频点赞数",
+          "comments": "带货视频评论数"
+        }
+      },
+      "mediaStatus": {
+        "cover": "matched",
+        "video": "pending",
+        "keyframes": 0,
+        "transcript": "pending"
+      }
+    },
+    {
+      "id": "7660261723332562184",
+      "date": "2026-07-08",
+      "creator": "@arianyfierrovlogs",
+      "title": "未命名视频",
+      "product": "未命名视频",
+      "category": "TikTok Shop Mexico",
+      "audience": "Mexico / Spanish",
+      "language": "Spanish",
+      "link": "https://www.tiktok.com/@arianyfierrovlogs/video/7660261723332562184",
+      "views": 186,
+      "likes": 5,
+      "comments": 1,
+      "orders": 0,
+      "soldItems": 0,
+      "revenue": 0,
+      "price": 0,
+      "ctr": 0.58,
+      "rpm": 0,
+      "commission": 0,
+      "cover": "/covers/7660261723332562184.jpg",
+      "videoReady": false,
+      "frames": [
+        {
+          "time": "00:00",
+          "title": "素材待下载",
+          "note": "当前还没有拿到这条视频的真实首帧，不展示其他视频画面，避免错配。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:03",
+          "title": "关键帧待抽取",
+          "note": "视频下载后会用同一视频 ID 的关键帧替换，用于判断卖点、商品露出和节奏。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:06",
+          "title": "脚本待拆解",
+          "note": "拿到字幕或视频后再补充真实口播、字幕和 CTA 拆解。",
+          "image": "/placeholders/frame-pending.svg"
+        }
+      ],
+      "script": [
+        {
+          "time": "待处理",
+          "english": "Video transcript is not available yet",
+          "chinese": "该视频暂未下载字幕/音频，等待素材处理后补充真实脚本"
+        }
+      ],
+      "breakdown": {
+        "hookType": "流量观察型",
+        "hook": "数据源未提供标题细节，优先从首帧、字幕和商品露出顺序判断 Hook。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 186，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 0.58%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+      },
+      "reasons": [
+        "出单量为 0，按曝光 186 参与流量排序。",
+        "点赞 5、评论 1，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 211 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+      ],
+      "source": {
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 211,
+        "headers": {
+          "title": "视频名称",
+          "link": "视频链接",
+          "date": "视频发布日期",
+          "creator": "达人用户名",
+          "revenue": "GMV",
+          "orders": "联盟订单量",
+          "views": "带货视频曝光次数",
+          "ctr": "联盟点击率",
+          "likes": "带货视频点赞数",
+          "comments": "带货视频评论数"
+        }
+      },
+      "mediaStatus": {
+        "cover": "matched",
+        "video": "pending",
+        "keyframes": 0,
+        "transcript": "pending"
+      }
+    },
+    {
+      "id": "7659503226634489109",
+      "date": "2026-07-08",
+      "creator": "@blan.cue",
+      "title": "Cepillo con cerdas de jabalí, antielectrostático, da masaje capilar mientras desenreda sin jalar.  Descuento exclusivo HOY 🚨‼️ #cuidadocapilar #cepillodecerdasdejabali #halovida #descuentosdeverano #promocionesdeverano",
+      "product": "Cepillo con cerdas de jabalí, antielectrostático, da masaje capilar mientras desenreda sin jalar.  Descuento exclusivo HOY 🚨‼️ #cuidadocapilar #cepillodecerdasdejabali #halovida #descuentosdeverano #promocionesdeverano",
+      "category": "TikTok Shop Mexico",
+      "audience": "Mexico / Spanish",
+      "language": "Spanish",
+      "link": "https://www.tiktok.com/@blan.cue/video/7659503226634489109",
+      "views": 183,
+      "likes": 2,
+      "comments": 0,
+      "orders": 0,
+      "soldItems": 0,
+      "revenue": 0,
+      "price": 0,
+      "ctr": 1.13,
+      "rpm": 0,
+      "commission": 0,
+      "cover": "/covers/7659503226634489109.jpg",
+      "videoReady": false,
+      "frames": [
+        {
+          "time": "00:00",
+          "title": "素材待下载",
+          "note": "当前还没有拿到这条视频的真实首帧，不展示其他视频画面，避免错配。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:03",
+          "title": "关键帧待抽取",
+          "note": "视频下载后会用同一视频 ID 的关键帧替换，用于判断卖点、商品露出和节奏。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:06",
+          "title": "脚本待拆解",
+          "note": "拿到字幕或视频后再补充真实口播、字幕和 CTA 拆解。",
+          "image": "/placeholders/frame-pending.svg"
+        }
+      ],
+      "script": [
+        {
+          "time": "待处理",
+          "english": "Video transcript is not available yet",
+          "chinese": "该视频暂未下载字幕/音频，等待素材处理后补充真实脚本"
+        }
+      ],
+      "breakdown": {
+        "hookType": "流量观察型",
+        "hook": "标题围绕“Cepillo con cerdas de jabalí, antielectrostático, da masaje capilar mientras desenreda sin jalar.  Descuento exclusivo HOY 🚨‼️ #cuidadocapilar #cepillodecerdasdejabali #halovida #descuentosdeverano #promocionesdeverano”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 183，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 1.13%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+      },
+      "reasons": [
+        "出单量为 0，按曝光 183 参与流量排序。",
+        "点赞 2、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 161 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+      ],
+      "source": {
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 161,
+        "headers": {
+          "title": "视频名称",
+          "link": "视频链接",
+          "date": "视频发布日期",
+          "creator": "达人用户名",
+          "revenue": "GMV",
+          "orders": "联盟订单量",
+          "views": "带货视频曝光次数",
+          "ctr": "联盟点击率",
+          "likes": "带货视频点赞数",
+          "comments": "带货视频评论数"
+        }
+      },
+      "mediaStatus": {
+        "cover": "matched",
+        "video": "pending",
+        "keyframes": 0,
+        "transcript": "pending"
+      }
+    },
+    {
+      "id": "7660062976178670866",
+      "date": "2026-07-08",
+      "creator": "@p1ljmm0",
+      "title": "#HPY #tiktok",
+      "product": "#HPY #tiktok",
+      "category": "TikTok Shop Mexico",
+      "audience": "Mexico / Spanish",
+      "language": "Spanish",
+      "link": "https://www.tiktok.com/@p1ljmm0/video/7660062976178670866",
+      "views": 182,
+      "likes": 0,
+      "comments": 0,
+      "orders": 0,
+      "soldItems": 0,
+      "revenue": 0,
+      "price": 0,
+      "ctr": 0,
+      "rpm": 0,
+      "commission": 0,
+      "cover": "/covers/7660062976178670866.png",
+      "videoReady": false,
+      "frames": [
+        {
+          "time": "00:00",
+          "title": "素材待下载",
+          "note": "当前还没有拿到这条视频的真实首帧，不展示其他视频画面，避免错配。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:03",
+          "title": "关键帧待抽取",
+          "note": "视频下载后会用同一视频 ID 的关键帧替换，用于判断卖点、商品露出和节奏。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:06",
+          "title": "脚本待拆解",
+          "note": "拿到字幕或视频后再补充真实口播、字幕和 CTA 拆解。",
+          "image": "/placeholders/frame-pending.svg"
+        }
+      ],
+      "script": [
+        {
+          "time": "待处理",
+          "english": "Video transcript is not available yet",
+          "chinese": "该视频暂未下载字幕/音频，等待素材处理后补充真实脚本"
+        }
+      ],
+      "breakdown": {
+        "hookType": "流量观察型",
+        "hook": "标题围绕“#HPY #tiktok”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 182，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "数据源未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+      },
+      "reasons": [
+        "出单量为 0，按曝光 182 参与流量排序。",
+        "点赞 0、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 204 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+      ],
+      "source": {
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 204,
+        "headers": {
+          "title": "视频名称",
+          "link": "视频链接",
+          "date": "视频发布日期",
+          "creator": "达人用户名",
+          "revenue": "GMV",
+          "orders": "联盟订单量",
+          "views": "带货视频曝光次数",
+          "ctr": "联盟点击率",
+          "likes": "带货视频点赞数",
+          "comments": "带货视频评论数"
+        }
+      },
+      "mediaStatus": {
+        "cover": "matched",
+        "video": "pending",
+        "keyframes": 0,
+        "transcript": "pending"
+      }
+    },
+    {
+      "id": "7660270061269175559",
+      "date": "2026-07-08",
+      "creator": "@alba.echeverria.r",
+      "title": "#ventaquincenal #ventadeverano #cepillohalovida",
+      "product": "#ventaquincenal #ventadeverano #cepillohalovida",
+      "category": "TikTok Shop Mexico",
+      "audience": "Mexico / Spanish",
+      "language": "Spanish",
+      "link": "https://www.tiktok.com/@alba.echeverria.r/video/7660270061269175559",
+      "views": 130,
+      "likes": 2,
+      "comments": 1,
+      "orders": 0,
+      "soldItems": 0,
+      "revenue": 0,
+      "price": 0,
+      "ctr": 1.46,
+      "rpm": 0,
+      "commission": 0,
+      "cover": "/covers/7660270061269175559.jpg",
+      "videoReady": false,
+      "frames": [
+        {
+          "time": "00:00",
+          "title": "素材待下载",
+          "note": "当前还没有拿到这条视频的真实首帧，不展示其他视频画面，避免错配。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:03",
+          "title": "关键帧待抽取",
+          "note": "视频下载后会用同一视频 ID 的关键帧替换，用于判断卖点、商品露出和节奏。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:06",
+          "title": "脚本待拆解",
+          "note": "拿到字幕或视频后再补充真实口播、字幕和 CTA 拆解。",
+          "image": "/placeholders/frame-pending.svg"
+        }
+      ],
+      "script": [
+        {
+          "time": "待处理",
+          "english": "Video transcript is not available yet",
+          "chinese": "该视频暂未下载字幕/音频，等待素材处理后补充真实脚本"
+        }
+      ],
+      "breakdown": {
+        "hookType": "流量观察型",
+        "hook": "标题围绕“#ventaquincenal #ventadeverano #cepillohalovida”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 130，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 1.46%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+      },
+      "reasons": [
+        "出单量为 0，按曝光 130 参与流量排序。",
+        "点赞 2、评论 1，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 212 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+      ],
+      "source": {
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 212,
+        "headers": {
+          "title": "视频名称",
+          "link": "视频链接",
+          "date": "视频发布日期",
+          "creator": "达人用户名",
+          "revenue": "GMV",
+          "orders": "联盟订单量",
+          "views": "带货视频曝光次数",
+          "ctr": "联盟点击率",
+          "likes": "带货视频点赞数",
+          "comments": "带货视频评论数"
+        }
+      },
+      "mediaStatus": {
+        "cover": "matched",
+        "video": "pending",
+        "keyframes": 0,
+        "transcript": "pending"
+      }
+    },
+    {
+      "id": "7660312947344051463",
+      "date": "2026-07-08",
+      "creator": "@karyruizp",
+      "title": "✨ Dale un upgrade a tu rutina de peinado con el HaloFlex Spa Brush. Su diseño flexible y sus cerdas de jabalí y nylon ayudan a desenredar el cabello mientras brindan un masaje suave al cuero cabelludo. 💆‍♀️🩷 ¡Encuéntralo en el carrito naranja! #ModoPartido #cepilloantifrizz #antifrizz #halovida #sinfrizz",
+      "product": "✨ Dale un upgrade a tu rutina de peinado con el HaloFlex Spa Brush. Su diseño flexible y sus cerdas de jabalí y nylon ayudan a desenredar el cabello mientras brindan un masaje suave al cuero cabelludo. 💆‍♀️🩷 ¡Encuéntralo en el carrito naranja! #ModoPartido #cepilloantifrizz #antifrizz #halovida #sinfrizz",
+      "category": "TikTok Shop Mexico",
+      "audience": "Mexico / Spanish",
+      "language": "Spanish",
+      "link": "https://www.tiktok.com/@karyruizp/video/7660312947344051463",
+      "views": 122,
+      "likes": 2,
+      "comments": 0,
+      "orders": 0,
+      "soldItems": 0,
+      "revenue": 0,
+      "price": 0,
+      "ctr": 1.69,
+      "rpm": 0,
+      "commission": 0,
+      "cover": "/covers/7660312947344051463.jpg",
+      "videoReady": false,
+      "frames": [
+        {
+          "time": "00:00",
+          "title": "素材待下载",
+          "note": "当前还没有拿到这条视频的真实首帧，不展示其他视频画面，避免错配。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:03",
+          "title": "关键帧待抽取",
+          "note": "视频下载后会用同一视频 ID 的关键帧替换，用于判断卖点、商品露出和节奏。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:06",
+          "title": "脚本待拆解",
+          "note": "拿到字幕或视频后再补充真实口播、字幕和 CTA 拆解。",
+          "image": "/placeholders/frame-pending.svg"
+        }
+      ],
+      "script": [
+        {
+          "time": "待处理",
+          "english": "Video transcript is not available yet",
+          "chinese": "该视频暂未下载字幕/音频，等待素材处理后补充真实脚本"
+        }
+      ],
+      "breakdown": {
+        "hookType": "流量观察型",
+        "hook": "标题围绕“✨ Dale un upgrade a tu rutina de peinado con el HaloFlex Spa Brush. Su diseño flexible y sus cerdas de jabalí y nylon ayudan a desenredar el cabello mientras brindan un masaje suave al cuero cabelludo. 💆‍♀️🩷 ¡Encuéntralo en el carrito naranja! #ModoPartido #cepilloantifrizz #antifrizz #halovida #sinfrizz”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 122，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 1.69%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+      },
+      "reasons": [
+        "出单量为 0，按曝光 122 参与流量排序。",
+        "点赞 2、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 214 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+      ],
+      "source": {
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 214,
+        "headers": {
+          "title": "视频名称",
+          "link": "视频链接",
+          "date": "视频发布日期",
+          "creator": "达人用户名",
+          "revenue": "GMV",
+          "orders": "联盟订单量",
+          "views": "带货视频曝光次数",
+          "ctr": "联盟点击率",
+          "likes": "带货视频点赞数",
+          "comments": "带货视频评论数"
+        }
+      },
+      "mediaStatus": {
+        "cover": "matched",
+        "video": "pending",
+        "keyframes": 0,
+        "transcript": "pending"
+      }
+    },
+    {
+      "id": "7660234362948046101",
+      "date": "2026-07-08",
+      "creator": "@arydorantes",
+      "title": "No más cabello enredado #halovidabrush #cepillo #cuidadodelcabello #hairbrush #tiktokshop",
+      "product": "No más cabello enredado #halovidabrush #cepillo #cuidadodelcabello #hairbrush #tiktokshop",
+      "category": "TikTok Shop Mexico",
+      "audience": "Mexico / Spanish",
+      "language": "Spanish",
+      "link": "https://www.tiktok.com/@arydorantes/video/7660234362948046101",
+      "views": 118,
+      "likes": 5,
+      "comments": 0,
+      "orders": 0,
+      "soldItems": 0,
+      "revenue": 0,
+      "price": 0,
+      "ctr": 5,
+      "rpm": 0,
+      "commission": 0,
+      "cover": "/covers/7660234362948046101.jpg",
+      "videoReady": false,
+      "frames": [
+        {
+          "time": "00:00",
+          "title": "素材待下载",
+          "note": "当前还没有拿到这条视频的真实首帧，不展示其他视频画面，避免错配。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:03",
+          "title": "关键帧待抽取",
+          "note": "视频下载后会用同一视频 ID 的关键帧替换，用于判断卖点、商品露出和节奏。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:06",
+          "title": "脚本待拆解",
+          "note": "拿到字幕或视频后再补充真实口播、字幕和 CTA 拆解。",
+          "image": "/placeholders/frame-pending.svg"
+        }
+      ],
+      "script": [
+        {
+          "time": "待处理",
+          "english": "Video transcript is not available yet",
+          "chinese": "该视频暂未下载字幕/音频，等待素材处理后补充真实脚本"
+        }
+      ],
+      "breakdown": {
+        "hookType": "流量观察型",
+        "hook": "标题围绕“No más cabello enredado #halovidabrush #cepillo #cuidadodelcabello #hairbrush #tiktokshop”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 118，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 5%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+      },
+      "reasons": [
+        "出单量为 0，按曝光 118 参与流量排序。",
+        "点赞 5、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 210 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+      ],
+      "source": {
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 210,
+        "headers": {
+          "title": "视频名称",
+          "link": "视频链接",
+          "date": "视频发布日期",
+          "creator": "达人用户名",
+          "revenue": "GMV",
+          "orders": "联盟订单量",
+          "views": "带货视频曝光次数",
+          "ctr": "联盟点击率",
+          "likes": "带货视频点赞数",
+          "comments": "带货视频评论数"
+        }
+      },
+      "mediaStatus": {
+        "cover": "matched",
+        "video": "pending",
+        "keyframes": 0,
+        "transcript": "pending"
+      }
+    },
+    {
+      "id": "7660029077553728776",
+      "date": "2026-07-08",
+      "creator": "@perla.simple",
+      "title": "未命名视频",
+      "product": "未命名视频",
+      "category": "TikTok Shop Mexico",
+      "audience": "Mexico / Spanish",
+      "language": "Spanish",
+      "link": "https://www.tiktok.com/@perla.simple/video/7660029077553728776",
+      "views": 116,
+      "likes": 5,
+      "comments": 0,
+      "orders": 0,
+      "soldItems": 0,
+      "revenue": 0,
+      "price": 0,
+      "ctr": 4.04,
+      "rpm": 0,
+      "commission": 0,
+      "cover": "/covers/7660029077553728776.jpg",
+      "videoReady": false,
+      "frames": [
+        {
+          "time": "00:00",
+          "title": "素材待下载",
+          "note": "当前还没有拿到这条视频的真实首帧，不展示其他视频画面，避免错配。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:03",
+          "title": "关键帧待抽取",
+          "note": "视频下载后会用同一视频 ID 的关键帧替换，用于判断卖点、商品露出和节奏。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:06",
+          "title": "脚本待拆解",
+          "note": "拿到字幕或视频后再补充真实口播、字幕和 CTA 拆解。",
+          "image": "/placeholders/frame-pending.svg"
+        }
+      ],
+      "script": [
+        {
+          "time": "待处理",
+          "english": "Video transcript is not available yet",
+          "chinese": "该视频暂未下载字幕/音频，等待素材处理后补充真实脚本"
+        }
+      ],
+      "breakdown": {
+        "hookType": "流量观察型",
+        "hook": "数据源未提供标题细节，优先从首帧、字幕和商品露出顺序判断 Hook。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 116，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 4.04%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+      },
+      "reasons": [
+        "出单量为 0，按曝光 116 参与流量排序。",
+        "点赞 5、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 203 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+      ],
+      "source": {
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 203,
+        "headers": {
+          "title": "视频名称",
+          "link": "视频链接",
+          "date": "视频发布日期",
+          "creator": "达人用户名",
+          "revenue": "GMV",
+          "orders": "联盟订单量",
+          "views": "带货视频曝光次数",
+          "ctr": "联盟点击率",
+          "likes": "带货视频点赞数",
+          "comments": "带货视频评论数"
+        }
+      },
+      "mediaStatus": {
+        "cover": "matched",
+        "video": "pending",
+        "keyframes": 0,
+        "transcript": "pending"
+      }
+    },
+    {
+      "id": "7660306190232014101",
+      "date": "2026-07-08",
+      "creator": "@cintiayfamilia",
+      "title": "Acaba de llegar este cepillo y, sinceramente, se ve mucho mejor de lo que imaginaba. Me encanta el diseño flexible y las cerdas se sienten de muy buena calidad. Dicen que ayuda a desenredar el cabello mientras masajea el cuero cabelludo… ya quiero probarlo. #cepillodecabello #asmrsounds #halovida #cepillohalovida #instanthairmagic",
+      "product": "Acaba de llegar este cepillo y, sinceramente, se ve mucho mejor de lo que imaginaba. Me encanta el diseño flexible y las cerdas se sienten de muy buena calidad. Dicen que ayuda a desenredar el cabello mientras masajea el cuero cabelludo… ya quiero probarlo. #cepillodecabello #asmrsounds #halovida #cepillohalovida #instanthairmagic",
+      "category": "TikTok Shop Mexico",
+      "audience": "Mexico / Spanish",
+      "language": "Spanish",
+      "link": "https://www.tiktok.com/@cintiayfamilia/video/7660306190232014101",
+      "views": 107,
+      "likes": 2,
+      "comments": 0,
+      "orders": 0,
+      "soldItems": 0,
+      "revenue": 0,
+      "price": 0,
+      "ctr": 3.85,
+      "rpm": 0,
+      "commission": 0,
+      "cover": "/covers/7660306190232014101.jpg",
+      "videoReady": false,
+      "frames": [
+        {
+          "time": "00:00",
+          "title": "素材待下载",
+          "note": "当前还没有拿到这条视频的真实首帧，不展示其他视频画面，避免错配。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:03",
+          "title": "关键帧待抽取",
+          "note": "视频下载后会用同一视频 ID 的关键帧替换，用于判断卖点、商品露出和节奏。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:06",
+          "title": "脚本待拆解",
+          "note": "拿到字幕或视频后再补充真实口播、字幕和 CTA 拆解。",
+          "image": "/placeholders/frame-pending.svg"
+        }
+      ],
+      "script": [
+        {
+          "time": "待处理",
+          "english": "Video transcript is not available yet",
+          "chinese": "该视频暂未下载字幕/音频，等待素材处理后补充真实脚本"
+        }
+      ],
+      "breakdown": {
+        "hookType": "流量观察型",
+        "hook": "标题围绕“Acaba de llegar este cepillo y, sinceramente, se ve mucho mejor de lo que imaginaba. Me encanta el diseño flexible y las cerdas se sienten de muy buena calidad. Dicen que ayuda a desenredar el cabello mientras masajea el cuero cabelludo… ya quiero probarlo. #cepillodecabello #asmrsounds #halovida #cepillohalovida #instanthairmagic”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 107，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "联盟点击率为 3.85%，CTA 可重点检查是否在字幕、口播或购物车入口出现明确行动提示。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+      },
+      "reasons": [
+        "出单量为 0，按曝光 107 参与流量排序。",
+        "点赞 2、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 213 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+      ],
+      "source": {
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 213,
+        "headers": {
+          "title": "视频名称",
+          "link": "视频链接",
+          "date": "视频发布日期",
+          "creator": "达人用户名",
+          "revenue": "GMV",
+          "orders": "联盟订单量",
+          "views": "带货视频曝光次数",
+          "ctr": "联盟点击率",
+          "likes": "带货视频点赞数",
+          "comments": "带货视频评论数"
+        }
+      },
+      "mediaStatus": {
+        "cover": "matched",
+        "video": "pending",
+        "keyframes": 0,
+        "transcript": "pending"
+      }
+    },
+    {
+      "id": "7660352764035222804",
+      "date": "2026-07-08",
+      "creator": "@alejandraggio",
+      "title": "#ModoPartido",
+      "product": "#ModoPartido",
+      "category": "TikTok Shop Mexico",
+      "audience": "Mexico / Spanish",
+      "language": "Spanish",
+      "link": "https://www.tiktok.com/@alejandraggio/video/7660352764035222804",
+      "views": 56,
+      "likes": 1,
+      "comments": 0,
+      "orders": 0,
+      "soldItems": 0,
+      "revenue": 0,
+      "price": 0,
+      "ctr": 0,
+      "rpm": 0,
+      "commission": 0,
+      "cover": "/covers/7660352764035222804.jpg",
+      "videoReady": false,
+      "frames": [
+        {
+          "time": "00:00",
+          "title": "素材待下载",
+          "note": "当前还没有拿到这条视频的真实首帧，不展示其他视频画面，避免错配。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:03",
+          "title": "关键帧待抽取",
+          "note": "视频下载后会用同一视频 ID 的关键帧替换，用于判断卖点、商品露出和节奏。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:06",
+          "title": "脚本待拆解",
+          "note": "拿到字幕或视频后再补充真实口播、字幕和 CTA 拆解。",
+          "image": "/placeholders/frame-pending.svg"
+        }
+      ],
+      "script": [
+        {
+          "time": "待处理",
+          "english": "Video transcript is not available yet",
+          "chinese": "该视频暂未下载字幕/音频，等待素材处理后补充真实脚本"
+        }
+      ],
+      "breakdown": {
+        "hookType": "流量观察型",
+        "hook": "标题围绕“#ModoPartido”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 56，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "数据源未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+      },
+      "reasons": [
+        "出单量为 0，按曝光 56 参与流量排序。",
+        "点赞 1、评论 0，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 215 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+      ],
+      "source": {
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 215,
+        "headers": {
+          "title": "视频名称",
+          "link": "视频链接",
+          "date": "视频发布日期",
+          "creator": "达人用户名",
+          "revenue": "GMV",
+          "orders": "联盟订单量",
+          "views": "带货视频曝光次数",
+          "ctr": "联盟点击率",
+          "likes": "带货视频点赞数",
+          "comments": "带货视频评论数"
+        }
+      },
+      "mediaStatus": {
+        "cover": "matched",
+        "video": "pending",
+        "keyframes": 0,
+        "transcript": "pending"
+      }
+    },
+    {
+      "id": "7660360003601141012",
+      "date": "2026-07-08",
+      "creator": "@rossygarcia2707",
+      "title": "Muchos criticaron mi video viral, pero lo que no saben es que este cepillo de Halo Vida hace magia solo:  🚫 Cero tirones: Desenreda súper fácil, sin dolor y evita el quiebre.  🐗 Cerdas de jabalí: Distribuyen los aceites naturales para un brillo espectacular.  💆‍♀️ Efecto spa: Sus cerdas a diferentes alturas dan un masaje delicioso en el cráneo. Menos drama en los comentarios y más brillo en su cabello. ✨ ¡Consigue el tuyo en el carrito! 🛒  #HaloVida #CepilloDeJabali #CuidadoDelCabello #TipDeMama#cabellosaludable",
+      "product": "Muchos criticaron mi video viral, pero lo que no saben es que este cepillo de Halo Vida hace magia solo:  🚫 Cero tirones: Desenreda súper fácil, sin dolor y evita el quiebre.  🐗 Cerdas de jabalí: Distribuyen los aceites naturales para un brillo espectacular.  💆‍♀️ Efecto spa: Sus cerdas a diferentes alturas dan un masaje delicioso en el cráneo. Menos drama en los comentarios y más brillo en su cabello. ✨ ¡Consigue el tuyo en el carrito! 🛒  #HaloVida #CepilloDeJabali #CuidadoDelCabello #TipDeMama#cabellosaludable",
+      "category": "TikTok Shop Mexico",
+      "audience": "Mexico / Spanish",
+      "language": "Spanish",
+      "link": "https://www.tiktok.com/@rossygarcia2707/video/7660360003601141012",
+      "views": 50,
+      "likes": 5,
+      "comments": 1,
+      "orders": 0,
+      "soldItems": 0,
+      "revenue": 0,
+      "price": 0,
+      "ctr": 0,
+      "rpm": 0,
+      "commission": 0,
+      "cover": "/covers/7660360003601141012.jpg",
+      "videoReady": false,
+      "frames": [
+        {
+          "time": "00:00",
+          "title": "素材待下载",
+          "note": "当前还没有拿到这条视频的真实首帧，不展示其他视频画面，避免错配。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:03",
+          "title": "关键帧待抽取",
+          "note": "视频下载后会用同一视频 ID 的关键帧替换，用于判断卖点、商品露出和节奏。",
+          "image": "/placeholders/frame-pending.svg"
+        },
+        {
+          "time": "00:06",
+          "title": "脚本待拆解",
+          "note": "拿到字幕或视频后再补充真实口播、字幕和 CTA 拆解。",
+          "image": "/placeholders/frame-pending.svg"
+        }
+      ],
+      "script": [
+        {
+          "time": "待处理",
+          "english": "Video transcript is not available yet",
+          "chinese": "该视频暂未下载字幕/音频，等待素材处理后补充真实脚本"
+        }
+      ],
+      "breakdown": {
+        "hookType": "流量观察型",
+        "hook": "标题围绕“Muchos criticaron mi video viral, pero lo que no saben es que este cepillo de Halo Vida hace magia solo:  🚫 Cero tirones: Desenreda súper fácil, sin dolor y evita el quiebre.  🐗 Cerdas de jabalí: Distribuyen los aceites naturales para un brillo espectacular.  💆‍♀️ Efecto spa: Sus cerdas a diferentes alturas dan un masaje delicioso en el cráneo. Menos drama en los comentarios y más brillo en su cabello. ✨ ¡Consigue el tuyo en el carrito! 🛒  #HaloVida #CepilloDeJabali #CuidadoDelCabello #TipDeMama#cabellosaludable”展开，适合优先观察首屏是否直接露出痛点、商品或结果。",
+        "sellingPoint": "该视频当前订单为 0，但曝光 50，适合从高流量素材中拆解选题、节奏和人群匹配。",
+        "cta": "数据源未显示有效点击率，CTA 需要结合视频画面和评论区进一步确认。",
+        "reusable": "数据源定位高价值视频 -> 下载原视频 -> 抽关键帧 -> 拆首 3 秒 Hook、卖点证明和下单触发点。"
+      },
+      "reasons": [
+        "出单量为 0，按曝光 50 参与流量排序。",
+        "点赞 5、评论 1，可作为互动强弱依据。",
+        "数据来自 Feishu:TikTok每日视频数据 第 216 行，字段含视频链接、发布日期、GMV、订单量、曝光、点击率、评论、点赞。"
+      ],
+      "source": {
+        "file": "Feishu:TikTok每日视频数据",
+        "row": 216,
         "headers": {
           "title": "视频名称",
           "link": "视频链接",
