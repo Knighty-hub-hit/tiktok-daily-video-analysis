@@ -118,7 +118,7 @@ node scratch/export_tiktok_excel_to_site_data.mjs <xlsx路径> data/site-videos.
 - Cloudflare/云函数定时任务
 - 公司内部自动化平台
 
-当前 GitHub Actions 配置为北京时间每天 09:00 执行一次。网站部署成功后，会用“柯学的飞书 CLI”应用机器人向飞书群推送网站链接和当日摘要。
+当前 GitHub Actions 配置为北京时间每天 09:13 执行一次。这个时间避开 GitHub Actions 整点高峰，比 09:00 更不容易被延迟或丢弃。网站部署成功后，会用“柯学的飞书 CLI”应用机器人向飞书群推送网站链接和当日摘要。
 
 ## 环境变量
 

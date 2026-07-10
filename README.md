@@ -74,7 +74,7 @@ npm run media:enrich -- --latest-date
 npm run pages:build
 ```
 
-GitHub Actions 每天北京时间 09:00 会自动执行这条链路：下载 TikTok Excel、只解析导出文件里的最新日期视频、合并写入飞书 `TikTok每日视频数据`、读取飞书生成网站数据、补齐可匹配的视频素材状态、发布 GitHub Pages，并通过“柯学的飞书 CLI”应用机器人推送到飞书群。群消息里的主链接使用飞书妙搭版本，备用链接使用 GitHub Pages。
+GitHub Actions 每天北京时间 09:13 会自动执行这条链路：下载 TikTok Excel、只解析导出文件里的最新日期视频、合并写入飞书 `TikTok每日视频数据`、读取飞书生成网站数据、补齐可匹配的视频素材状态、发布 GitHub Pages，并通过“柯学的飞书 CLI”应用机器人推送到飞书群。这个时间避开 GitHub Actions 整点高峰，稳定性比 09:00 更好。群消息里的主链接使用飞书妙搭版本，备用链接使用 GitHub Pages。
 
 ## 验证构建
 

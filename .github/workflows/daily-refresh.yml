@@ -11,8 +11,8 @@ on:
         required: false
         type: string
   schedule:
-    # 09:00 Beijing time = 01:00 UTC.
-    - cron: "0 1 * * *"
+    # 09:13 Beijing time = 01:13 UTC. Avoid GitHub Actions top-of-hour schedule drops.
+    - cron: "13 1 * * *"
 
 permissions:
   contents: write
