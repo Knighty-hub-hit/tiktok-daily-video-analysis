@@ -30,10 +30,13 @@ yarn-error.log*
 .dev-home/
 .dev-tools/
 scratch/node_modules
+.auth/
+.tmp/
 .tiktok_feishu_state.json
 data/*-media-url.txt
 data/tiktok-feishu-latest.json
 data/discovered-video-url.txt
+data/exports/tiktok-export-failure-*
 public/keyframes/*-seq/
 
 # env files (can opt-in for committing if needed)

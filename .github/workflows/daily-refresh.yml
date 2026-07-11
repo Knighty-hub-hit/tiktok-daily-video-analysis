@@ -41,9 +41,20 @@ jobs:
       LARK_APP_SECRET: ${{ secrets.LARK_APP_SECRET }}
       LARK_TARGET_CHAT_ID: ${{ secrets.LARK_TARGET_CHAT_ID }}
       LARK_TARGET_CHAT_NAME: ${{ secrets.LARK_TARGET_CHAT_NAME || '墨区小组' }}
+      TIKTOK_EXPORT_PAGE_URL: ${{ secrets.TIKTOK_EXPORT_PAGE_URL }}
+      TIKTOK_STORAGE_STATE_B64: ${{ secrets.TIKTOK_STORAGE_STATE_B64 }}
       SITE_PUBLIC_URL: https://xinchimcn.aiforce.cloud/app/app_179t4tka49p
       SITE_BACKUP_URL: https://knighty-hub-hit.github.io/tiktok-daily-video-analysis/
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
       - name: Check data source
         id: source
         shell: bash
@@ -58,6 +69,11 @@ jobs:
             has_feishu_auth=true
           fi
 
+          has_tiktok_browser=false
+          if [ -n "$TIKTOK_STORAGE_STATE_B64" ]; then
+            has_tiktok_browser=true
+          fi
+
           if [ "${{ github.event_name }}" = "push" ]; then
             echo "configured=true" >> "$GITHUB_OUTPUT"
             echo "mode=existing" >> "$GITHUB_OUTPUT"
@@ -70,10 +86,18 @@ jobs:
             echo "configured=true" >> "$GITHUB_OUTPUT"
             echo "mode=report-only" >> "$GITHUB_OUTPUT"
             echo "Using TikTok report URL without Feishu sync because Feishu settings are incomplete."
+          elif [ "$has_tiktok_browser" = "true" ] && [ "$has_feishu_target" = "true" ] && [ "$has_feishu_auth" = "true" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "mode=browser" >> "$GITHUB_OUTPUT"
+            echo "Using saved TikTok browser session to export the report, then syncing Feishu before building the site."
+          elif [ "$has_tiktok_browser" = "true" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "mode=browser-only" >> "$GITHUB_OUTPUT"
+            echo "Using saved TikTok browser session without Feishu sync because Feishu settings are incomplete."
           elif [ "${{ github.event_name }}" != "push" ]; then
             echo "configured=false" >> "$GITHUB_OUTPUT"
             echo "mode=missing-report" >> "$GITHUB_OUTPUT"
-            echo "::error::Missing TikTok report source. Set TIKTOK_REPORT_URL or dispatch this workflow with report_url; refusing to republish stale Feishu-only data."
+            echo "::error::Missing TikTok report source. Set TIKTOK_REPORT_URL, dispatch with report_url, or set TIKTOK_STORAGE_STATE_B64 for browser export; refusing to republish stale Feishu-only data."
             exit 1
           elif [ "$has_feishu_target" = "true" ] && [ "$has_feishu_auth" = "true" ]; then
             echo "configured=true" >> "$GITHUB_OUTPUT"
@@ -83,17 +107,6 @@ jobs:
             echo "configured=false" >> "$GITHUB_OUTPUT"
             echo "No data source configured. Set FEISHU_SHEET_URL plus FEISHU_APP_ID/FEISHU_APP_SECRET, or set TIKTOK_REPORT_URL."
           fi
-
-      - name: Check out repository
-        if: steps.source.outputs.configured == 'true'
-        uses: actions/checkout@v6
-
-      - name: Set up Node.js
-        if: steps.source.outputs.configured == 'true'
-        uses: actions/setup-node@v6
-        with:
-          node-version: 22
-          cache: npm
 
       - name: Install dependencies
         if: steps.source.outputs.configured == 'true'
@@ -108,28 +121,46 @@ jobs:
           TIKTOK_REPORT_URL: ${{ env.REPORT_URL }}
         run: npm run report:download
 
+      - name: Install Playwright Chromium
+        if: steps.source.outputs.mode == 'browser' || steps.source.outputs.mode == 'browser-only'
+        run: npx playwright install --with-deps chromium
+
+      - name: Restore TikTok browser session
+        if: steps.source.outputs.mode == 'browser' || steps.source.outputs.mode == 'browser-only'
+        shell: bash
+        run: |
+          mkdir -p .auth
+          printf '%s' "$TIKTOK_STORAGE_STATE_B64" | base64 -d > .auth/tiktok-storage-state.json
+
+      - name: Export TikTok report with browser
+        if: steps.source.outputs.mode == 'browser' || steps.source.outputs.mode == 'browser-only'
+        env:
+          TIKTOK_REPORT_OUTPUT: data/exports/tiktok-report-${{ github.run_id }}.xlsx
+          TIKTOK_STORAGE_STATE_PATH: .auth/tiktok-storage-state.json
+        run: npm run tiktok:export-browser
+
       - name: Import site data
-        if: steps.source.outputs.mode == 'report-only'
+        if: steps.source.outputs.mode == 'report-only' || steps.source.outputs.mode == 'browser-only'
         run: npm run data:import -- data/exports/tiktok-report-${{ github.run_id }}.xlsx
 
       - name: Prepare Feishu rows from TikTok report
-        if: steps.source.outputs.mode == 'report'
+        if: steps.source.outputs.mode == 'report' || steps.source.outputs.mode == 'browser'
         env:
           TIKTOK_IMPORT_MODE: latest-date
         run: npm run feishu:prepare -- data/exports/tiktok-report-${{ github.run_id }}.xlsx data/tiktok-feishu-latest.json
 
       - name: Sync TikTok report into Feishu sheet
         id: sync_feishu
-        if: steps.source.outputs.mode == 'report'
+        if: steps.source.outputs.mode == 'report' || steps.source.outputs.mode == 'browser'
         continue-on-error: true
         run: npm run feishu:sync -- data/tiktok-feishu-latest.json
 
       - name: Import Feishu sheet data
-        if: steps.source.outputs.mode == 'feishu' || (steps.source.outputs.mode == 'report' && steps.sync_feishu.outcome == 'success')
+        if: steps.source.outputs.mode == 'feishu' || ((steps.source.outputs.mode == 'report' || steps.source.outputs.mode == 'browser') && steps.sync_feishu.outcome == 'success')
         run: npm run feishu:import
 
       - name: Import site data from TikTok report fallback
-        if: steps.source.outputs.mode == 'report' && steps.sync_feishu.outcome != 'success'
+        if: (steps.source.outputs.mode == 'report' || steps.source.outputs.mode == 'browser') && steps.sync_feishu.outcome != 'success'
         run: npm run data:import -- data/exports/tiktok-report-${{ github.run_id }}.xlsx
 
       - name: Enrich latest video media
@@ -177,3 +208,9 @@ jobs:
         env:
           SITE_BACKUP_URL: ${{ steps.deployment.outputs.page_url || env.SITE_BACKUP_URL }}
         run: npm run feishu:notify
+
+      - name: Notify Feishu workflow failure
+        if: failure() && github.event_name != 'push'
+        env:
+          WORKFLOW_SOURCE_MODE: ${{ steps.source.outputs.mode }}
+        run: node scripts/send-feishu-workflow-alert.mjs

@@ -24,6 +24,8 @@
 - `scripts/refresh-site-data.mjs`: 导入 Excel 并校验网站数据
 - `scripts/import-feishu-sheet-to-site-data.mjs`: 从飞书表格生成网站数据
 - `scripts/download-tiktok-report.mjs`: 从云端下载每日 TikTok Excel 报表
+- `scripts/capture-tiktok-session.mjs`: 本地打开浏览器保存 TikTok 登录态
+- `scripts/export-tiktok-report-with-browser.mjs`: 云端用保存的登录态自动导出 TikTok Excel
 - `scripts/prepare-feishu-excel-data.py`: 把 TikTok Excel 整理为飞书 18 列完整字段
 - `scripts/sync-feishu-sheet-from-tiktok-report.mjs`: 用飞书 OpenAPI 合并写入 `TikTok每日视频数据`
 - `scripts/enrich-tiktok-media.mjs`: 按视频 ID 匹配本地素材，并为缺失素材使用明确的待处理占位
@@ -75,6 +77,30 @@ npm run pages:build
 ```
 
 GitHub Actions 每天北京时间 09:13 会自动执行这条链路：下载 TikTok Excel、只解析导出文件里的最新日期视频、合并写入飞书 `TikTok每日视频数据`、读取飞书生成网站数据、补齐可匹配的视频素材状态、发布 GitHub Pages，并通过“柯学的飞书 CLI”应用机器人推送到飞书群。这个时间避开 GitHub Actions 整点高峰，稳定性比 09:00 更好。群消息里的主链接使用飞书妙搭版本，备用链接使用 GitHub Pages。
+
+如果定时任务在数据源检查、导出、写表、构建或发布阶段失败，workflow 会向飞书群发送失败提示和 GitHub Actions 运行记录链接，避免静默失败。
+
+## TikTok 云端浏览器自动导出
+
+没有稳定 XLSX 下载 URL 时，可以用 Playwright 在云端模拟人工导出。先在本机保存一次 TikTok 登录态：
+
+```bash
+npx playwright install chromium
+npm run tiktok:session
+```
+
+登录成功后会生成 `.auth/tiktok-storage-state.json`。把它转成 GitHub Secret：
+
+```bash
+base64 -i .auth/tiktok-storage-state.json | tr -d '\n' | pbcopy
+```
+
+在 GitHub 仓库 `Settings -> Secrets and variables -> Actions` 里新增：
+
+- `TIKTOK_STORAGE_STATE_B64`: 上面复制的 base64 内容
+- `TIKTOK_EXPORT_PAGE_URL`: 可选，默认是墨西哥店铺的联盟视频数据页
+
+每日 workflow 会优先使用 `TIKTOK_REPORT_URL`；如果没有这个 URL，但配置了 `TIKTOK_STORAGE_STATE_B64`，就会自动打开 TikTok 联盟中心、点击“导出数据”、下载 Excel、写入飞书、刷新网站并推送飞书群。登录态过期或遇到验证码时，workflow 会失败提醒，需要重新执行 `npm run tiktok:session` 更新 secret。
 
 ## 验证构建
 
