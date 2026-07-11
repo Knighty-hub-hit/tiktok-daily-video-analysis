@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import { spawnSync } from "node:child_process";
 import { sortRecordsForDailyRank } from "./site-data-builder.mjs";
 
 const DEFAULT_SITE_URL = "https://xinchimcn.aiforce.cloud/app/app_179t4tka49p";
@@ -230,6 +231,43 @@ async function sendTextMessage(token, chatId, text) {
   return data.message_id ?? data.message?.message_id ?? "";
 }
 
+function sendTextMessageWithLarkCli(chatId, text) {
+  const identity = getEnv("FEISHU_NOTIFY_CLI_AS", "LARK_NOTIFY_CLI_AS") || "bot";
+  const idempotencyKey =
+    getEnv("FEISHU_NOTIFY_IDEMPOTENCY_KEY", "LARK_NOTIFY_IDEMPOTENCY_KEY") ||
+    (getEnv("GITHUB_RUN_ID") ? `tiktok-site-${process.env.GITHUB_RUN_ID}` : `tiktok-site-local-${Date.now()}`);
+  const result = spawnSync(
+    "lark-cli",
+    [
+      "im",
+      "+messages-send",
+      "--chat-id",
+      chatId,
+      "--text",
+      text,
+      "--as",
+      identity,
+      "--idempotency-key",
+      idempotencyKey,
+    ],
+    {
+      encoding: "utf8",
+      maxBuffer: 16 * 1024 * 1024,
+      env: {
+        ...process.env,
+        LARKSUITE_CLI_NO_SKILLS_NOTIFIER: "1",
+        LARKSUITE_CLI_NO_UPDATE_NOTIFIER: "1",
+      },
+    },
+  );
+
+  if (result.status !== 0) {
+    throw new Error(result.stderr || result.stdout || `lark-cli exited with ${result.status}`);
+  }
+
+  return result.stdout ? JSON.parse(result.stdout) : {};
+}
+
 async function main() {
   const positionalArgs = process.argv.slice(2).filter((arg) => !arg.startsWith("--"));
   const dataPath = positionalArgs[0] ?? "data/site-videos.json";
@@ -250,6 +288,18 @@ async function main() {
         2,
       ),
     );
+    return;
+  }
+
+  if (process.env.FEISHU_NOTIFY_USE_LARK_CLI === "1" || process.env.LARK_NOTIFY_USE_CLI === "1") {
+    const chatId = getEnv("LARK_TARGET_CHAT_ID", "FEISHU_TARGET_CHAT_ID");
+
+    if (!chatId) {
+      throw new Error("Missing LARK_TARGET_CHAT_ID/FEISHU_TARGET_CHAT_ID for lark-cli notification.");
+    }
+
+    const sent = sendTextMessageWithLarkCli(chatId, message);
+    console.log(JSON.stringify({ ok: true, mode: "lark-cli", chatId, sent }, null, 2));
     return;
   }
 
