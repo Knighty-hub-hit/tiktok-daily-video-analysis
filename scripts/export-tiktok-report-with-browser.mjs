@@ -143,7 +143,8 @@ try {
     const clicked = await clickExport(page);
 
     if (!clicked) {
-      throw new Error("Cannot find TikTok export button.");
+      const debug = await saveDebugArtifacts(page);
+      throw new Error(`Cannot find TikTok export button. Debug saved: ${debug.screenshotPath}, ${debug.htmlPath}`);
     }
   }, page);
 
