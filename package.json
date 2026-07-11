@@ -23,6 +23,7 @@
     "report:download": "node scripts/download-tiktok-report.mjs",
     "tiktok:session": "node scripts/capture-tiktok-session.mjs",
     "tiktok:export-browser": "node scripts/export-tiktok-report-with-browser.mjs",
+    "local:refresh": "node scripts/run-local-tiktok-site-refresh.mjs",
     "pages:build": "npm run data:dashboard && GITHUB_PAGES=true NEXT_PUBLIC_SITE_BASE_PATH=/tiktok-daily-video-analysis next build --webpack",
     "pages:check": "npm run data:validate && npm run pages:build",
     "miaoda:build": "npm run data:dashboard && GITHUB_PAGES=true NEXT_PUBLIC_SITE_BASE_PATH=/app/app_179t4tka49p next build --webpack",
