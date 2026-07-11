@@ -18,6 +18,27 @@ function hasTikTokSession(cookies) {
   });
 }
 
+async function hasExportButton(page) {
+  const candidates = [
+    page.getByRole("button", { name: /导出数据|导出|Export data|Export/i }).first(),
+    page.getByText(/导出数据|Export data/i).first(),
+    page.locator("button").filter({ hasText: /导出数据|导出|Export data|Export/i }).first(),
+    page.locator("[role='button']").filter({ hasText: /导出数据|导出|Export data|Export/i }).first(),
+  ];
+
+  for (const locator of candidates) {
+    try {
+      if (await locator.isVisible({ timeout: 1000 })) {
+        return true;
+      }
+    } catch {
+      // Try the next candidate.
+    }
+  }
+
+  return false;
+}
+
 await mkdir(path.dirname(statePath), { recursive: true });
 await mkdir(userDataDir, { recursive: true });
 
@@ -34,6 +55,7 @@ console.log("TikTok login window opened.");
 console.log("Log in if needed, then leave the browser on the TikTok Affiliate video data page.");
 console.log(`Target page: ${targetUrl}`);
 console.log(`Storage state will be saved to: ${statePath}`);
+console.log("Waiting until the video data page is open and the export button is visible.");
 
 const deadline = Date.now() + 10 * 60 * 1000;
 let saved = false;
@@ -42,10 +64,16 @@ while (Date.now() < deadline) {
   await page.waitForTimeout(3000);
   const cookies = await context.cookies();
   const url = page.url();
-  const sessionReady = url.includes("affiliate.tiktok.com") && hasTikTokSession(cookies);
+  const exportReady = url.includes("affiliate.tiktok.com/data/video") && (await hasExportButton(page));
+  const sessionReady = exportReady || (url.includes("affiliate.tiktok.com/data/video") && hasTikTokSession(cookies));
 
   if (sessionReady) {
-    await context.storageState({ path: statePath });
+    try {
+      await context.storageState({ indexedDB: true, path: statePath });
+    } catch (error) {
+      console.warn(`IndexedDB storageState failed, falling back to cookies/localStorage only: ${error.message}`);
+      await context.storageState({ path: statePath });
+    }
     saved = true;
     console.log(`Saved TikTok storage state: ${statePath}`);
     break;

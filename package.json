@@ -15,6 +15,7 @@
     "data:validate": "node scripts/validate-site-data.mjs",
     "feishu:import": "node scripts/import-feishu-sheet-to-site-data.mjs",
     "feishu:prepare": "python3 scripts/prepare-feishu-excel-data.py",
+    "feishu:merge-csv": "node scripts/merge-feishu-csv-with-prepared.mjs",
     "feishu:sync": "node scripts/sync-feishu-sheet-from-tiktok-report.mjs",
     "feishu:notify": "node scripts/send-feishu-site-notification.mjs",
     "media:enrich": "node scripts/enrich-tiktok-media.mjs",

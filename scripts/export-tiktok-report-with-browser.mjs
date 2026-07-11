@@ -18,6 +18,7 @@ const downloadDir = process.env.TIKTOK_DOWNLOAD_DIR || ".tmp/tiktok-downloads";
 const timeoutMs = Number.parseInt(process.env.TIKTOK_EXPORT_TIMEOUT_MS ?? "120000", 10);
 const headless = process.env.TIKTOK_EXPORT_HEADLESS !== "0";
 const channel = process.env.TIKTOK_BROWSER_CHANNEL || undefined;
+const userDataDir = process.env.TIKTOK_SESSION_USER_DATA_DIR || "";
 
 async function fileExists(filePath) {
   try {
@@ -114,21 +115,29 @@ async function saveDebugArtifacts(page) {
   return { screenshotPath, htmlPath };
 }
 
-if (!(await fileExists(statePath))) {
+if (!userDataDir && !(await fileExists(statePath))) {
   throw new Error(`Missing TikTok storage state: ${statePath}. Run npm run tiktok:session first.`);
 }
 
 await mkdir(path.dirname(outputPath), { recursive: true });
 await mkdir(downloadDir, { recursive: true });
 
-const storageState = JSON.parse(await readFile(statePath, "utf8"));
-const browser = await chromium.launch({ channel, headless });
-const context = await browser.newContext({
+const contextOptions = {
   acceptDownloads: true,
   downloadsPath: downloadDir,
-  storageState,
   viewport: { width: 1440, height: 1000 },
-});
+};
+const browser = userDataDir ? null : await chromium.launch({ channel, headless });
+const context = userDataDir
+  ? await chromium.launchPersistentContext(userDataDir, {
+      ...contextOptions,
+      channel,
+      headless,
+    })
+  : await browser.newContext({
+      ...contextOptions,
+      storageState: JSON.parse(await readFile(statePath, "utf8")),
+    });
 const page = await context.newPage();
 
 try {
@@ -181,5 +190,5 @@ try {
   console.log(outputPath);
 } finally {
   await context.close();
-  await browser.close();
+  await browser?.close();
 }
