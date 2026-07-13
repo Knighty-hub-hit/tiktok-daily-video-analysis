@@ -146,7 +146,8 @@ jobs:
       - name: Prepare Feishu rows from TikTok report
         if: steps.source.outputs.mode == 'report' || steps.source.outputs.mode == 'browser'
         env:
-          TIKTOK_IMPORT_MODE: latest-date
+          TIKTOK_IMPORT_MODE: rolling-days
+          TIKTOK_ROLLING_LOOKBACK_DAYS: 3
         run: npm run feishu:prepare -- data/exports/tiktok-report-${{ github.run_id }}.xlsx data/tiktok-feishu-latest.json
 
       - name: Sync TikTok report into Feishu sheet

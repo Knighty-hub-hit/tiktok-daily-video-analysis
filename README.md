@@ -76,7 +76,9 @@ npm run media:enrich -- --latest-date
 npm run pages:build
 ```
 
-GitHub Actions 每天北京时间 09:13 会自动执行这条链路：下载 TikTok Excel、只解析导出文件里的最新日期视频、合并写入飞书 `TikTok每日视频数据`、读取飞书生成网站数据、补齐可匹配的视频素材状态、发布 GitHub Pages，并通过“柯学的飞书 CLI”应用机器人推送到飞书群。这个时间避开 GitHub Actions 整点高峰，稳定性比 09:00 更好。群消息里的主链接使用飞书妙搭版本，备用链接使用 GitHub Pages。
+GitHub Actions 每天北京时间 09:13 会自动执行这条链路：下载 TikTok Excel、滚动解析导出文件里最近 3 天的视频、合并写入飞书 `TikTok每日视频数据`、读取飞书生成网站数据、补齐可匹配的视频素材状态、发布 GitHub Pages，并通过“柯学的飞书 CLI”应用机器人推送到飞书群。这个时间避开 GitHub Actions 整点高峰，稳定性比 09:00 更好。群消息里的主链接使用飞书妙搭版本，备用链接使用 GitHub Pages。
+
+每日写入不是只看 Excel 最新日期，而是默认回看最近 3 天并按视频链接覆盖更新旧行。这样如果 TikTok 因时差或统计延迟导致昨天早上数据偏少，第二天刷新时会自动把昨天补全后的 GMV、订单、播放等指标同步进飞书和网站。
 
 如果定时任务在数据源检查、导出、写表、构建或发布阶段失败，workflow 会向飞书群发送失败提示和 GitHub Actions 运行记录链接，避免静默失败。
 

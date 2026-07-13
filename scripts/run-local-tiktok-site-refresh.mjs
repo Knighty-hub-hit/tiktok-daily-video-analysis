@@ -116,9 +116,14 @@ async function main() {
   const spreadsheetToken = process.env.FEISHU_SPREADSHEET_TOKEN || DEFAULT_SPREADSHEET_TOKEN;
   const sheetId = process.env.FEISHU_SHEET_ID || DEFAULT_SHEET_ID;
   const chatId = process.env.LARK_TARGET_CHAT_ID || process.env.FEISHU_TARGET_CHAT_ID || DEFAULT_CHAT_ID;
+  const importMode = process.env.TIKTOK_IMPORT_MODE || "rolling-days";
+  const rollingLookbackDays = process.env.TIKTOK_ROLLING_LOOKBACK_DAYS || "3";
 
   run("npm", ["run", "feishu:prepare", "--", absoluteReportPath, preparedPath], {
-    env: { TIKTOK_IMPORT_MODE: "latest-date" },
+    env: {
+      TIKTOK_IMPORT_MODE: importMode,
+      TIKTOK_ROLLING_LOOKBACK_DAYS: rollingLookbackDays,
+    },
   });
 
   const prepared = await parseJsonFile(preparedPath);

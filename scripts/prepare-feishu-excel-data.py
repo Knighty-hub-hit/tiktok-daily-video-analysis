@@ -230,21 +230,41 @@ def write_csv(file_path, headers, rows):
         writer.writerows(row["values"] for row in rows)
 
 
-def write_json(file_path, input_path, headers, rows, start_date):
+def read_positive_int_env(names, default):
+    for name in names:
+        value = os.environ.get(name)
+        if not value:
+            continue
+
+        try:
+            parsed = int(value)
+        except ValueError as exc:
+            raise ValueError(f"{name} must be a positive integer. Received: {value}") from exc
+
+        if parsed <= 0:
+            raise ValueError(f"{name} must be a positive integer. Received: {value}")
+
+        return parsed
+
+    return default
+
+
+def write_json(file_path, input_path, headers, rows, start_date, metadata=None):
     output_file = Path(file_path)
     output_file.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "inputPath": input_path,
+        "headers": headers,
+        "rows": rows,
+        "startDate": start_date,
+        "importMode": os.environ.get("TIKTOK_IMPORT_MODE", "latest-date"),
+    }
+
+    if metadata:
+        payload.update(metadata)
+
     output_file.write_text(
-        json.dumps(
-            {
-                "inputPath": input_path,
-                "headers": headers,
-                "rows": rows,
-                "startDate": start_date,
-                "importMode": os.environ.get("TIKTOK_IMPORT_MODE", "latest-date"),
-            },
-            ensure_ascii=False,
-            indent=2,
-        )
+        json.dumps(payload, ensure_ascii=False, indent=2)
         + "\n",
         encoding="utf-8",
     )
@@ -301,19 +321,33 @@ def main():
     if not rows:
         raise ValueError(f"No TikTok rows found on or after {start_date}.")
 
+    latest_date = max(row["date"] for row in rows)
+    metadata = {}
+
     if import_mode in {"latest", "latest-date", "daily", "incremental"}:
-        latest_date = max(row["date"] for row in rows)
         rows = [row for row in rows if row["date"] == latest_date]
+    elif import_mode in {"rolling", "rolling-days", "recent-days", "lookback"}:
+        lookback_days = read_positive_int_env(
+            ("TIKTOK_ROLLING_LOOKBACK_DAYS", "TIKTOK_LOOKBACK_DAYS"),
+            3,
+        )
+        latest_date_obj = datetime.strptime(latest_date, "%Y-%m-%d").date()
+        rolling_start_date = (latest_date_obj - timedelta(days=lookback_days - 1)).isoformat()
+        rows = [row for row in rows if rolling_start_date <= row["date"] <= latest_date]
+        metadata = {
+            "rollingLookbackDays": lookback_days,
+            "rollingStartDate": rolling_start_date,
+        }
     elif import_mode in {"all", "all-since-start", "backfill"}:
-        latest_date = max(row["date"] for row in rows)
+        pass
     else:
         raise ValueError(
-            "TIKTOK_IMPORT_MODE must be latest-date or all-since-start. "
+            "TIKTOK_IMPORT_MODE must be latest-date, rolling-days, or all-since-start. "
             f"Received: {import_mode}"
         )
 
     if Path(output_path).suffix.lower() == ".json":
-        write_json(output_path, input_path, output_headers, rows, start_date)
+        write_json(output_path, input_path, output_headers, rows, start_date, metadata)
     else:
         write_csv(output_path, output_headers, rows)
 
@@ -328,6 +362,7 @@ def main():
                 "endDate": dates[-1],
                 "latestDateInReport": latest_date,
                 "importMode": import_mode,
+                **metadata,
                 "format": "json" if Path(output_path).suffix.lower() == ".json" else "csv",
             },
             ensure_ascii=False,
