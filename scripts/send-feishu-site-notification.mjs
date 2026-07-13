@@ -3,7 +3,6 @@ import { spawnSync } from "node:child_process";
 import { sortRecordsForDailyRank } from "./site-data-builder.mjs";
 
 const DEFAULT_SITE_URL = "https://xinchimcn.aiforce.cloud/app/app_179t4tka49p";
-const DEFAULT_BACKUP_SITE_URL = "https://knighty-hub-hit.github.io/tiktok-daily-video-analysis/";
 const DEFAULT_SHEET_URL =
   "https://xinchimcn.feishu.cn/wiki/VUs4wyJ6Mi1MlHkhQkCcrx8hnvh?table=tbltCfy5ZsMAkNw0&view=vewW7k3x0w&sheet=hlCeKL";
 const DEFAULT_TARGET_CHAT_NAME = "墨区小组";
@@ -102,7 +101,6 @@ function buildMessage(data) {
   const records = Array.isArray(data.records) ? data.records : [];
   const { latestDate, latestSummary } = summarizeRecords(records);
   const siteUrl = getEnv("SITE_PUBLIC_URL", "NEXT_PUBLIC_SITE_URL") || DEFAULT_SITE_URL;
-  const backupSiteUrl = getEnv("SITE_BACKUP_URL", "NEXT_PUBLIC_BACKUP_SITE_URL") || DEFAULT_BACKUP_SITE_URL;
   const sheetUrl = getEnv("FEISHU_SHEET_URL", "LARK_SHEET_URL") || DEFAULT_SHEET_URL;
   const orderedRecords = latestSummary.records.filter((record) => Number(record.orders) > 0);
   const orderedTopLines = orderedRecords.slice(0, 5).map((record, index) => {
@@ -141,8 +139,8 @@ function buildMessage(data) {
     ...(viewTopLines.length ? viewTopLines : ["暂无可展示视频"]),
     "",
     "【打开入口】",
-    `网站：${siteUrl}`,
-    `备用链接：${backupSiteUrl}`,
+    `内部网站：${siteUrl}`,
+    "访问范围：墨区小组内部可见",
     `飞书表格：${sheetUrl}`,
   ].join("\n");
 }

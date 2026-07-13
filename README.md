@@ -68,19 +68,14 @@ FEISHU_READ_MODE=lark-cli npm run feishu:import
 ## TikTok Excel 写入飞书并刷新网站
 
 ```bash
-npm run report:download
-npm run feishu:prepare -- data/exports/tiktok-report.xlsx data/tiktok-feishu-latest.json
-npm run feishu:sync -- data/tiktok-feishu-latest.json
-npm run feishu:import
-npm run media:enrich -- --latest-date
-npm run pages:build
+npm run local:refresh -- <TikTok导出.xlsx>
 ```
 
-GitHub Actions 每天北京时间 09:13 会自动执行这条链路：下载 TikTok Excel、滚动解析导出文件里最近 3 天的视频、合并写入飞书 `TikTok每日视频数据`、读取飞书生成网站数据、补齐可匹配的视频素材状态、发布 GitHub Pages，并通过“柯学的飞书 CLI”应用机器人推送到飞书群。这个时间避开 GitHub Actions 整点高峰，稳定性比 09:00 更好。群消息里的主链接使用飞书妙搭版本，备用链接使用 GitHub Pages。
+Codex 本机自动任务 `TikTok 每日视频内部站更新` 每天北京时间 09:13 会自动执行这条链路：下载 TikTok Excel、滚动解析导出文件里最近 3 天的视频、合并写入飞书 `TikTok每日视频数据`、读取飞书生成网站数据、发布飞书妙搭内部站，并通过“柯学的飞书 CLI”应用机器人推送到飞书群。业务数据不再发布到公开 GitHub Pages。
 
 每日写入不是只看 Excel 最新日期，而是默认回看最近 3 天并按视频链接覆盖更新旧行。这样如果 TikTok 因时差或统计延迟导致昨天早上数据偏少，第二天刷新时会自动把昨天补全后的 GMV、订单、播放等指标同步进飞书和网站。
 
-如果定时任务在数据源检查、导出、写表、构建或发布阶段失败，workflow 会向飞书群发送失败提示和 GitHub Actions 运行记录链接，避免静默失败。
+如果定时任务在数据源检查、导出、写表、构建或发布阶段失败，会在本次 Codex 自动任务里报告失败阶段；能连接飞书时会向群里发送简短失败提示。
 
 ## TikTok 浏览器自动导出
 
@@ -127,7 +122,7 @@ npm run workflow:check
 npm run pages:check
 ```
 
-这个命令会校验数据并生成 GitHub Pages 可发布的静态站点。GitHub 云端发布配置在 `.github/workflows/pages.yml`。
+这个命令只保留给代码验证或临时公开演示。当前生产链路不使用 GitHub Pages 发布业务数据。
 
 ## 飞书内可打开版本
 
@@ -137,7 +132,7 @@ npm run miaoda:publish
 
 这个命令会生成飞书内稳定打开的静态站点，并发布到飞书妙搭应用 `app_179t4tka49p`：`https://xinchimcn.aiforce.cloud/app/app_179t4tka49p`。这个链接已经放开给飞书群 `墨区小组` 访问，用于解决飞书内置浏览器打不开 `github.io` 的问题。
 
-注意：妙搭 HTML 发布命令只支持用户身份，因此 GitHub Actions 里的机器人不能直接每天重发妙搭静态包。当前每日云端自动化会稳定刷新 GitHub Pages 和飞书群消息；妙搭链接要做到每天自动实时更新，下一阶段应迁移为妙搭全栈应用，让页面运行时读取飞书或公开站点数据。
+当前每日自动任务会在本机用用户身份重新发布妙搭 HTML，并把访问范围锁定为飞书群 `墨区小组`。
 
 ## 生产化方向
 
@@ -147,15 +142,13 @@ npm run miaoda:publish
 2. 只解析最新日期的新视频，并保留 18 列完整字段
 3. 合并写入飞书 `TikTok每日视频数据`
 4. 读取飞书生成 `site-videos.json`
-5. 按视频 ID 匹配本地封面、GIF、关键帧和字幕；缺失时显示待处理，不显示错图
-6. 构建并发布 GitHub Pages
-7. 按需发布飞书妙搭访问版本
-8. 发布成功后推送飞书群 `墨区小组`
-9. 交付团队访问链接
+5. 构建并发布飞书妙搭内部站
+6. 发布成功后推送飞书群 `墨区小组`
+7. 交付团队访问链接
 
 完整链路见 `docs/production-workflow.md`。第二阶段再继续接入：
 
 - 更完整的视频下载、关键帧、字幕和脚本拆解
-- 妙搭全栈运行时读取最新数据，让飞书内链接也完全自动实时更新
+- 云服务器或妙搭全栈运行时读取最新数据，逐步摆脱本机依赖
 
 第二阶段云端任务说明见 `docs/phase-two-cloud-automation.md`。

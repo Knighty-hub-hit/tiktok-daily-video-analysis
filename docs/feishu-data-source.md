@@ -102,6 +102,6 @@ TIKTOK_IMPORT_MODE=rolling-days TIKTOK_ROLLING_LOOKBACK_DAYS=5 npm run feishu:pr
 TIKTOK_IMPORT_MODE=all-since-start npm run feishu:prepare -- <TikTok导出.xlsx> data/tiktok-feishu-latest.json
 ```
 
-每日北京时间 09:13，GitHub Actions 会按 `TikTok Excel -> 最近 3 天滚动补写飞书 TikTok每日视频数据 -> data/site-videos.json -> 素材状态匹配 -> GitHub Pages -> 飞书群推送` 的顺序刷新。这一段不依赖本机飞书登录状态。选择 09:13 是为了避开 GitHub Actions 整点高峰，降低定时任务被延迟或丢弃的概率。
+每日北京时间 09:13，本机 Codex 自动任务会按 `TikTok Excel -> 最近 3 天滚动补写飞书 TikTok每日视频数据 -> data/site-videos.json -> 妙搭内部站 -> 飞书群推送` 的顺序刷新。当前数据源导出优先复用这台 Mac 的 Chrome 登录态；如果 Chrome 不可用，再使用本地 `.env.local` 的账号密码兜底。
 
-飞书群消息的主链接使用妙搭域名 `https://xinchimcn.aiforce.cloud/app/app_179t4tka49p`，用于避开飞书内置浏览器访问 `github.io` 不稳定的问题。当前妙搭版本是稳定 HTML 发布版，发布命令 `lark-cli apps +html-publish` 只支持用户身份，所以每日云端任务会自动刷新 GitHub Pages 和群消息；要让妙搭链接本身也每天自动实时更新，需要下一阶段改成妙搭全栈应用运行时读取飞书/站点数据，或在 CI 中配置可用的用户发布凭证。
+飞书群消息只使用妙搭域名 `https://xinchimcn.aiforce.cloud/app/app_179t4tka49p`。这个应用访问范围设置为指定群聊 `墨区小组`，不再把业务数据发布到公开 GitHub Pages。

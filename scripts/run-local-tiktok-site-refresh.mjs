@@ -1,4 +1,3 @@
-import { existsSync } from "node:fs";
 import { mkdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
@@ -6,7 +5,8 @@ import { spawnSync } from "node:child_process";
 const DEFAULT_SPREADSHEET_TOKEN = "XBkGskwtShOA8DtFyB4cDgxVnTd";
 const DEFAULT_SHEET_ID = "hlCeKL";
 const DEFAULT_CHAT_ID = "oc_3e94266549326ee77142bc96b9c50078";
-const DEFAULT_GIT_SSH_KEY = "/Users/kexue/.ssh/id_ed25519_github_codex_tiktok";
+const DEFAULT_MIAODA_APP_ID = "app_179t4tka49p";
+const DEFAULT_MIAODA_SITE_URL = "https://xinchimcn.aiforce.cloud/app/app_179t4tka49p";
 
 const reportPath = process.argv[2] || process.env.TIKTOK_REPORT_INPUT;
 
@@ -39,23 +39,6 @@ function run(command, args, options = {}) {
   return result;
 }
 
-function runAllowFailure(command, args, options = {}) {
-  const result = spawnSync(command, args, {
-    encoding: "utf8",
-    stdio: options.input ? ["pipe", "pipe", "pipe"] : ["ignore", "pipe", "pipe"],
-    maxBuffer: options.maxBuffer ?? 64 * 1024 * 1024,
-    input: options.input,
-    env: {
-      ...process.env,
-      LARKSUITE_CLI_NO_SKILLS_NOTIFIER: "1",
-      LARKSUITE_CLI_NO_UPDATE_NOTIFIER: "1",
-      ...options.env,
-    },
-  });
-
-  return result;
-}
-
 async function parseJsonFile(filePath) {
   return JSON.parse(await readFile(filePath, "utf8"));
 }
@@ -68,33 +51,6 @@ function latestDateFromPrepared(prepared) {
     .filter(Boolean)
     .sort()
     .at(-1);
-}
-
-async function commitAndPush(latestDate) {
-  run("git", ["add", "data/site-videos.json", "data/site-dashboard.json"]);
-
-  const diff = runAllowFailure("git", ["diff", "--cached", "--quiet"]);
-
-  if (diff.status === 0) {
-    return { committed: false, pushed: false };
-  }
-
-  const message = latestDate ? `Refresh TikTok data for ${latestDate}` : "Refresh TikTok data";
-  run("git", ["commit", "-m", message]);
-
-  const pushArgs = ["push", "origin", "main"];
-  const pushCommand = ["git"];
-  const gitSshKey = process.env.GIT_SSH_KEY || DEFAULT_GIT_SSH_KEY;
-
-  if (existsSync(gitSshKey)) {
-    pushArgs.unshift(
-      "-c",
-      `core.sshCommand=ssh -i ${gitSshKey} -o IdentitiesOnly=yes`,
-    );
-  }
-
-  run(pushCommand[0], pushArgs);
-  return { committed: true, pushed: true };
 }
 
 async function main() {
@@ -116,6 +72,8 @@ async function main() {
   const spreadsheetToken = process.env.FEISHU_SPREADSHEET_TOKEN || DEFAULT_SPREADSHEET_TOKEN;
   const sheetId = process.env.FEISHU_SHEET_ID || DEFAULT_SHEET_ID;
   const chatId = process.env.LARK_TARGET_CHAT_ID || process.env.FEISHU_TARGET_CHAT_ID || DEFAULT_CHAT_ID;
+  const miaodaAppId = process.env.MIAODA_APP_ID || DEFAULT_MIAODA_APP_ID;
+  const miaodaSiteUrl = process.env.SITE_PUBLIC_URL || process.env.NEXT_PUBLIC_SITE_URL || DEFAULT_MIAODA_SITE_URL;
   const importMode = process.env.TIKTOK_IMPORT_MODE || "rolling-days";
   const rollingLookbackDays = process.env.TIKTOK_ROLLING_LOOKBACK_DAYS || "3";
 
@@ -163,14 +121,24 @@ async function main() {
       FEISHU_SHEET_ID: sheetId,
     },
   });
-  run("npm", ["run", "data:dashboard"]);
   run("npm", ["run", "data:validate"]);
-  run("npm", ["run", "pages:build"]);
-
-  const gitResult = await commitAndPush(latestDate);
+  run("npm", ["run", "miaoda:build"]);
+  run("npm", ["run", "miaoda:prepare"]);
 
   if (process.env.SKIP_MIAODA_PUBLISH !== "1") {
-    run("npm", ["run", "miaoda:publish"]);
+    run("lark-cli", [
+      "apps",
+      "+access-scope-set",
+      "--app-id",
+      miaodaAppId,
+      "--scope",
+      "specific",
+      "--targets",
+      JSON.stringify([{ type: "chat", id: chatId }]),
+      "--as",
+      "user",
+    ]);
+    run("lark-cli", ["apps", "+html-publish", "--app-id", miaodaAppId, "--path", "./out", "--as", "user"]);
   }
 
   if (process.env.SKIP_FEISHU_NOTIFY !== "1") {
@@ -178,6 +146,7 @@ async function main() {
       env: {
         FEISHU_NOTIFY_USE_LARK_CLI: "1",
         LARK_TARGET_CHAT_ID: chatId,
+        SITE_PUBLIC_URL: miaodaSiteUrl,
       },
     });
   }
@@ -189,7 +158,7 @@ async function main() {
         reportPath: absoluteReportPath,
         latestDate,
         incomingRows: prepared.rows.length,
-        ...gitResult,
+        publishedUrl: process.env.SKIP_MIAODA_PUBLISH === "1" ? null : miaodaSiteUrl,
       },
       null,
       2,

@@ -47,6 +47,9 @@ const DEFAULT_OUTPUT_PATH = `data/exports/tiktok-report-${new Intl.DateTimeForma
 }).format(new Date())}.xlsx`;
 
 const targetUrl = process.env.TIKTOK_EXPORT_PAGE_URL || DEFAULT_TIKTOK_VIDEO_URL;
+const loginUrl =
+  process.env.TIKTOK_LOGIN_URL ||
+  `https://seller-mx.tiktok.com/account/login?redirect_url=${encodeURIComponent(targetUrl)}`;
 const statePath = process.env.TIKTOK_STORAGE_STATE_PATH || ".auth/tiktok-storage-state.json";
 const outputPath = process.env.TIKTOK_REPORT_OUTPUT || DEFAULT_OUTPUT_PATH;
 const downloadDir = process.env.TIKTOK_DOWNLOAD_DIR || ".tmp/tiktok-downloads";
@@ -78,6 +81,18 @@ function isLoginUrl(url) {
 
 async function pageLooksLoggedOut(page) {
   if (isLoginUrl(page.url())) {
+    return true;
+  }
+
+  const bodyText = await page
+    .locator("body")
+    .innerText({ timeout: 2000 })
+    .catch(() => "");
+
+  if (
+    !page.url().includes("affiliate.tiktok.com/data/video") &&
+    /Turn views into sales|Start selling|Join now|Log in|Sign in|登录/i.test(bodyText)
+  ) {
     return true;
   }
 
@@ -121,6 +136,52 @@ async function clickExport(page) {
     if (await clickLocator(locator)) {
       return true;
     }
+  }
+
+  return false;
+}
+
+async function exportButtonVisible(page) {
+  const candidates = [
+    page.getByRole("button", { name: /导出数据|导出|Export data|Export/i }),
+    page.getByText(/导出数据|Export data/i),
+    page.locator("button").filter({ hasText: /导出数据|导出|Export data|Export/i }),
+    page.locator("[role='button']").filter({ hasText: /导出数据|导出|Export data|Export/i }),
+  ];
+
+  for (const locator of candidates) {
+    const count = await locator.count().catch(() => 0);
+
+    for (let index = 0; index < count; index += 1) {
+      try {
+        if (await locator.nth(index).isVisible({ timeout: 1000 })) {
+          return true;
+        }
+      } catch {
+        // Try the next matching element.
+      }
+    }
+  }
+
+  return false;
+}
+
+async function waitForExportButton(page, timeout = timeoutMs) {
+  const deadline = Date.now() + timeout;
+
+  while (Date.now() < deadline) {
+    if (await pageNeedsHumanVerification(page)) {
+      const debug = await saveDebugArtifacts(page);
+      throw new Error(
+        `TikTok requires captcha or two-step verification. Debug saved: ${debug.screenshotPath}, ${debug.htmlPath}`,
+      );
+    }
+
+    if (await exportButtonVisible(page)) {
+      return true;
+    }
+
+    await page.waitForTimeout(3000);
   }
 
   return false;
@@ -192,12 +253,12 @@ async function pageNeedsHumanVerification(page) {
 
 async function switchToPasswordLogin(page) {
   const candidates = [
-    page.getByText(/邮箱.*密码|手机.*密码|账号.*密码|密码登录|Use phone.*email|Use email|Email.*username|Log in with password/i),
+    page.getByText(/邮箱.*密码|手机.*密码|账号.*密码|密码登录|Use phone.*email|Use email|Email.*username|Log in with password|Correo|Email|Teléfono|Phone/i),
     page.locator("button").filter({
-      hasText: /邮箱.*密码|手机.*密码|账号.*密码|密码登录|Use phone.*email|Use email|Email.*username|Log in with password/i,
+      hasText: /邮箱.*密码|手机.*密码|账号.*密码|密码登录|Use phone.*email|Use email|Email.*username|Log in with password|Correo|Email|Teléfono|Phone/i,
     }),
     page.locator("[role='tab']").filter({
-      hasText: /邮箱|手机|账号|Email|Phone|Username/i,
+      hasText: /邮箱|手机|账号|Email|Phone|Username|Correo|Teléfono/i,
     }),
   ];
 
@@ -211,9 +272,62 @@ async function switchToPasswordLogin(page) {
   return false;
 }
 
+async function switchToEmailLogin(page) {
+  const candidates = [
+    page.getByText(/Iniciar sesión con email|Log in with email|Sign in with email|邮箱登录|邮件登录/i),
+    page.locator("a").filter({ hasText: /Iniciar sesión con email|Log in with email|Sign in with email|邮箱登录|邮件登录/i }),
+    page.locator("button").filter({ hasText: /Iniciar sesión con email|Log in with email|Sign in with email|邮箱登录|邮件登录/i }),
+  ];
+
+  for (const locator of candidates) {
+    if (await clickLocator(locator, 3000)) {
+      await page.waitForTimeout(1500);
+      return true;
+    }
+  }
+
+  return false;
+}
+
+async function clickLoginEntry(page) {
+  const candidates = [
+    page.getByRole("link", { name: /^登录$|^Log in$|^Sign in$|^Iniciar sesión$/i }),
+    page.getByRole("button", { name: /^登录$|^Log in$|^Sign in$|^Iniciar sesión$/i }),
+    page.locator("a").filter({ hasText: /^登录$|^Log in$|^Sign in$|^Iniciar sesión$/i }),
+    page.locator("button").filter({ hasText: /^登录$|^Log in$|^Sign in$|^Iniciar sesión$/i }),
+    page.getByText(/^登录$|^Log in$|^Sign in$|^Iniciar sesión$/i),
+  ];
+
+  for (const locator of candidates) {
+    if (await clickLocator(locator, 5000)) {
+      await page.waitForLoadState("domcontentloaded", { timeout: 15000 }).catch(() => {});
+      await page.waitForLoadState("networkidle", { timeout: 15000 }).catch(() => {});
+      await page.waitForTimeout(1500);
+      return true;
+    }
+  }
+
+  return false;
+}
+
 async function loginWithCredentials(page) {
+  if (!isLoginUrl(page.url()) || /seller-us\.tiktok\.com\/account\/register|seller\.tiktok\.com/i.test(page.url())) {
+    await page.goto(loginUrl, { waitUntil: "domcontentloaded", timeout: timeoutMs });
+    await page.waitForLoadState("networkidle", { timeout: 30000 }).catch(() => {});
+  }
+
   await dismissCommonDialogs(page);
+  await clickLoginEntry(page);
+  if (loginUsername.includes("@")) {
+    await switchToEmailLogin(page);
+  }
   await switchToPasswordLogin(page);
+  await page
+    .waitForSelector("input, textarea, [contenteditable='true']", {
+      state: "visible",
+      timeout: 60000,
+    })
+    .catch(() => {});
 
   const usernameInput = await fillFirstEditable(
     [
@@ -225,6 +339,10 @@ async function loginWithCredentials(page) {
       page.locator('input[placeholder*="手机号"]'),
       page.locator('input[placeholder*="手机"]'),
       page.locator('input[placeholder*="账号"]'),
+      page.locator('input[placeholder*="correo" i]'),
+      page.locator('input[placeholder*="teléfono" i]'),
+      page.locator('input[placeholder*="telefono" i]'),
+      page.locator('input[placeholder*="usuario" i]'),
       page.locator('input[placeholder*="Email" i]'),
       page.locator('input[placeholder*="Phone" i]'),
       page.locator('input[placeholder*="Username" i]'),
@@ -244,6 +362,8 @@ async function loginWithCredentials(page) {
       page.locator('input[name*="password" i]'),
       page.locator('input[type="password"]'),
       page.locator('input[placeholder*="密码"]'),
+      page.locator('input[placeholder*="contraseña" i]'),
+      page.locator('input[placeholder*="password" i]'),
       page.locator('input[placeholder*="Password" i]'),
     ],
     loginPassword,
@@ -261,6 +381,8 @@ async function loginWithCredentials(page) {
         page.locator('input[name*="password" i]'),
         page.locator('input[type="password"]'),
         page.locator('input[placeholder*="密码"]'),
+        page.locator('input[placeholder*="contraseña" i]'),
+        page.locator('input[placeholder*="password" i]'),
         page.locator('input[placeholder*="Password" i]'),
       ],
       loginPassword,
@@ -273,7 +395,7 @@ async function loginWithCredentials(page) {
   }
 
   const submitted = await clickLocator(
-    page.getByRole("button", { name: /登录|Log in|Sign in|Continue|继续/i }),
+    page.getByRole("button", { name: /登录|Log in|Sign in|Continue|继续|Iniciar sesión|Continuar/i }),
     5000,
   );
 
@@ -369,6 +491,13 @@ try {
 
     await mkdir(path.dirname(statePath), { recursive: true });
     await context.storageState({ path: statePath }).catch(() => {});
+  }
+
+  const exportReady = await waitForExportButton(page);
+
+  if (!exportReady) {
+    const debug = await saveDebugArtifacts(page);
+    throw new Error(`Cannot find TikTok export button. Debug saved: ${debug.screenshotPath}, ${debug.htmlPath}`);
   }
 
   let download = await waitForDownloadAfter(async () => {

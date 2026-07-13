@@ -111,14 +111,14 @@ node scratch/export_tiktok_excel_to_site_data.mjs <xlsx路径> data/site-videos.
 
 ### 7. 定时运行
 
-不要依赖个人电脑长期开机。建议把任务放到：
+最终不要依赖个人电脑长期开机。当前过渡方案是本机 Codex 自动任务每天执行；后续建议迁移到：
 
 - 公司服务器定时任务
 - GitHub Actions 定时任务
 - Cloudflare/云函数定时任务
 - 公司内部自动化平台
 
-当前 GitHub Actions 配置为北京时间每天 09:13 执行一次。这个时间避开 GitHub Actions 整点高峰，比 09:00 更不容易被延迟或丢弃。网站部署成功后，会用“柯学的飞书 CLI”应用机器人向飞书群推送网站链接和当日摘要。
+当前本机自动任务 `TikTok 每日视频内部站更新` 配置为北京时间每天 09:13 执行一次。它优先复用这台 Mac 的 Chrome 登录态导出 TikTok Excel；失败时再用本地 `.env.local` 的账号密码兜底。网站部署成功后，会用“柯学的飞书 CLI”应用机器人向飞书群推送网站链接和当日摘要。
 
 ## 环境变量
 
@@ -135,7 +135,6 @@ node scratch/export_tiktok_excel_to_site_data.mjs <xlsx路径> data/site-videos.
 - `LARK_TARGET_CHAT_ID`
 - `LARK_TARGET_CHAT_NAME`，未配置时默认使用 `墨区小组`
 - `SITE_PUBLIC_URL`
-- `SITE_BACKUP_URL`
 
 不要提交 `.env` 文件。
 
@@ -145,7 +144,7 @@ node scratch/export_tiktok_excel_to_site_data.mjs <xlsx路径> data/site-videos.
 - 妙搭访问链接：`https://xinchimcn.aiforce.cloud/app/app_179t4tka49p`
 - 可见范围：飞书群 `墨区小组`
 - 本地重新发布命令：`npm run miaoda:publish`
-- 自动化边界：GitHub Actions 每天自动刷新飞书表格、`data/site-videos.json`、GitHub Pages 和飞书群消息；群消息主链接继续使用妙搭域名。妙搭 HTML 重新发布目前只能用 `--as user`，机器人无法直接发布。若要求妙搭链接每天云端自动实时更新，下一阶段需要改为妙搭全栈运行时读取飞书/站点数据，或为 CI 配置用户发布凭证。
+- 自动化边界：本机 Codex 自动任务每天自动刷新飞书表格、`data/site-videos.json`、妙搭内部站和飞书群消息。GitHub 只保存代码，不再作为业务数据公开发布入口。
 
 飞书应用机器人需要加入目标群，并至少开通这些 IM 权限：
 
@@ -154,12 +153,11 @@ node scratch/export_tiktok_excel_to_site_data.mjs <xlsx路径> data/site-videos.
 
 ## 验收标准
 
-- 同事可以通过链接打开网站
-- GitHub Pages 展示的是最新日期数据
-- 妙搭链接在飞书内可打开；若使用静态 HTML 发布版，需要在数据更新后重新发布，或升级为全栈运行时读取数据
+- `墨区小组` 成员可以通过妙搭内部链接打开网站
+- 妙搭链接展示的是最新日期数据
 - 飞书表格每天自动新增或更新记录
 - 飞书群每天收到摘要
-- 飞书群消息主链接使用妙搭域名，备用链接使用 GitHub Pages
+- 飞书群消息只使用妙搭内部链接，不附公开备用链接
 - 重复运行不会重复写入同一视频
 - 任一步失败都会记录日志并推送提醒
 

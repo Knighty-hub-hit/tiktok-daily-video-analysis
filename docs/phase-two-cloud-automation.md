@@ -1,4 +1,12 @@
-# 第二阶段：云端每日自动更新
+# 第二阶段：云端每日自动更新（旧方案，当前暂停）
+
+当前生产链路已经切换为本机 Codex 自动任务 + 飞书妙搭内部站：
+
+```text
+TikTok Excel -> 最近 3 天滚动补写飞书 -> 妙搭内部站 -> 墨区小组推送
+```
+
+GitHub 现在只保存代码，不再发布业务数据到公开 GitHub Pages。下面内容保留为历史方案和后续迁移云服务器时的参考，不作为当前生产链路执行说明。
 
 这一阶段的目标是让每日更新不依赖本机电脑。当前已加入 GitHub Actions 云端任务：
 
@@ -108,7 +116,7 @@ app key / app secret 或等价凭据
 
 用云端浏览器自动登录 TikTok 后台并点击导出也能做，但不建议作为长期主链路，因为它容易受验证码、二次验证、页面改版、账号风控影响。只有在官方 API 和稳定导出地址都不可用时再考虑。
 
-## GitHub Pages 的前置条件
+## GitHub Pages 的前置条件（暂停使用）
 
 当前仓库是私有仓库，GitHub Pages 设置页提示：
 
@@ -116,14 +124,14 @@ app key / app secret 或等价凭据
 Upgrade or make this repository public to enable Pages
 ```
 
-因此公开网站需要二选一：
+因此如果未来重新启用公开网站，需要二选一：
 
 1. 把仓库改成 Public，走免费 GitHub Pages。
 2. 保持仓库私有，改走 Cloudflare/Vercel 等平台，或升级 GitHub 计划支持私有仓库 Pages。
 
 ## 验收标准
 
-- 访问公开 URL 不需要登录。
+- 旧方案下访问公开 URL 不需要登录。
 - GitHub Actions 每天自动运行。
 - `data/site-videos.json` 的 `generatedAt` 每天更新。
 - 网站展示最新日期数据。
