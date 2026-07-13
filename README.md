@@ -82,9 +82,9 @@ GitHub Actions 每天北京时间 09:13 会自动执行这条链路：下载 Tik
 
 如果定时任务在数据源检查、导出、写表、构建或发布阶段失败，workflow 会向飞书群发送失败提示和 GitHub Actions 运行记录链接，避免静默失败。
 
-## TikTok 云端浏览器自动导出
+## TikTok 浏览器自动导出
 
-没有稳定 XLSX 下载 URL 时，可以用 Playwright 在云端模拟人工导出。先在本机保存一次 TikTok 登录态：
+没有稳定 XLSX 下载 URL 时，可以用 Playwright 模拟人工导出。推荐先在本机保存一次 TikTok 登录态：
 
 ```bash
 npx playwright install chromium
@@ -100,9 +100,18 @@ base64 -i .auth/tiktok-storage-state.json | tr -d '\n' | pbcopy
 在 GitHub 仓库 `Settings -> Secrets and variables -> Actions` 里新增：
 
 - `TIKTOK_STORAGE_STATE_B64`: 上面复制的 base64 内容
+- `TIKTOK_LOGIN_USERNAME`: 可选，TikTok 联盟后台登录账号
+- `TIKTOK_LOGIN_PASSWORD`: 可选，TikTok 联盟后台登录密码
 - `TIKTOK_EXPORT_PAGE_URL`: 可选，默认是墨西哥店铺的联盟视频数据页
 
-每日 workflow 会优先使用 `TIKTOK_REPORT_URL`；如果没有这个 URL，但配置了 `TIKTOK_STORAGE_STATE_B64`，就会自动打开 TikTok 联盟中心、点击“导出数据”、下载 Excel、写入飞书、刷新网站并推送飞书群。登录态过期或遇到验证码时，workflow 会失败提醒，需要重新执行 `npm run tiktok:session` 更新 secret。
+每日 workflow 会优先使用 `TIKTOK_REPORT_URL`；如果没有这个 URL，但配置了 `TIKTOK_STORAGE_STATE_B64` 或 `TIKTOK_LOGIN_USERNAME` / `TIKTOK_LOGIN_PASSWORD`，就会自动打开 TikTok 联盟中心、点击“导出数据”、下载 Excel、写入飞书、刷新网站并推送飞书群。登录态过期时会尝试账号密码登录；如果遇到验证码、二次验证或风控，workflow 会失败提醒，需要人工验证后再重跑。
+
+本机自动任务可以使用同样的账号密码兜底。把下面内容放在不会提交的 `.env.local`：
+
+```text
+TIKTOK_LOGIN_USERNAME=<TikTok 联盟后台账号>
+TIKTOK_LOGIN_PASSWORD=<TikTok 联盟后台密码>
+```
 
 ## 验证构建
 

@@ -43,6 +43,9 @@ jobs:
       LARK_TARGET_CHAT_NAME: ${{ secrets.LARK_TARGET_CHAT_NAME || '墨区小组' }}
       TIKTOK_EXPORT_PAGE_URL: ${{ secrets.TIKTOK_EXPORT_PAGE_URL }}
       TIKTOK_STORAGE_STATE_B64: ${{ secrets.TIKTOK_STORAGE_STATE_B64 }}
+      TIKTOK_LOGIN_USERNAME: ${{ secrets.TIKTOK_LOGIN_USERNAME }}
+      TIKTOK_LOGIN_EMAIL: ${{ secrets.TIKTOK_LOGIN_EMAIL }}
+      TIKTOK_LOGIN_PASSWORD: ${{ secrets.TIKTOK_LOGIN_PASSWORD }}
       SITE_PUBLIC_URL: https://xinchimcn.aiforce.cloud/app/app_179t4tka49p
       SITE_BACKUP_URL: https://knighty-hub-hit.github.io/tiktok-daily-video-analysis/
     steps:
@@ -73,6 +76,9 @@ jobs:
           if [ -n "$TIKTOK_STORAGE_STATE_B64" ]; then
             has_tiktok_browser=true
           fi
+          if { [ -n "$TIKTOK_LOGIN_USERNAME" ] || [ -n "$TIKTOK_LOGIN_EMAIL" ]; } && [ -n "$TIKTOK_LOGIN_PASSWORD" ]; then
+            has_tiktok_browser=true
+          fi
 
           if [ "${{ github.event_name }}" = "push" ]; then
             echo "configured=true" >> "$GITHUB_OUTPUT"
@@ -97,7 +103,7 @@ jobs:
           elif [ "${{ github.event_name }}" != "push" ]; then
             echo "configured=false" >> "$GITHUB_OUTPUT"
             echo "mode=missing-report" >> "$GITHUB_OUTPUT"
-            echo "::error::Missing TikTok report source. Set TIKTOK_REPORT_URL, dispatch with report_url, or set TIKTOK_STORAGE_STATE_B64 for browser export; refusing to republish stale Feishu-only data."
+            echo "::error::Missing TikTok report source. Set TIKTOK_REPORT_URL, dispatch with report_url, set TIKTOK_STORAGE_STATE_B64, or set TIKTOK_LOGIN_USERNAME/TIKTOK_LOGIN_PASSWORD for browser export; refusing to republish stale Feishu-only data."
             exit 1
           elif [ "$has_feishu_target" = "true" ] && [ "$has_feishu_auth" = "true" ]; then
             echo "configured=true" >> "$GITHUB_OUTPUT"
@@ -130,7 +136,9 @@ jobs:
         shell: bash
         run: |
           mkdir -p .auth
-          printf '%s' "$TIKTOK_STORAGE_STATE_B64" | base64 -d > .auth/tiktok-storage-state.json
+          if [ -n "$TIKTOK_STORAGE_STATE_B64" ]; then
+            printf '%s' "$TIKTOK_STORAGE_STATE_B64" | base64 -d > .auth/tiktok-storage-state.json
+          fi
 
       - name: Export TikTok report with browser
         if: steps.source.outputs.mode == 'browser' || steps.source.outputs.mode == 'browser-only'

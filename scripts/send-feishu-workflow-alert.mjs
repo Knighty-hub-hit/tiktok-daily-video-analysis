@@ -73,7 +73,7 @@ function buildAlertMessage() {
   const siteUrl = getEnv("SITE_PUBLIC_URL", "NEXT_PUBLIC_SITE_URL") || DEFAULT_SITE_URL;
   const reason =
     sourceMode === "missing-report"
-      ? "缺少 TikTok 数据源：当前没有可用的 TIKTOK_REPORT_URL，也还没有配置 TIKTOK_STORAGE_STATE_B64 浏览器登录态。"
+      ? "缺少 TikTok 数据源：当前没有可用的 TIKTOK_REPORT_URL，也还没有配置 TIKTOK_STORAGE_STATE_B64 或 TIKTOK_LOGIN_USERNAME/TIKTOK_LOGIN_PASSWORD。"
       : "GitHub Actions 主链路失败，需要查看运行日志定位具体步骤。";
 
   return [
@@ -85,7 +85,7 @@ function buildAlertMessage() {
     "今天没有完成自动导出、写入飞书、刷新网站和群推送。",
     "",
     "【下一步】",
-    "配置或刷新 TikTok 浏览器登录态后重跑 workflow。",
+    "配置 TikTok 浏览器登录态或账号密码后重跑 workflow；如果触发验证码/二次验证，需要人工验证一次。",
     "",
     "【入口】",
     `运行记录：${runUrl || "暂无"}`,

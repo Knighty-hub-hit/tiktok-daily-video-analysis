@@ -53,6 +53,17 @@ FEISHU_APP_ID=<飞书应用 app id>
 FEISHU_APP_SECRET=<飞书应用 app secret>
 ```
 
+TikTok Excel 自动导出有三种来源，优先级从高到低：
+
+```text
+TIKTOK_REPORT_URL=<稳定 Excel 下载 URL，可选>
+TIKTOK_STORAGE_STATE_B64=<TikTok 浏览器登录态，可选>
+TIKTOK_LOGIN_USERNAME=<TikTok 联盟后台账号，可选>
+TIKTOK_LOGIN_PASSWORD=<TikTok 联盟后台密码，可选>
+```
+
+如果没有稳定下载 URL，GitHub Actions 会用浏览器自动打开联盟后台导出 Excel。已配置登录态时优先复用登录态；登录态缺失或过期时，会尝试账号密码登录。验证码、二次验证或风控需要人工处理，workflow 会向飞书群报错，不会绕过。
+
 如果 wiki 链接解析权限受限，可以额外配置：
 
 ```text

@@ -1,6 +1,41 @@
+import { existsSync, readFileSync } from "node:fs";
 import { access, mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { chromium } from "playwright";
+
+function loadLocalEnv(filePath = ".env.local") {
+  if (!existsSync(filePath)) {
+    return;
+  }
+
+  const content = readFileSync(filePath, "utf8");
+
+  for (const line of content.split(/\r?\n/)) {
+    const trimmed = line.trim();
+
+    if (!trimmed || trimmed.startsWith("#")) {
+      continue;
+    }
+
+    const match = trimmed.match(/^([A-Za-z_][A-Za-z0-9_]*)=(.*)$/);
+
+    if (!match) {
+      continue;
+    }
+
+    const [, key, rawValue] = match;
+
+    if (process.env[key] !== undefined) {
+      continue;
+    }
+
+    process.env[key] = rawValue
+      .replace(/^['"]|['"]$/g, "")
+      .replace(/\\n/g, "\n");
+  }
+}
+
+loadLocalEnv();
 
 const DEFAULT_TIKTOK_VIDEO_URL =
   "https://affiliate.tiktok.com/data/video?shop_region=MX&shop_id=7496266260600883350";
@@ -19,6 +54,14 @@ const timeoutMs = Number.parseInt(process.env.TIKTOK_EXPORT_TIMEOUT_MS ?? "12000
 const headless = process.env.TIKTOK_EXPORT_HEADLESS !== "0";
 const channel = process.env.TIKTOK_BROWSER_CHANNEL || undefined;
 const userDataDir = process.env.TIKTOK_SESSION_USER_DATA_DIR || "";
+const loginUsername =
+  process.env.TIKTOK_LOGIN_USERNAME ||
+  process.env.TIKTOK_LOGIN_EMAIL ||
+  process.env.TIKTOK_USERNAME ||
+  process.env.TIKTOK_EMAIL ||
+  "";
+const loginPassword = process.env.TIKTOK_LOGIN_PASSWORD || process.env.TIKTOK_PASSWORD || "";
+const hasLoginCredentials = Boolean(loginUsername && loginPassword);
 
 async function fileExists(filePath) {
   try {
@@ -99,6 +142,166 @@ async function clickConfirmExport(page) {
   return false;
 }
 
+async function dismissCommonDialogs(page) {
+  const candidates = [
+    page.getByRole("button", { name: /接受|同意|允许|我知道了|Accept|Agree|Allow|Got it/i }),
+    page.locator("button").filter({ hasText: /接受|同意|允许|我知道了|Accept|Agree|Allow|Got it/i }),
+  ];
+
+  for (const locator of candidates) {
+    await clickLocator(locator, 1500).catch(() => false);
+  }
+}
+
+async function fillFirstEditable(candidates, value) {
+  for (const locator of candidates) {
+    const count = Math.min(await locator.count().catch(() => 0), 8);
+
+    for (let index = 0; index < count; index += 1) {
+      const item = locator.nth(index);
+
+      try {
+        if (
+          (await item.isVisible({ timeout: 1000 })) &&
+          (await item.isEnabled({ timeout: 1000 })) &&
+          (await item.isEditable({ timeout: 1000 }))
+        ) {
+          await item.fill(value, { timeout: 5000 });
+          return item;
+        }
+      } catch {
+        // Try the next candidate.
+      }
+    }
+  }
+
+  return null;
+}
+
+async function pageNeedsHumanVerification(page) {
+  const verificationText = page.getByText(
+    /验证码|验证|安全检查|二次验证|手机验证|邮箱验证|captcha|verify|verification|two-step|2-step|security check/i,
+  );
+
+  try {
+    return await verificationText.first().isVisible({ timeout: 1500 });
+  } catch {
+    return false;
+  }
+}
+
+async function switchToPasswordLogin(page) {
+  const candidates = [
+    page.getByText(/邮箱.*密码|手机.*密码|账号.*密码|密码登录|Use phone.*email|Use email|Email.*username|Log in with password/i),
+    page.locator("button").filter({
+      hasText: /邮箱.*密码|手机.*密码|账号.*密码|密码登录|Use phone.*email|Use email|Email.*username|Log in with password/i,
+    }),
+    page.locator("[role='tab']").filter({
+      hasText: /邮箱|手机|账号|Email|Phone|Username/i,
+    }),
+  ];
+
+  for (const locator of candidates) {
+    if (await clickLocator(locator, 2500)) {
+      await page.waitForTimeout(1000);
+      return true;
+    }
+  }
+
+  return false;
+}
+
+async function loginWithCredentials(page) {
+  await dismissCommonDialogs(page);
+  await switchToPasswordLogin(page);
+
+  const usernameInput = await fillFirstEditable(
+    [
+      page.locator('input[autocomplete="username"]'),
+      page.locator('input[name*="email" i]'),
+      page.locator('input[name*="user" i]'),
+      page.locator('input[type="email"]'),
+      page.locator('input[placeholder*="邮箱"]'),
+      page.locator('input[placeholder*="手机号"]'),
+      page.locator('input[placeholder*="手机"]'),
+      page.locator('input[placeholder*="账号"]'),
+      page.locator('input[placeholder*="Email" i]'),
+      page.locator('input[placeholder*="Phone" i]'),
+      page.locator('input[placeholder*="Username" i]'),
+      page.locator('input[type="text"]'),
+    ],
+    loginUsername,
+  );
+
+  if (!usernameInput) {
+    const debug = await saveDebugArtifacts(page);
+    throw new Error(`Cannot find TikTok login username field. Debug saved: ${debug.screenshotPath}, ${debug.htmlPath}`);
+  }
+
+  let passwordInput = await fillFirstEditable(
+    [
+      page.locator('input[autocomplete="current-password"]'),
+      page.locator('input[name*="password" i]'),
+      page.locator('input[type="password"]'),
+      page.locator('input[placeholder*="密码"]'),
+      page.locator('input[placeholder*="Password" i]'),
+    ],
+    loginPassword,
+  );
+
+  if (!passwordInput) {
+    await clickLocator(
+      page.getByRole("button", { name: /下一步|继续|Next|Continue/i }),
+      3000,
+    ).catch(() => false);
+    await page.waitForTimeout(1500);
+    passwordInput = await fillFirstEditable(
+      [
+        page.locator('input[autocomplete="current-password"]'),
+        page.locator('input[name*="password" i]'),
+        page.locator('input[type="password"]'),
+        page.locator('input[placeholder*="密码"]'),
+        page.locator('input[placeholder*="Password" i]'),
+      ],
+      loginPassword,
+    );
+  }
+
+  if (!passwordInput) {
+    const debug = await saveDebugArtifacts(page);
+    throw new Error(`Cannot find TikTok login password field. Debug saved: ${debug.screenshotPath}, ${debug.htmlPath}`);
+  }
+
+  const submitted = await clickLocator(
+    page.getByRole("button", { name: /登录|Log in|Sign in|Continue|继续/i }),
+    5000,
+  );
+
+  if (!submitted) {
+    await passwordInput.press("Enter").catch(() => {});
+  }
+
+  const deadline = Date.now() + timeoutMs;
+
+  while (Date.now() < deadline) {
+    await page.waitForTimeout(2500);
+
+    if (await pageNeedsHumanVerification(page)) {
+      const debug = await saveDebugArtifacts(page);
+      throw new Error(
+        `TikTok requires captcha or two-step verification. Debug saved: ${debug.screenshotPath}, ${debug.htmlPath}`,
+      );
+    }
+
+    if (!isLoginUrl(page.url()) && !(await pageLooksLoggedOut(page))) {
+      return;
+    }
+  }
+
+  const debug = await saveDebugArtifacts(page);
+  throw new Error(`TikTok login did not complete. Debug saved: ${debug.screenshotPath}, ${debug.htmlPath}`);
+}
+
 async function waitForDownloadAfter(action, page, timeout = 20000) {
   const downloadPromise = page.waitForEvent("download", { timeout }).catch(() => null);
   await action();
@@ -115,8 +318,12 @@ async function saveDebugArtifacts(page) {
   return { screenshotPath, htmlPath };
 }
 
-if (!userDataDir && !(await fileExists(statePath))) {
-  throw new Error(`Missing TikTok storage state: ${statePath}. Run npm run tiktok:session first.`);
+const hasStorageState = await fileExists(statePath);
+
+if (!userDataDir && !hasStorageState && !hasLoginCredentials) {
+  throw new Error(
+    `Missing TikTok storage state or login credentials. Set TIKTOK_STORAGE_STATE_PATH, or set TIKTOK_LOGIN_USERNAME/TIKTOK_LOGIN_PASSWORD.`,
+  );
 }
 
 await mkdir(path.dirname(outputPath), { recursive: true });
@@ -136,7 +343,7 @@ const context = userDataDir
     })
   : await browser.newContext({
       ...contextOptions,
-      storageState: JSON.parse(await readFile(statePath, "utf8")),
+      ...(hasStorageState ? { storageState: JSON.parse(await readFile(statePath, "utf8")) } : {}),
     });
 const page = await context.newPage();
 
@@ -145,7 +352,23 @@ try {
   await page.waitForLoadState("networkidle", { timeout: 30000 }).catch(() => {});
 
   if (await pageLooksLoggedOut(page)) {
-    throw new Error("TikTok session is logged out or expired. Refresh TIKTOK_STORAGE_STATE_B64.");
+    if (!hasLoginCredentials) {
+      throw new Error(
+        "TikTok session is logged out or expired. Refresh TIKTOK_STORAGE_STATE_B64 or set TIKTOK_LOGIN_USERNAME/TIKTOK_LOGIN_PASSWORD.",
+      );
+    }
+
+    await loginWithCredentials(page);
+    await page.goto(targetUrl, { waitUntil: "domcontentloaded", timeout: timeoutMs });
+    await page.waitForLoadState("networkidle", { timeout: 30000 }).catch(() => {});
+
+    if (await pageLooksLoggedOut(page)) {
+      const debug = await saveDebugArtifacts(page);
+      throw new Error(`TikTok login completed but target page is still logged out. Debug saved: ${debug.screenshotPath}, ${debug.htmlPath}`);
+    }
+
+    await mkdir(path.dirname(statePath), { recursive: true });
+    await context.storageState({ path: statePath }).catch(() => {});
   }
 
   let download = await waitForDownloadAfter(async () => {
