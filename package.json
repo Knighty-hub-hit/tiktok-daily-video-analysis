@@ -20,6 +20,7 @@
     "feishu:notify": "node scripts/send-feishu-site-notification.mjs",
     "media:enrich": "node scripts/enrich-tiktok-media.mjs",
     "daren:prepare": "python3 scripts/prepare-daren-video-total.py",
+    "daren:sync-bd": "node scripts/sync-daren-video-bd.mjs",
     "report:download": "node scripts/download-tiktok-report.mjs",
     "tiktok:session": "node scripts/capture-tiktok-session.mjs",
     "tiktok:export-browser": "node scripts/export-tiktok-report-with-browser.mjs",

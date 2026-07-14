@@ -11,6 +11,7 @@
   - “达人用户名” → 【达人ID】
   - 固定“梳子” → 【产品】
   - “视频链接” → 【视频链接】
+  - 写入后按【BD达人对应表】的【达人ID】→【现BD】映射，同步【达人视频总表】当天记录的【BD】人员字段
 - 写入位置必须是飞书【达人视频总表】最末尾。
 - 不更新本地网站。
 
@@ -23,3 +24,11 @@ GitHub Actions 的定时入口是 `.github/workflows/daren-video-total.yml`，cr
 ```bash
 npm run daren:prepare -- path/to/export.xlsx data/daren-video-total-latest.csv data/daren-video-total-state.json
 ```
+
+写入飞书【达人视频总表】后，运行下面命令只校正当天新写入记录的 BD：
+
+```bash
+npm run daren:sync-bd -- --date YYYY-MM-DD
+```
+
+默认不传日期时使用北京时间当天。脚本只读取【BD达人对应表】中的【达人ID】和【现BD】，只更新【达人视频总表】中同一天【回收日期】的记录；历史记录不会被批量改动。
